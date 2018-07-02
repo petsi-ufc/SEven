@@ -148,22 +148,22 @@ public class CmdGerarCertificado implements Comando {
                     Paragraph cert2 = new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA, 30, Font.BOLD));
                     cert2.setAlignment(Element.ALIGN_CENTER);
                     cert2.setSpacingBefore(10);
-                    cert2.setSpacingAfter(20);
+                    cert2.setSpacingAfter(10);
                     document.add(cert2);
 
                     Paragraph cert = new Paragraph(inscricao.getParticipante().getUsuario().getNome().toUpperCase(), FontFactory.getFont(FontFactory.HELVETICA, 22, Font.BOLD));
                     cert.setAlignment(Element.ALIGN_CENTER);
                     cert.setSpacingBefore(150);
-                    cert.setSpacingAfter(55);
+                    cert.setSpacingAfter(75);
                     document.add(cert);
-                    Paragraph p1 = new Paragraph(a.getTipo().getNome() + " de " + a.getNome(), FontFactory.getFont(FontFactory.HELVETICA, 22, Font.BOLD));
+                    Paragraph p1 = new Paragraph(a.getTipo().getNome() + " " + a.getNome(), FontFactory.getFont(FontFactory.HELVETICA, 20, Font.BOLD));
                     p1.setAlignment(Element.ALIGN_CENTER);
                     document.add(p1);
 
                     int cargaHoraria = a.getCargaHoraria();
                     String aux = (cargaHoraria > 1) ? " horas." : " hora.";
                     Paragraph p4 = new Paragraph("    Carga horária: " + cargaHoraria + aux, FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLD));
-                    p4.setSpacingBefore(48);
+                    p4.setSpacingBefore(30);
 
                     document.add(p4);
                     

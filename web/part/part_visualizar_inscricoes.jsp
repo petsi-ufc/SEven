@@ -98,7 +98,7 @@
                                     <td> - </td>
                                     <% }%>!-->
                                     <% if (liberarCertificado) {%>
-                                    <td><center><a href="../ServletCentral?comando=CmdGerarCertificado&insc_id=<%=i.getId()%>" title="Gerar Certificado" onclick="return clickGerarCerticiado(<%=p.getUsuario().isCertificadoGerado()%>, <%=i.getId()%>);" ><span class=" text-uppercase label label-warning">Gerar Certificado</span></a></center> </td>
+                                    <td><center><a href="../ServletCentral?comando=CmdGerarCertificadoParticipante&insc_id=<%=i.getId()%>" title="Gerar Certificado" onclick="return clickGerarCerticiado(<%=p.getUsuario().isCertificadoGerado()%>, <%=i.getId()%>);" ><span class=" text-uppercase label label-warning">Gerar Certificado</span></a></center> </td>
                                     <% } else {%>
                                     <td> <center>Indisponível </center></td>
                                     <% }%>

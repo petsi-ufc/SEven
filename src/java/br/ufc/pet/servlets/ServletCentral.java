@@ -95,6 +95,8 @@ import br.ufc.pet.comandos.participante.CmdSubmeterInscricao;
 import br.ufc.pet.comandos.participante.CmdVisualizarInscricao;
 import br.ufc.pet.comandos.participante.CmdVisualizarInscricaoDownload;
 import br.ufc.pet.comandos.participante.CmdVisualizarProgramacao;
+import br.ufc.pet.comandos.participante.CmdGerarCertificadoParticipante;
+
 import br.ufc.pet.interfaces.Comando;
 import java.io.IOException;
 import java.util.Date;
@@ -326,6 +328,8 @@ public class ServletCentral extends HttpServlet {
         
         cmdo = new CmdGerarCertificado();
         comandos.put("CmdGerarCertificado", cmdo);
+        cmdo = new CmdGerarCertificadoParticipante();
+        comandos.put("CmdGerarCertificadoParticipante", cmdo);
         cmdo = new CmdGerenciarUploadCertificados();
         comandos.put("CmdGerenciarUploadCertificados", cmdo);
         cmdo = new CmdGerenciarEmissaoCertificados();

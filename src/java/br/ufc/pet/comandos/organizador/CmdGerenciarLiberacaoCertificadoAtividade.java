@@ -22,15 +22,17 @@ public class CmdGerenciarLiberacaoCertificadoAtividade implements Comando {
         
         ParticipanteService partS = new ParticipanteService();
         ArrayList<Participante> parts = partS.getParticipanteByAtividadeIdQuites(idAtividade);
-        if (parts == null || parts.isEmpty()) {
-            session.setAttribute("erro", "Atividade sem participantes quites no momento");
-            return "/org/organ_gerenciar_emissao_certificados.jsp";
-        } else {
+//        if (parts == null || parts.isEmpty()) {
+//            session.setAttribute("erro", "Atividade sem participantes quites no momento");
+//            return "/org/organ_gerenciar_emissao_certificados.jsp";
+//        } else {
+//            session.setAttribute("participantes", parts);
+            parts = partS.getParticipanteByAtividadeId(idAtividade);
             session.setAttribute("participantes", parts);
             session.setAttribute("ativ_id", idAtividade);
             
             return "/org/organ_gerenciar_liberacao_certificados.jsp";
-        }
+//        }
         
     }
 

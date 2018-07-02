@@ -1,4 +1,4 @@
-package br.ufc.pet.comandos.organizador;
+package br.ufc.pet.comandos.participante;
 
 import br.ufc.pet.evento.Atividade;
 import br.ufc.pet.evento.Inscricao;
@@ -31,7 +31,7 @@ import javax.servlet.http.HttpSession;
 /*
  * @author mardson
  */
-public class CmdGerarCertificado implements Comando {
+public class CmdGerarCertificadoParticipante implements Comando {
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) {
@@ -42,27 +42,10 @@ public class CmdGerarCertificado implements Comando {
 
         if (inscricao_id == null || inscricao_id.trim().isEmpty()) {
             session.setAttribute("erro", "Inscrição Inválida!");
-            return "/org/organ_gerenciar_inscricoes.jsp";
+            return "/part/part_visualizar_inscricoes.jsp";
         } else {
             InscricaoService is = new InscricaoService();
             Inscricao inscricao = is.getInscricaoById(Long.parseLong(inscricao_id));
-                        
-//            if(!inscricao.isConfirmada()){
-//                session.setAttribute("erro", "Usuário ainda não pagou, mas será liberado!");
-//                return "/org/organ_gerenciar_inscricoes.jsp";
-//            }
-            
-            AtividadeService ativServ = new AtividadeService();
-            ArrayList<InscricaoAtividade> inscar = ativServ.getIncricaoAtividadeByInscricao(inscricao.getId());
-            
-            System.out.println("MOSTRANDO AQUI MINHA INSCRICOES: ");
-            
-//            for(InscricaoAtividade ia : inscar){
-//                if(!ia.isConfirmaCertificado()){
-//                    session.setAttribute("erro", "Certificado não Liberado!");
-//                    return "/org/organ_gerenciar_inscricoes.jsp";
-//                }
-//            }
 
             
 //                Inscricao insc = inscServ.getInscricaoById(id);
@@ -176,11 +159,11 @@ public class CmdGerarCertificado implements Comando {
             } catch (DocumentException ex) {
                 System.out.println("DOCUMENTEXCEPTION");
                 session.setAttribute("erro", "Erro " + ex.getMessage());
-                return "/org/organ_gerenciar_inscricoes.jsp";
+                return "/part/part_visualizar_inscricoes.jsp";
             } catch (IOException ex) {
                 System.out.println("IOEXCEPTION");
                 session.setAttribute("erro", "Erro " + ex.getMessage());
-                return "/org/organ_gerenciar_inscricoes.jsp";
+                return "/part/part_visualizar_inscricoes.jsp";
             }
 
 
@@ -193,7 +176,7 @@ public class CmdGerarCertificado implements Comando {
             } catch (IOException ex) {
                 System.out.println("IOEXCEPTION");
                 session.setAttribute("erro", "Erro " + ex.getMessage());
-                return "/org/organ_gerenciar_inscricoes.jsp";
+                return "/part/part_visualizar_inscricoes.jsp";
             }
             try {
                 baos.writeTo(out);
@@ -201,10 +184,10 @@ public class CmdGerarCertificado implements Comando {
             } catch (Exception ex) {
                 System.out.println("EXCEPTION");
                 session.setAttribute("erro", "Erro " + ex.getMessage());
-                return "/org/organ_gerenciar_inscricoes.jsp";
+                return "/part/part_visualizar_inscricoes.jsp";
             }
         }
 
-        return "/org/organ_gerenciar_inscricoes.jsp";
+        return "/part/part_visualizar_inscricoes.jsp";
     }
 }

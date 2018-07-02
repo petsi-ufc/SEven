@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Organizador.xml
+    Created on : 14 de Maio de 2010, 14:31
+    Author     : fernando
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Organizador">
+
+    <resultMap  id="organizadorResult" class="organizador">
+        <result property="id" column="id"/>
+        <result property="dataCriacao" column="data_criacao"/>
+        <result property="status" column="status"/>
+        <result property="usuario.id" column="usuario_id"/>
+    </resultMap>
+
+    <insert id="addOrganizador" parameterClass="organizador" >
+
+        INSERT INTO evento.perfil (id,usuario_id,papel_id,data_criacao,status)
+        VALUES (#id#,#usuario.id#,2,#dataCriacao#,#status#);
+
+    </insert>
+
+    <select id="getOrganizadorByUsuarioId" resultClass="organizador"
+            parameterClass="long"
+            resultMap="organizadorResult">
+        SELECT *
+        FROM evento.perfil, evento.papel
+        WHERE perfil.usuario_id = #var# AND
+        perfil.papel_id = papel.id AND
+        papel.id = 2;
+    </select>
+
+    <select id="getOrganizadorById" resultClass="organizador"
+            parameterClass="long"
+            resultMap="organizadorResult">
+        SELECT *
+        FROM evento.perfil, evento.papel
+        WHERE perfil.id = #var# AND
+        perfil.papel_id = papel.id AND
+        papel.id=2;
+    </select>
+
+
+    <select id="getMaxIdOrganizador" resultClass="long">
+        SELECT MAX(id)
+        FROM evento.perfil;
+    </select>
+
+     <select id="getAllOrganizadorByEvento" resultClass="organizador"
+            parameterClass="long"
+            resultMap="organizadorResult">
+        SELECT *
+        FROM evento.perfil, evento.papel, evento.organizacao
+        WHERE perfil.id = organizacao.organizador_id AND
+        perfil.papel_id = papel.id AND
+        papel.id = 2 AND organizacao.evento_id=#var#;
+
+   </select>
+
+</sqlMap>

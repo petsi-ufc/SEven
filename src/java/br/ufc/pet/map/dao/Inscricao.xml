@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Inscricao">
+    
+    <resultMap id="inscricaoResult" class="inscricao">
+        <result property="id" column="id"/>
+        <result property="dataRealizada" column="data_realizacao"/>
+        <result property="confirmada" column="confirmada"/>
+        <result property="dataPagamento" column="data_pagamento"/>
+        <result property="participante.id" column="participante_id"/>
+        <result property="evento.id" column="evento_id"/>
+        <result property="modalidade.id" column="modalidade_id"/>
+        <result property="codigoValidacaoCertificado" column="codigo_validacao_certificado"/>
+    </resultMap>
+
+    <insert id="addInscricao" parameterClass="inscricao">
+        INSERT INTO evento.inscricao(
+        id, data_realizacao, confirmada, data_pagamento, participante_id, evento_id, modalidade_id, codigo_validacao_certificado)
+        VALUES (#id#, #dataRealizada#, #confirmada#, #dataPagamento#, #participante.id#, #evento.id#, #modalidade.id#, #codigoValidacaoCertificado#);
+
+        <!-- insere multiplas tuplas na tabela inscricao_atividade-->
+        <iterate property="atividades" open="INSERT INTO evento.inscricao_atividade(
+                 inscricao_id, atividade_id) VALUES "  conjunction="," >
+            (#id#,#atividades[].id# )
+        </iterate>
+
+    </insert>
+    
+    <update id="updateInscricao" parameterClass="inscricao">
+        UPDATE evento.inscricao
+        SET id=#id#, data_realizacao=#dataRealizada#, confirmada=#confirmada#, data_pagamento=#dataPagamento#, participante_id=#participante.id#, evento_id=#evento.id#, modalidade_id=#modalidade.id#, codigo_validacao_certificado=#codigoValidacaoCertificado#
+        WHERE  id=#id#;
+    </update>
+
+    <select id="getInscricaoById" resultClass="inscricao" parameterClass="long"
+            resultMap="inscricaoResult">
+        SELECT id, data_realizacao, confirmada, data_pagamento, participante_id,
+        evento_id, modalidade_id, codigo_validacao_certificado
+        FROM evento.inscricao WHERE id=#var#;
+    </select>
+    
+    <select id="getInscricaoByCodigoValidacao" resultClass="inscricao" parameterClass="java.lang.String"
+            resultMap="inscricaoResult">
+        SELECT id, data_realizacao, confirmada, data_pagamento, participante_id,
+        evento_id, modalidade_id, codigo_validacao_certificado
+        FROM evento.inscricao WHERE codigo_validacao_certificado=#var#;
+    </select>
+
+    <select id="getInscricaoByParticipanteId" resultClass="inscricao" parameterClass="long"
+            resultMap="inscricaoResult">
+        SELECT inscricao.id, data_realizacao, confirmada, data_pagamento, participante_id,
+        evento_id, modalidade_id, codigo_validacao_certificado
+        FROM evento.inscricao, evento.evento
+        WHERE evento.id=inscricao.evento_id and evento.ativo=true and inscricao.participante_id=#var#;
+    </select>
+
+    <select id="getInscricaoByParticipanteEvento" resultClass="inscricao" parameterClass="utility"
+            resultMap="inscricaoResult">
+        SELECT inscricao.id, data_realizacao, confirmada, data_pagamento, participante_id,
+        evento_id, modalidade_id, codigo_validacao_certificado
+        FROM evento.inscricao, evento.evento
+        WHERE evento.id=inscricao.evento_id and evento.ativo=true and inscricao.participante_id=#part_id# and evento_id=#event_id#;
+    </select>
+
+    <select id="getInscricaoByEventoId" resultClass="inscricao" parameterClass="long"
+            resultMap="inscricaoResult">
+        SELECT id, data_realizacao, confirmada, data_pagamento, participante_id,
+        evento_id, modalidade_id, codigo_validacao_certificado
+        FROM evento.inscricao WHERE evento_id=#var#;
+    </select>
+
+    <select id="getMaxIdInscricao" resultClass="long">
+        SELECT MAX(id)
+        FROM evento.inscricao;
+    </select>
+
+    <select id="getInscritosByAtividadeId" resultClass="long">
+        SELECT count(*)
+        FROM evento.inscricao_atividade
+        WHERE atividade_id=#var#;
+    </select>
+
+    <select id="getAllInscricoesByAtividadeId" parameterClass="long" resultClass="inscricao" resultMap="inscricaoResult">
+        SELECT inscricao.id, data_realizacao, confirmada, data_pagamento, participante_id,
+        evento_id, modalidade_id, codigo_validacao_certificado
+        FROM evento.inscricao, evento.inscricao_atividade
+        WHERE inscricao.id=inscricao_atividade.inscricao_id AND
+        inscricao_atividade.atividade_id=#var#;
+    </select>
+
+    <select id="getAllInscricoesByEventoId" parameterClass="long" resultClass="inscricao" resultMap="inscricaoResult">
+        SELECT inscricao.id, data_realizacao, confirmada, data_pagamento, participante_id,
+        inscricao.evento_id, modalidade_id, codigo_validacao_certificado
+        FROM evento.inscricao, evento.inscricao_atividade, evento.atividade
+        WHERE atividade.evento_id=#var# AND
+        atividade.id=inscricao_atividade.atividade_id AND
+        inscricao.id=inscricao_atividade.inscricao_id;
+    </select>
+
+    <delete id="deleteInscricao" parameterClass="long">
+        DELETE FROM evento.inscricao_atividade
+        WHERE inscricao_id=#var#;
+        DELETE FROM evento.inscricao
+        WHERE id=#var#;
+    </delete>
+
+    <update id="confirmarpagamento" parameterClass="inscricao" >
+        UPDATE evento.inscricao
+        SET confirmada=#confirmada#
+        WHERE id = #id#;
+    </update>
+
+    <update id="confirmarTodosPagamentos" parameterClass="long" >
+        UPDATE evento.inscricao
+        SET confirmada=TRUE
+        WHERE evento_id = #var#;
+    </update>
+
+    <select id="getAllInscricoesByAuxInscricao" resultClass="inscricao" parameterClass="inscricao"
+            resultMap="inscricaoResult">
+
+        SELECT ins.id, data_realizacao, confirmada, data_pagamento, participante_id,
+        evento_id, modalidade_id, codigo_validacao_certificado
+        FROM evento.inscricao ins , evento.perfil p, evento.usuario u
+        WHERE ins.evento_id=#evento.id# and p.usuario_id=u.id and ins.participante_id= p.id and u.nome ILIKE '%$participante.usuario.nome$%';
+
+    </select>
+</sqlMap>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : TipoAtividade.xml
+    Created on : 14 de Maio de 2010, 14:32
+    Author     : adriano
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TipoAtividade">
+    
+    <resultMap id="tipoAtividadeResult" class="tipoAtividade">
+        <result property="id" column="tipo_id"/>
+        <result property="nome" column="tipo_nome"/>
+        <result property="eventoId" column="evento_id" />
+    </resultMap>
+    
+    <select id="getTipoAtividadeById" resultClass="tipoAtividade"
+            parameterClass="long"
+            resultMap="tipoAtividadeResult">
+        SELECT id as tipo_id, nome as tipo_nome, evento_id
+        FROM evento.tipo_atividade WHERE id=#var#;
+    </select>
+    
+    <select id="getAllTipoAtividade" resultClass="tipoAtividade" resultMap="tipoAtividadeResult">
+        SELECT id as tipo_id, nome as tipo_nome, evento_id
+        FROM evento.tipo_atividade;
+    </select>
+    <select id="getTipoAtividadeByEventoId" resultClass="tipoAtividade"
+            parameterClass="long"
+            resultMap="tipoAtividadeResult">
+        SELECT id as tipo_id, nome as tipo_nome, evento_id
+        FROM evento.tipo_atividade where evento_id=#var#;
+    </select>
+    
+    <insert id="addTipoAtividade" parameterClass="TipoAtividade">
+        INSERT INTO evento.tipo_atividade(
+        id, nome, evento_id)
+        VALUES (#id#, #nome#, #eventoId#);
+    </insert>
+    <select id="getMaxIdTipoAtividade" resultClass="long">
+        SELECT MAX(id)
+        FROM evento.tipo_atividade;
+    </select>
+    <delete id="deleteTipoAtividade" parameterClass="long">
+        DELETE FROM evento.tipo_atividade WHERE id = #var#;
+    </delete>
+    <update id="updateTipoAtividade" parameterClass="TipoAtividade">
+        UPDATE evento.tipo_atividade
+        SET nome=#nome#
+        WHERE id=#id#;
+    </update>
+</sqlMap>

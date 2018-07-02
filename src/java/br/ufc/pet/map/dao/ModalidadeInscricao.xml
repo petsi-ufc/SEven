@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : ModalidadeInscricao.xml
+    Created on : 14 de Maio de 2010, 14:29
+    Author     : dodo
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- Esse XML tem que ser alterado para inserir tuplas na tabela 'modalidade_tipo_atividade' contendo os precos! -->
+
+<sqlMap namespace="ModalidadeInscricao">
+    <resultMap id="modalidadeInscricaoResult" class="modalidadeInscricao">
+        <result property="id" column="id"/>
+        <result property="tipo" column="tipo"/>
+        <result property="eventoId" column="evento_id"/>
+    </resultMap>
+
+    <select id="getModalidadeInscricaoById" resultClass="modalidadeInscricao"
+            parameterClass="long"
+            resultMap="modalidadeInscricaoResult">
+        SELECT id, tipo, evento_id
+        FROM evento.modalidade_inscricao WHERE id=#var#;
+    </select>
+
+    <select id="getModalidadeInscricaoByTipo" resultClass="modalidadeInscricao"
+            parameterClass="String"
+            resultMap="modalidadeInscricaoResult">
+        SELECT id, tipo, evento_id
+        FROM evento.modalidade_inscricao WHERE tipo=#var#;
+    </select>
+
+    <select id="getAllModalidadesInscricao" resultClass="modalidadeInscricao"
+            resultMap="modalidadeInscricaoResult">
+        SELECT *
+        FROM evento.modalidade_inscricao;
+    </select>
+
+    <select id="getModalidadesInscricaoByEventoId" resultClass="modalidadeInscricao"
+            parameterClass="long"
+            resultMap="modalidadeInscricaoResult">
+        SELECT *
+        FROM evento.modalidade_inscricao
+        WHERE evento_id=#var#;
+    </select>
+
+    <insert id="addModalidadeInscricao" parameterClass="modalidadeInscricao" >
+        INSERT INTO evento.modalidade_inscricao(
+        id, tipo, evento_id)
+        VALUES (#id#, #tipo#, #eventoId#);
+
+        <iterate property="precoAtividades" open=" INSERT INTO evento.modalidade_tipo_atividade(
+                 modalidade_id, tipo_ativ_id, preco)
+                 VALUES"  conjunction="," >
+            (#id#, #precoAtividades[].tipoAtividadeId#, #precoAtividades[].valor#)
+        </iterate>
+
+    </insert>
+
+    <update id="updateModalidadeInscricao" parameterClass="modalidadeInscricao">
+        UPDATE evento.modalidade_inscricao
+        SET  tipo=#tipo#
+        WHERE id=#id#;
+        DELETE FROM evento.modalidade_tipo_atividade
+        WHERE modalidade_id=#id#;
+        <iterate property="precoAtividades" open=" INSERT INTO evento.modalidade_tipo_atividade(
+                 modalidade_id, tipo_ativ_id, preco)
+                 VALUES"  conjunction="," >
+            (#id#, #precoAtividades[].tipoAtividadeId#, #precoAtividades[].valor#)
+        </iterate>
+    </update>
+
+    <delete id="deleteModalidadeInscricao" parameterClass="long">
+        DELETE FROM evento.modalidade_tipo_atividade
+        WHERE modalidade_id=#var#;
+        DELETE FROM evento.modalidade_inscricao
+        WHERE id = #var#;
+    </delete>
+
+    <select id="getMaxIdModalidadeInscricao" resultClass="long">
+        SELECT MAX(id)
+        FROM evento.modalidade_inscricao;
+    </select>
+
+</sqlMap>

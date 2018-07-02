@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Administrador.xml
+    Created on : 14 de Maio de 2010, 14:26
+    Author     : fernando
+    Description:
+        Purpose of the document follows.
+-->
+
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Administrador">
+
+    <resultMap id="administradorResult" class="administrador">
+        <result property="id" column="id"/>
+        <result property="dataCriacao" column="data_criacao"/>
+        <result property="status" column="status"/>
+        <result property="usuario.id" column="usuario_id"/>
+    </resultMap>
+
+    <select id="getAdministradorByUsuarioId" resultClass="administrador"
+            parameterClass="long"
+            resultMap="administradorResult">
+
+        SELECT *
+        FROM evento.perfil, evento.papel
+        WHERE perfil.usuario_id = #var# AND
+        perfil.papel_id = papel.id AND
+        papel.id = 3;
+    </select>
+
+    <select id="getAdministradorById" resultClass="administrador"
+            parameterClass="long"
+            resultMap="administradorResult">
+        SELECT *
+        FROM evento.perfil, evento.papel
+        WHERE perfil.id = #var# AND
+        perfil.papel_id = papel.id AND
+        papel.id=3;
+    </select>
+
+     
+
+</sqlMap>

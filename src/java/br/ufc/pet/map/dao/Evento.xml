@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Evento">
+
+    <resultMap id="eventoResult" class="evento">
+        <result property="id" column="id"/>
+        <result property="nome" column="nome"/>
+        <result property="sigla" column="sigla"/>
+        <result property="tema" column="tema"/>
+        <result property="inicioPeriodoInscricao" column="inicio_inscricao"/>
+        <result property="fimPeriodoInscricao" column="fim_inscricao"/>
+        <result property="descricao" column="descricao"/>
+        <result property="ativo" column="ativo"/>
+        <result property="administrador.id" column="admin_id"/>
+        <result property="inicioPeriodoEvento" column="inicio"/>
+        <result property="fimPeriodoEvento" column="fim"/>
+        <result property="limiteAtividadePorParticipante" column="limite_atividade_por_participante"/> 
+        <result property="gratuito" column="gratuito"/>
+    </resultMap>
+
+    <insert id="addEvento" parameterClass="evento" >
+        
+        INSERT INTO evento.evento (id, nome, sigla, tema, inicio_inscricao,
+            fim_inscricao, ativo, admin_id,descricao,inicio,fim, limite_atividade_por_participante, gratuito)
+        VALUES (#id#, #nome#, #sigla#, #tema#, #inicioPeriodoInscricao#,
+            #fimPeriodoInscricao#, #ativo#, #administrador.id#, #descricao#,#inicioPeriodoEvento#,#fimPeriodoEvento#, #limiteAtividadePorParticipante#, 
+            #gratuito#);
+    </insert>
+
+    <update id="updateEvento" parameterClass="evento">
+        UPDATE evento.evento SET nome = #nome#, sigla = #sigla#, tema = #tema#,
+            inicio_inscricao = #inicioPeriodoInscricao#,
+            fim_inscricao = #fimPeriodoInscricao#, ativo = #ativo#,
+            admin_id = #administrador.id#,
+            descricao= #descricao#,
+            inicio=#inicioPeriodoEvento#,
+            fim=#fimPeriodoEvento#,
+            limite_atividade_por_participante = #limiteAtividadePorParticipante#,
+            gratuito = #gratuito#
+        WHERE id = #id#;
+    </update>
+    
+    <update id="encerrarEvento" parameterClass="long">
+        UPDATE evento.evento SET ativo = FALSE
+        WHERE id = #id#;
+    </update>
+    
+    <update id="ativarEvento" parameterClass="long">
+        UPDATE evento.evento SET ativo = TRUE
+        WHERE id = #id#;
+    </update>
+
+    <delete id="deleteEvento" parameterClass="long">
+        DELETE FROM evento.evento WHERE id = #var#;
+    </delete>
+
+    <select id="getEventoById" resultClass="evento"
+    	parameterClass="java.lang.Long"
+    	resultMap="eventoResult">
+        SELECT id, nome, sigla, tema, inicio_inscricao, fim_inscricao, ativo,
+            admin_id,descricao,inicio,fim, limite_atividade_por_participante, gratuito
+        FROM evento.evento
+        WHERE id=#var#;
+    </select>
+
+    <select id="getEventoBySigla" resultClass="evento"
+    	parameterClass="java.lang.String"
+    	resultMap="eventoResult">
+        SELECT id, nome, sigla, tema, inicio_inscricao, fim_inscricao, ativo,
+            admin_id,descricao,inicio,fim, limite_atividade_por_participante, gratuito
+        FROM evento.evento
+        WHERE sigla=#var#;
+    </select>
+    
+    <select id="getEventoByNome" resultClass="evento"
+    	parameterClass="java.lang.String"
+    	resultMap="eventoResult">
+        SELECT id, nome, sigla, tema, inicio_inscricao, fim_inscricao, ativo,
+            admin_id,descricao,inicio,fim, limite_atividade_por_participante
+        FROM evento.evento
+        WHERE UPPER(nome)=UPPER(#var#);
+    </select>
+
+
+    <select id="getAllEventos" resultClass="evento" resultMap="eventoResult">
+        SELECT *
+        FROM evento.evento
+        ORDER BY inicio_inscricao
+        DESC;
+    </select>
+
+    <select id="getAllEventosNaoEncerrados" resultClass="evento" resultMap="eventoResult">
+        SELECT *
+        FROM evento.evento
+        WHERE ativo = true
+        ORDER BY inicio_inscricao
+        DESC;
+    </select>
+
+    <select id="getAllEventosEncerrados" resultClass="evento" resultMap="eventoResult">
+        SELECT *
+        FROM evento.evento
+        WHERE ativo = false
+        ORDER BY inicio_inscricao
+        DESC;
+    </select>
+
+    <select id="getMaxIdEvento" resultClass="long">
+        SELECT MAX(id)
+        FROM evento.evento;
+    </select>
+
+   
+
+
+</sqlMap>

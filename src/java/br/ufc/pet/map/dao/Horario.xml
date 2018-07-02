@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Horario.xml
+    Created on : 14 de Maio de 2010, 14:28
+    Author     : caio/dodo
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Horario">
+    <resultMap id="horarioResult" class="horario">
+        <result property="id" column="id"/>
+        <result property="horaInicial" column="horainicio"/>
+        <result property="minutoInicial" column="mininicio"/>
+        <result property="horaFinal" column="horafim"/>
+        <result property="minutoFinal" column="minfim"/>
+        <result property="dia" column="dia"/>
+    </resultMap>
+
+    <insert id="addHorario" parameterClass="horario">
+        INSERT INTO evento.horario(
+        id, horainicio, mininicio, horafim, minfim, dia, evento_id)
+        VALUES (#id#, #horaInicial#, #minutoInicial#, #horaFinal#, #minutoFinal#, #dia#, #eventoId#);
+    </insert>
+    <select id="getHorarioById" resultClass="horario"
+            parameterClass="long"
+            resultMap="horarioResult">
+        SELECT id, horainicio, mininicio, horafim, minfim, dia
+        FROM evento.horario WHERE id=#var#;
+    </select>
+
+    <select id="getHorariosByEventoId" resultClass="horario"
+            parameterClass="long"
+            resultMap="horarioResult">
+        SELECT id, horainicio, mininicio, horafim, minfim, dia
+        FROM evento.horario where evento_id=#var#;
+    </select>
+
+    <select id="getHorariosByAtividadeId" resultClass="horario"
+            parameterClass="long"
+            resultMap="horarioResult">
+        SELECT id, horainicio, mininicio, horafim, minfim, dia
+        FROM evento.horario, evento.atividade_horario where horario_id=id and atividade_id=#var#;
+
+    </select>
+    <select id="getAllHorarios" resultClass="horario"
+            resultMap="horarioResult">
+        SELECT id, horainicio, mininicio, horafim, minfim, dia
+        FROM evento.horario;
+
+    </select>
+
+    <select id="getMaxIdHorario" resultClass="long">
+        SELECT MAX(id)
+        FROM evento.horario;
+    </select>
+
+    <delete id="deleteHorario" parameterClass="long">
+        DELETE FROM evento.horario WHERE id = #var#;
+    </delete>
+    <update id="updateHorario" parameterClass="horario">
+        UPDATE evento.horario
+        SET  horainicio=#horaInicial#, mininicio=#minutoInicial#, horafim=#horaFinal#, minfim= #minutoFinal#, dia=#dia#
+        WHERE id=#id#;
+
+    </update>
+
+</sqlMap>

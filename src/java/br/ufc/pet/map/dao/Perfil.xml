@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Perfil">
+
+    <resultMap id="perfilResult" class="perfil">
+        <result property="id" column="id"/>
+        <result property="usuario.id" column="usuario_id"/>
+        <!--<result property="papel.id" column="papel_id"/>-->
+        <result property="dataCriacao" column="data_criacao,"/>
+        <result property="status" column="status"/>
+    </resultMap>
+    <resultMap id="participanteResult" class="participante">
+        <result property="usuario.id" column="id"/>
+        <result property="usuario.nome" column="nome"/>
+        <result property="usuario.senha" column="senha"/>
+        <result property="usuario.fone" column="fone"/>
+        <result property="usuario.dataNascimento" column="data_nasc"/>
+        <result property="usuario.email" column="email"/>
+        <result property="usuario.sexo" column="sexo"/>
+        <result property="usuario.instituicao" column="instituicao"/>
+        <result property="usuario.rua" column="rua"/>
+        <result property="usuario.bairro" column="bairro"/>
+        <result property="usuario.numero" column="num_casa"/>
+        <result property="usuario.cidade" column="cidade"/>
+        <result property="usuario.uf" column="uf"/>
+        <result property="dataCriacao" column="data_criacao"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <resultMap id="organizadorResult" class="organizador">
+        <result property="usuario.id" column="id"/>
+        <result property="usuario.nome" column="nome"/>
+        <result property="usuario.senha" column="senha"/>
+        <result property="usuario.fone" column="fone"/>
+        <result property="usuario.dataNascimento" column="data_nasc"/>
+        <result property="usuario.email" column="email"/>
+        <result property="usuario.sexo" column="sexo"/>
+        <result property="usuario.instituicao" column="instituicao"/>
+        <result property="usuario.rua" column="rua"/>
+        <result property="usuario.bairro" column="bairro"/>
+        <result property="usuario.numero" column="num_casa"/>
+        <result property="usuario.cidade" column="cidade"/>
+        <result property="usuario.uf" column="uf"/>
+        <result property="dataCriacao" column="data_criacao"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <resultMap id="administradorResult" class="administrador">
+        <result property="usuario.id" column="id"/>
+        <result property="usuario.nome" column="nome"/>
+        <result property="usuario.senha" column="senha"/>
+        <result property="usuario.fone" column="fone"/>
+        <result property="usuario.dataNascimento" column="data_nasc"/>
+        <result property="usuario.email" column="email"/>
+        <result property="usuario.sexo" column="sexo"/>
+        <result property="usuario.instituicao" column="instituicao"/>
+        <result property="usuario.rua" column="rua"/>
+        <result property="usuario.bairro" column="bairro"/>
+        <result property="usuario.numero" column="num_casa"/>
+        <result property="usuario.cidade" column="cidade"/>
+        <result property="usuario.uf" column="uf"/>
+        <result property="dataCriacao" column="data_criacao"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <select id="getPerfilParticipanteById" resultClass="participante"
+    	parameterClass="java.lang.Long"
+    	resultMap="participanteResult">
+    SELECT usuario.id,usuario.nome,usuario.senha, usuario.fone,usuario.data_nasc, usuario.email,
+        usuario.sexo, usuario.instituicao, usuario.rua, usuario.bairro,usuario.num_casa, usuario.cidade,
+        usuario.uf, perfil.data_criacao, perfil.status
+    FROM evento.usuario, evento.perfil, evento.papel
+    WHERE evento.usuario.id=evento.perfil.usuario_id AND evento.papel.nome='PARTICIPANTE' AND evento.perfil.papel_id=evento.papel.id AND usuario.id=#var# ;
+    </select>
+    
+    <select id="getPerfilOrganizadorById" resultClass="organizador"
+    	parameterClass="java.lang.Long"
+    	resultMap="organizadorResult">
+    SELECT usuario.id,usuario.nome,usuario.senha, usuario.fone,usuario.data_nasc, usuario.email,
+        usuario.sexo, usuario.instituicao, usuario.rua, usuario.bairro,usuario.num_casa, usuario.cidade,
+        usuario.uf, perfil.data_criacao, perfil.status
+    FROM evento.usuario, evento.perfil, evento.papel
+    WHERE evento.usuario.id=evento.perfil.usuario_id AND evento.papel.nome='ORGANIZADOR' AND evento.perfil.papel_id=evento.papel.id AND usuario.id=#var# ;
+    </select>
+
+    <select id="getPerfilAdministradorById" resultClass="administrador"
+    	parameterClass="java.lang.Long"
+    	resultMap="administradorResult">
+    SELECT usuario.id,usuario.nome,usuario.senha, usuario.fone,usuario.data_nasc, usuario.email,
+        usuario.sexo, usuario.instituicao, usuario.rua, usuario.bairro,usuario.num_casa, usuario.cidade,
+        usuario.uf, perfil.data_criacao, perfil.status
+    FROM evento.usuario, evento.perfil, evento.papel
+    WHERE evento.usuario.id=evento.perfil.usuario_id AND evento.papel.nome='ADMINISTRADOR' AND evento.perfil.papel_id=evento.papel.id AND usuario.id=#var# ;
+    </select>
+
+    <select id="getMaxIdPerfil" resultClass="long">
+        SELECT MAX(id)
+        FROM evento.perfil;
+    </select>
+</sqlMap>

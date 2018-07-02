@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Organizacao.xml
+    Created on : 14 de Maio de 2010, 14:30
+    Author     : fernando
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Organizacao">
+
+    <resultMap id="organizacaoResult" class="organizacao">
+        <result property="id" column="id"/>
+        <result property="organizador.id" column="organizador_id"/>
+        <result property="evento.id" column="evento_id"/>
+        <result property="manterModuloFinanceiro" column="manter_mod_financeiro"/>
+        <result property="manterAtividade" column="manter_atividade"/>
+    </resultMap>
+
+
+
+    <insert id="addOrganizacao" parameterClass="organizacao" >
+
+        INSERT INTO evento.organizacao (id,organizador_id,evento_id,manter_mod_financeiro,manter_atividade)
+        VALUES (#id#,#organizador.id#,#evento.id#,#manterModuloFinanceiro#,#manterAtividade#);
+    </insert>
+
+    <update id="updateOrganizacao" parameterClass="organizacao">
+        UPDATE evento.organizacao
+        SET manter_mod_financeiro = #manterModuloFinanceiro#,
+        manter_atividade = #manterAtividade#
+
+        WHERE organizador_id = #organizador.id# AND evento_id=#evento.id#;
+    </update>
+
+    <delete id="deleteOrganizacao" parameterClass="organizacao">
+
+        DELETE FROM evento.organizacao
+        WHERE organizador_id=#organizador.id# AND evento_id=#evento.id#;
+
+    </delete>
+    
+
+
+    <select id="getOrganizacaoByOrganizador" resultClass="organizacao"
+            parameterClass="java.lang.Long"
+            resultMap="organizacaoResult">
+        SELECT o.id,o.organizador_id, o.evento_id, o.manter_mod_financeiro,o.manter_atividade
+        FROM evento.organizacao AS o,evento.evento AS e
+        WHERE o.evento_id=e.id AND e.ativo=true AND
+              o.organizador_id=#organizador.id#;
+
+
+    </select>
+
+
+
+    <select id="getOrganizacaoByOrganizadorEvento" resultClass="organizacao"
+            parameterClass="organizacao"
+            resultMap="organizacaoResult">
+        SELECT o.id,o.organizador_id, o.evento_id, o.manter_mod_financeiro,o.manter_atividade
+        FROM evento.organizacao AS o,evento.evento AS e
+        WHERE o.evento_id=e.id AND e.ativo=true AND
+              o.organizador_id=#organizador.id# AND
+              o.evento_id=#evento.id#;
+    </select>
+
+
+
+    <select id="getMaxIdOrganizacao" resultClass="long">
+        SELECT MAX(id)
+        FROM evento.organizacao;
+    </select>
+
+
+
+
+
+</sqlMap>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : ResponsavelAtividade.xml
+    Created on : 14 de Maio de 2010, 14:34
+    Author     : fernando
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ResponsavelAtividade">
+
+    <resultMap id="responsavelAtividadeResult" class="responsavelAtividade">
+        <result property="id" column="id"/>
+        <result property="dataCriacao" column="data_criacao"/>
+        <result property="status" column="status"/>
+        <result property="usuario" column="usuario_id" select="getUsuarioById"/>
+    </resultMap>
+
+    <insert id="addResponsavelAtividade" parameterClass="responsavelAtividade">
+        INSERT INTO evento.perfil (id, data_criacao, status, usuario_id, papel_id)
+        values (#id#, #dataCriacao#, #status#, #usuario.id#, 4);
+    </insert>
+
+    <select id="getResponsavelAtividadeByUsuarioId" resultClass="responsavelAtividade"
+            parameterClass="long"
+            resultMap="responsavelAtividadeResult">
+        SELECT *
+        FROM evento.perfil, evento.papel
+        WHERE perfil.usuario_id = #var# AND
+        perfil.papel_id = papel.id AND
+        papel.id = 4;
+    </select>
+
+    <select id="getResponsaveisAtividadeByAtividadeId" resultClass="responsavelAtividade"
+            parameterClass="long"
+            resultMap="responsavelAtividadeResult">
+        select pe.id, pe.usuario_id, pe.papel_id, pe.data_criacao, pe.status
+        from evento.atividade as a, evento.atividade_responsavel as ar, evento.perfil as pe
+        where a.id=ar.atividade_id and pe.id=ar.responsavel_id and a.id=#var#  and pe.papel_id=4;
+    </select>
+
+</sqlMap> 

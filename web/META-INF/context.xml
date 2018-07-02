@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/sistema-seven">
+  <Resource auth="Container" mail.smtp.host="200.129.38.134" mail.smtp.port="587" mail.transport.protocol="smtp" name="mail/Session" type="javax.mail.Session"/>
+</Context>

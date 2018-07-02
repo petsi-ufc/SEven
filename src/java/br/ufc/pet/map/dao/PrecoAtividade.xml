@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : PrecoAtividade.xml
+    Created on : 14 de Maio de 2010, 14:31
+    Author     : caio
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="PrecoAtividade">
+
+    <resultMap id="precoAtividadeResult" class="precoAtividade">
+        <result property="modalidadeId" column="modalidade_id"/>
+        <result property="tipoAtividadeId" column="tipo_ativ_id"/>
+        <result property="valor" column="preco"/>
+   </resultMap>
+
+   <insert id="addprecoAtividade" parameterClass="precoAtividade" >
+        INSERT INTO evento.modalidade_tipo_atividade(
+            modalidade_id, tipo_ativ_id, preco)
+    VALUES (#modalidadeId#, #tipoAtividadeId#, #valor#);
+    </insert>
+
+    <update id="updateprecoAtividade" parameterClass="precoAtividade">
+        UPDATE evento.modalidade_tipo_atividade
+        SET  preco=#valor#
+        WHERE modalidade_id=#modalidadeId# and tipo_ativ_id=#tipoAtividadeId#;
+    </update>
+
+    <delete id="deleteprecoAtividade" parameterClass="precoAtividade">
+        DELETE FROM evento.modalidade_tipo_atividade
+        WHERE modalidade_id=#modalidadeId# and tipo_ativ_id=#tipoAtividadeId#;
+    </delete>
+
+    <select id="getAllPrecoByModalidadeId" resultClass="precoAtividade"
+            parameterClass="long"
+            resultMap="precoAtividadeResult">
+        SELECT modalidade_id , tipo_ativ_id, preco
+        FROM evento.modalidade_tipo_atividade
+        WHERE modalidade_id=#var#;
+    </select>
+
+    <select id="getMaxIdPrecoAtividade" resultClass="long">
+        SELECT MAX(id)
+        FROM evento.evento;
+    </select>
+
+</sqlMap>

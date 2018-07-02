@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Participante.xml
+    Created on : 14 de Maio de 2010, 14:23
+    Author     : fernando
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Participante">
+
+    <resultMap id="participanteResult" class="participante">
+        <result property="id" column="id"/>
+        <result property="dataCriacao" column="data_criacao"/>
+        <result property="status" column="status"/>
+        <result property="usuario.id" column="usuario_id"/>
+    </resultMap>
+
+
+    <update id="deleteParticipante" parameterClass="participante">
+        UPDATE evento.perfil
+        SET status= false
+        WHERE id=#id#;
+    </update>
+
+    <insert id="addParticipante" parameterClass="participante">
+        INSERT INTO evento.perfil (id, data_criacao, status, usuario_id, papel_id)
+        values (#id#, #dataCriacao#, #status#, #usuario.id#, 1);
+    </insert>
+
+    <select id="getParticipanteByUsuarioId" resultClass="participante"
+            parameterClass="long"
+            resultMap="participanteResult">
+        SELECT *
+        FROM evento.perfil, evento.papel
+        WHERE perfil.usuario_id = #var# AND
+        perfil.papel_id = papel.id AND
+        papel.id = 1;
+    </select>
+
+    <select id="getParticipanteById" resultClass="participante"
+            parameterClass="long"
+            resultMap="participanteResult">
+        SELECT *
+        FROM evento.perfil, evento.papel
+        WHERE perfil.id = #var# AND
+        perfil.papel_id = papel.id AND
+        papel.id = 1;
+    </select>
+
+    <select id="getParticipanteByAtividadeId" resultClass="participante"
+            parameterClass="long"
+            resultMap="participanteResult">
+        select p.id, p.usuario_id,p.papel_id, p.data_criacao, p.status
+        from evento.perfil as p, evento.inscricao as insc,
+        evento.inscricao_atividade as insc_ati
+        where p.id=insc.participante_id and
+        insc.id= insc_ati.inscricao_id and
+        insc_ati.atividade_id=#var#;
+
+    </select>
+    
+    <select id="getParticipanteByAtividadeIdQuites" resultClass="participante"
+            parameterClass="long"
+            resultMap="participanteResult">
+        select p.id, p.usuario_id,p.papel_id, p.data_criacao, p.status
+        from evento.perfil as p, evento.inscricao as insc,
+        evento.inscricao_atividade as insc_ati
+        where p.id=insc.participante_id and
+        insc.id= insc_ati.inscricao_id and
+        insc_ati.atividade_id=#var# and 
+        insc.confirmada=true;
+
+    </select>
+
+    <select id="getParticipantesQuitesByEventoId" resultClass="participante"
+            parameterClass="long"
+            resultMap="participanteResult">
+        SELECT  p.id,p.data_criacao,p.status, p.usuario_id
+        FROM evento.perfil p,evento.inscricao i WHERE
+        p.id=i.participante_id AND
+        i.confirmada=true AND
+        i.evento_id=#var#;
+    </select>
+    
+    <select id="getParticipantesByEventoId" resultClass="participante"
+            parameterClass="long"
+            resultMap="participanteResult">
+        SELECT  p.id,p.data_criacao,p.status, p.usuario_id
+        FROM evento.perfil p,evento.inscricao i WHERE
+        p.papel_id=1 and p.id=i.participante_id and i.evento_id=#var#;
+    </select>
+    
+    
+
+</sqlMap>

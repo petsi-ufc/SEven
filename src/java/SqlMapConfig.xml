@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+
+    <settings
+        cacheModelsEnabled="true"
+        enhancementEnabled="true"
+        lazyLoadingEnabled="true"
+        maxRequests="32"
+        maxSessions="10"
+        maxTransactions="5"
+        useStatementNamespaces="false" />
+
+    <!--aliases-->
+    <typeAlias alias="administrador" type="br.ufc.pet.evento.Administrador"/>
+    <typeAlias alias="atividade" type="br.ufc.pet.evento.Atividade"/>
+    <typeAlias alias="evento" type="br.ufc.pet.evento.Evento"/>
+    <typeAlias alias="horario" type="br.ufc.pet.evento.Horario"/>
+    <typeAlias alias="inscricao" type="br.ufc.pet.evento.Inscricao"/>
+    <typeAlias alias="modalidadeInscricao" type="br.ufc.pet.evento.ModalidadeInscricao"/>
+    <typeAlias alias="movimentacaoFinanceira" type="br.ufc.pet.evento.MovimentacaoFinanceira"/>
+    <typeAlias alias="organizacao" type="br.ufc.pet.evento.Organizacao"/>
+    <typeAlias alias="organizador" type="br.ufc.pet.evento.Organizador"/>
+    <typeAlias alias="participante" type="br.ufc.pet.evento.Participante"/>
+    <typeAlias alias="perfil" type="br.ufc.pet.evento.Perfil"/>
+    <typeAlias alias="precoAtividade" type="br.ufc.pet.evento.PrecoAtividade"/>
+    <typeAlias alias="responsavelAtividade" type="br.ufc.pet.evento.ResponsavelAtividade"/>
+    <typeAlias alias="tipoAtividade" type="br.ufc.pet.evento.TipoAtividade"/>
+    <typeAlias alias="usuario" type="br.ufc.pet.evento.Usuario"/>
+    <typeAlias alias="utility" type="br.ufc.pet.evento.Utility"/>
+    <typeAlias alias="inscricaoAtividade" type="br.ufc.pet.evento.InscricaoAtividade"/>
+    
+    <transactionManager type="JDBC">
+        <dataSource type="SIMPLE">
+            <property name="JDBC.Driver" value="org.postgresql.Driver"/>
+            <property name="JDBC.ConnectionURL" value="jdbc:postgresql://localhost:5432/seven"/>
+            <property name="JDBC.Username" value="postgres"/>
+            <property name="JDBC.Password" value="postgres"/>
+        </dataSource>
+    </transactionManager>
+
+   <!--mapping-->
+    <sqlMap resource="br/ufc/pet/map/dao/Administrador.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/Atividade.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/Evento.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/Horario.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/Inscricao.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/ModalidadeInscricao.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/MovimentacaoFinanceira.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/Organizacao.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/Organizador.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/Participante.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/Perfil.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/PrecoAtividade.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/ResponsavelAtividade.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/TipoAtividade.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/Usuario.xml"/>
+    <sqlMap resource="br/ufc/pet/map/dao/InscricaoAtividade.xml"/>
+    
+</sqlMapConfig>

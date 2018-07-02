@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : MovimentacaoFinanceira.xml
+    Created on : 14 de Maio de 2010, 14:29
+    Author     : fernando
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MovimentacaoFinanceira">
+
+    <resultMap id="movimentacaoFinanceiraResult" class="movimentacaoFinanceira">
+        <result property="id" column="id"/>
+        <result property="data" column="data"/>
+        <result property="valor" column="valor"/>
+        <result property="tipo" column="tipo"/>
+        <result property="descricao" column="descricao"/>
+        <result property="evento.id" column="evento_id"/>
+    </resultMap>
+
+    <insert id="addMovimentacaoFinanceira" parameterClass="movimentacaoFinanceira">
+        INSERT INTO evento.movimentacao( id, data, valor, tipo, descricao, evento_id)
+        VALUES (#id#, #data#, #valor#, #tipo#, #descricao#, #evento.id#);
+    </insert>
+
+    <update id="updateMovimentacaoFinanceira" parameterClass="movimentacaoFinanceira" >
+        UPDATE evento.movimentacao
+        SET data=#data#, valor=#valor#, tipo=#tipo#, descricao=#descricao#,
+            evento_id=#evento.id#
+        WHERE id = #id#;
+    </update>
+
+    <delete id="deleteMovimentacaoFinanceira" parameterClass="long">
+        DELETE FROM evento.movimentacao WHERE id = #var#;
+    </delete>
+
+    <select id="getMovimentacaoFinanceiraById" resultClass="movimentacaoFinanceira"
+    	parameterClass="long" resultMap="movimentacaoFinanceiraResult">
+        SELECT id, data, valor, tipo, descricao, evento_id
+        FROM evento.movimentacao
+        WHERE id = #var#;
+    </select>
+
+    <select id="getAllMovimentacaoFinanceiraByEventoId" resultClass="movimentacaoFinanceira"
+    	parameterClass="long" resultMap="movimentacaoFinanceiraResult">
+        SELECT id, data, valor, tipo, descricao, evento_id
+        FROM evento.movimentacao
+        WHERE evento_id = #var#;
+    </select>
+
+    <select id="getMaxIdMovimentacaoFinanceira" resultClass="long">
+        SELECT MAX(id)
+        FROM evento.movimentacao;
+    </select>
+    
+</sqlMap>

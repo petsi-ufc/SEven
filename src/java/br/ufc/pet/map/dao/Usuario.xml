@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Usuario">
+
+    <resultMap id="usuarioResult" class="usuario">
+        <result property="id" column="id"/>
+        <result property="nome" column="nome"/>
+        <result property="senha" column="senha"/>
+        <result property="fone" column="fone"/>
+        <result property="dataNascimento" column="data_nasc"/>
+        <result property="email" column="email"/>
+        <result property="sexo" column="sexo"/>
+        <result property="instituicao" column="instituicao"/>
+        <result property="rua" column="rua"/>
+        <result property="bairro" column="bairro"/>
+        <result property="numero" column="num_casa"/>
+        <result property="cidade" column="cidade"/>
+        <result property="uf" column="uf"/>
+        <result property="certificadoGerado" column="certificado_gerado"/>
+    </resultMap>
+
+    <insert id="addUsuario" parameterClass="usuario" >
+        INSERT INTO evento.usuario(id, nome, senha, fone, data_nasc, email, sexo, instituicao, rua,
+        bairro, num_casa, cidade, uf, certificado_gerado)
+        VALUES (#id#, #nome#, #senha#, #fone#, #dataNascimento#, #email#, #sexo#, #instituicao#, #rua#,
+        #bairro#, #numero#, #cidade#, #uf#, #certificadoGerado#);
+    </insert>
+
+    <delete id="deleteUsuario" parameterClass="long">
+        DELETE FROM evento.usuario
+        WHERE id = #var#;
+    </delete>
+
+    <update id="updateUsuario" parameterClass="usuario">
+        UPDATE evento.usuario
+        SET nome=#nome#, senha=#senha#, fone=#fone#, data_nasc=#dataNascimento#, email=#email#, sexo=#sexo#,
+        instituicao=#instituicao#, rua=#rua#, bairro=#bairro#, num_casa=#numero#, cidade=#cidade#, uf=#uf#, certificado_gerado=#certificadoGerado# 
+        WHERE  id=#id#;
+    </update>
+    
+    <update id="updateUsuarioSemSenha" parameterClass="usuario">
+        UPDATE evento.usuario
+        SET nome=#nome#, fone=#fone#, data_nasc=#dataNascimento#, email=#email#, sexo=#sexo#,
+        instituicao=#instituicao#, rua=#rua#, bairro=#bairro#, num_casa=#numero#, cidade=#cidade#, uf=#uf#, certificado_gerado=#certificadoGerado# 
+        WHERE  id=#id#;
+    </update>
+
+    <update id="updateSenhaUsuario" parameterClass="usuario">
+        UPDATE evento.usuario
+        SET senha=#senha#
+        WHERE  id=#id#;
+    </update>
+
+    <select id="getUsuarioByEmail" resultClass="usuario"
+            parameterClass="java.lang.String"
+            resultMap="usuarioResult">
+
+        SELECT *
+        FROM evento.usuario
+        WHERE email = #var#;
+    </select>
+
+    <select id="getUsuarioById" resultClass="usuario"
+            parameterClass="long"
+            resultMap="usuarioResult">
+
+        SELECT *
+        FROM evento.usuario
+        WHERE id = #var#;
+    </select>
+
+    <select id="getUsuarioByNome" resultClass="usuario"
+            parameterClass="java.lang.String"
+            resultMap="usuarioResult">
+
+        SELECT *
+        FROM evento.usuario
+        WHERE UPPER(nome) LIKE UPPER(#var#);
+    </select>
+
+
+    <select id="getAllUsuarios" resultClass="usuario"
+            resultMap="usuarioResult">
+
+        SELECT *
+        FROM evento.usuario;
+    </select>
+
+    <select id="getUsuariosResponsaveisByAtividadeId" resultClass="usuario"
+            parameterClass="long"
+            resultMap="usuarioResult">
+        select u.id, u.nome, u.senha, u.fone, u.data_nasc,u.email,u.sexo,u.instituicao, u.rua,u.bairro, u.num_casa, u.cidade, u.uf, u.certificado_gerado
+        from evento.atividade as a, evento.atividade_responsavel as ar, evento.usuario as u
+        where a.id=ar.atividade_id and u.id=ar.responsavel_id and a.id=#var#;
+    </select>
+    <select id="getMaxIdUsuario" resultClass="long">
+        SELECT MAX(id)
+        FROM evento.usuario;
+    </select>
+
+</sqlMap>

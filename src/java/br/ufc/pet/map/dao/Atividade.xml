@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Atividade.xml
+    Created on : 14 de Maio de 2010, 14:27
+    Author     : caio/adriano/lucas
+    Description:
+        Purpose of the document follows.
+-->
+
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Atividade">
+    <resultMap id="atividadeResult" class="atividade">
+        <result property="id" column="id"/>
+        <result property="local" column="local"/>
+        <result property="nome" column="nome"/>
+        <result property="evento.id" column="evento_id"/>
+        <result property="vagas" column="vagas"/>
+        <result property="tipo.id" column="tipo_id"/>
+        <result property="tipo.nome" column="tipo_nome"/>
+        <result property="aceitaInscricao" column="aceita_insc"/>
+        
+
+        
+
+        <!--<result property="responsaveis" column="id" select="getResponsaveisAtividadeByAtividadeId"/>-->
+    </resultMap>
+
+
+    <select id="getAtividadesByOrganizadorId" resultClass="atividade"
+            parameterClass="long"
+            resultMap="atividadeResult">
+        SELECT *
+        FROM evento.perfil, evento.papel
+        WHERE perfil.usuario_id = #var# AND
+        perfil.papel_id = papel.id AND
+        papel.id = 4;
+    </select>
+
+    <select id="getAtividadeById" resultClass="atividade"
+            parameterClass="long"
+            resultMap="atividadeResult">
+        SELECT a.id, a.local, a.nome, a.evento_id, a.vagas, a.tipo_id, ta.nome as tipo_nome, a.aceita_insc
+        FROM evento.tipo_atividade ta,evento.atividade a
+        WHERE
+        ta.id=a.tipo_id and a.id=#var#;
+    </select>
+
+    <select id="getAtividadesByEventoId" resultClass="atividade"
+            parameterClass="long"
+            resultMap="atividadeResult">
+        SELECT a.id, a.local, a.nome, a.evento_id, a.vagas, a.tipo_id, ta.nome as tipo_nome,a.aceita_insc
+        FROM evento.atividade a, evento.tipo_atividade ta
+        WHERE a.tipo_id=ta.id and
+        a.evento_id=#var#;
+    </select>
+
+    <select id="getAtividadesByInscricaoId" resultClass="atividade"
+            parameterClass="long"
+            resultMap="atividadeResult">
+        SELECT a.id, "local", a.nome, a.evento_id, a.vagas, a.tipo_id, ta.nome as tipo_nome, a.aceita_insc
+        FROM evento.atividade as a, evento.tipo_atividade as ta, evento.inscricao_atividade as ia WHERE a.tipo_id=ta.id and a.id = ia.atividade_id and ia.inscricao_id=#var#;
+    </select>
+
+    <insert id="addAtividade" parameterClass="atividade" >
+        INSERT INTO evento.atividade(
+        id, "local", nome, evento_id, tipo_id, vagas, aceita_insc)
+        VALUES (#id#, #local#, #nome#, #evento.id#, #tipo.id#, #vagas#,#aceitaInscricao#);
+
+        <!-- insere multiplas tuplas na tabela atividade_horario-->
+        <iterate property="horarios" open=" INSERT INTO evento.atividade_horario(
+                 atividade_id, horario_id) VALUES "  conjunction="," >
+            (#id#,#horarios[].id#)
+        </iterate>
+        <iterate property="responsaveis" open="; INSERT INTO evento.atividade_responsavel(
+                 responsavel_id, atividade_id) VALUES "  conjunction="," >
+            (#responsaveis[].id#,#id#)
+        </iterate>
+    </insert>
+
+    <update id="updateAtividade" parameterClass="atividade">
+        DELETE FROM evento.atividade_horario WHERE atividade_id=#id#;
+
+        DELETE FROM evento.atividade_responsavel WHERE atividade_id=#id#;
+
+        UPDATE evento.atividade
+        SET  "local"=#local#, nome=#nome#, evento_id=#evento.id#, tipo_id=#tipo.id#,
+        vagas=#vagas#,aceita_insc=#aceitaInscricao#
+        WHERE id=#id#;
+
+        <iterate property="horarios" open=" INSERT INTO evento.atividade_horario(
+                 atividade_id, horario_id) VALUES "  conjunction="," >
+            (#id#,#horarios[].id#)
+        </iterate>
+
+        <iterate property="responsaveis" open="; INSERT INTO evento.atividade_responsavel(
+                 responsavel_id, atividade_id) VALUES "  conjunction="," >
+            (#responsaveis[].id#,#id#)
+        </iterate>
+
+    </update>
+    
+    
+    
+
+    <delete id="deleteAtividade" parameterClass="long">
+        DELETE FROM evento.atividade_horario WHERE atividade_id=#var#;
+
+        DELETE FROM evento.atividade_responsavel WHERE atividade_id=#var#;
+
+        DELETE FROM evento.atividade
+        WHERE id = #var#;
+    </delete>
+
+    <select id="getMaxIdAtividade" resultClass="long">
+        SELECT MAX(id)
+        FROM evento.atividade;
+    </select>
+    
+    
+  
+
+</sqlMap>

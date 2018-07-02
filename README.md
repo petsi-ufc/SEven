@@ -1,2 +1,3 @@
-# SEven-master
-Seven Temporário
+# SEven
+
+Repositório Atualizado do SEven

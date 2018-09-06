@@ -24,10 +24,10 @@ public class CmdEditarParticipante implements Comando {
         UsuarioService us = new UsuarioService();
         //Recuperar dados do formulario.
         String nome = request.getParameter("nome");
-        if(part.getUsuario().isCertificadoGerado()){
-            Usuario tmp = us.getById(part.getUsuario().getId());
-            nome = tmp.getNome();
-        }
+//        if(part.getUsuario().isCertificadoGerado()){
+//            Usuario tmp = us.getById(part.getUsuario().getId());
+//            nome = tmp.getNome();
+//        }
         String fone = request.getParameter("fone");
         String dataNascimentoS = request.getParameter("dt_nascimento");
         String email = request.getParameter("email");

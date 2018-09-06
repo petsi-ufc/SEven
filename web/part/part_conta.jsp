@@ -90,11 +90,7 @@
                                     <input type="hidden" name="comando" value="CmdEditarParticipante" />
                                     <br/><div class="pull-left text-uppercase label label-warning">* Campos obrigatórios</div><br/>
                                     <div class="form-group">                                       
-                                        <input data-toggle="tooltip" title="Nome Completo" type="text" maxlength="50" class="form-control space-top" value="<%=part.getUsuario().getNome()%>"  name="nome" 
-                                               <% if (part.getUsuario().isCertificadoGerado()) {%>   
-                                               disabled="disabled"
-                                               <% }%> 
-                                               />
+                                        <input data-toggle="tooltip" title="Nome Completo" type="text" maxlength="50" class="form-control space-top" value="<%=part.getUsuario().getNome()%>"  name="nome" />
                                     </div>
                                     <div class="form-group">
                                         <input data-toggle="tooltip" title="Telefone" placeholder="Telefone" type="text" maxlength="13" value="<%=fone%>" onkeypress="return formataContato(this, event)" name="fone" class="form-control" required/>

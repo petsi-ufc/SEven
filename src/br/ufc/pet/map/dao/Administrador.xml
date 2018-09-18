@@ -18,7 +18,7 @@
         <result property="id" column="id"/>
         <result property="dataCriacao" column="data_criacao"/>
         <result property="status" column="status"/>
-        <result property="usuario.id" column="usuario_id"/>
+        <result property="usuario" column="usuario_id" select="getUsuarioById"/>
     </resultMap>
 
     <select id="getAdministradorByUsuarioId" resultClass="administrador"
@@ -41,7 +41,4 @@
         perfil.papel_id = papel.id AND
         papel.id=3;
     </select>
-
-     
-
 </sqlMap>

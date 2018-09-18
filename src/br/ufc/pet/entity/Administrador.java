@@ -45,8 +45,7 @@ public class Administrador extends Perfil {
 
     }
     public void addEvento(Evento en){
-
-    eventos.add(en);
+    	eventos.add(en);
     }
     
 }

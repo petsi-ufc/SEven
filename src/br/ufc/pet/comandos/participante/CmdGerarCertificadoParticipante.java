@@ -109,7 +109,7 @@ public class CmdGerarCertificadoParticipante implements Comando {
                 
                 AtividadeService as = new AtividadeService();
                 ArrayList<InscricaoAtividade> ia = as.getIncricaoAtividadeByInscricao(inscricao.getId());
-                ArrayList<Long> idsAtiv = Atividade.getIdsAtividadeCeriticadoLiberado(ia);
+                ArrayList<Long> idsAtiv = Atividade.getIdsAtividadeCertificadoLiberado(ia);
 
                 for (Atividade a : inscricao.getAtividades()) {
                     

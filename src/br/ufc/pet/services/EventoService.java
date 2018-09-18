@@ -112,9 +112,9 @@ public class EventoService {
         try {
             Evento en = eventoDAO.getById(id);
             if (en != null) {
-                OrganizadorService orgS = new OrganizadorService();
-                ArrayList<Organizador> organizadores = orgS.getOrganizadoresByEventoId(id);
-                en.setOrganizadores(organizadores);
+//                OrganizadorService orgS = new OrganizadorService();
+//                ArrayList<Organizador> organizadores = orgS.getOrganizadoresByEventoId(id);
+//                en.setOrganizadores(organizadores);
                 AtividadeService aS = new AtividadeService();
                 en.setAtividades(aS.getAtividadeByEventoId(id));
             }

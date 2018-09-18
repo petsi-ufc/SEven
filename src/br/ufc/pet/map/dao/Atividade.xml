@@ -17,14 +17,12 @@
         <result property="id" column="id"/>
         <result property="local" column="local"/>
         <result property="nome" column="nome"/>
-        <result property="evento.id" column="evento_id"/>
+        <result property="evento" column="evento_id" select="getEventoById"/>
         <result property="vagas" column="vagas"/>
-        <result property="tipo.id" column="tipo_id"/>
-        <result property="tipo.nome" column="tipo_nome"/>
+        <result property="tipo" column="tipo_id" select="getTipoAtividadeById"/>
         <result property="aceitaInscricao" column="aceita_insc"/>
-             
-
-        <!--<result property="responsaveis" column="id" select="getResponsaveisAtividadeByAtividadeId"/>-->
+        <result property="responsaveis" column="id" select="getResponsaveisAtividadeByAtividadeId"/>
+        <result property="horarios" column="id" select="getHorariosByAtividadeId"/>
     </resultMap>
 
 

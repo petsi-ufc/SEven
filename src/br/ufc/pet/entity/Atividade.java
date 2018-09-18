@@ -1,6 +1,7 @@
 package br.ufc.pet.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Atividade extends Bean {
 
@@ -38,8 +39,8 @@ public class Atividade extends Bean {
         return horarios;
     }
 
-    public void setHorarios(ArrayList<Horario> horarios) {
-        this.horarios = horarios;
+    public void setHorarios(List<Horario> horarios) {
+        this.horarios = new ArrayList<>(horarios);
     }
 
     public String getLocal() {
@@ -62,8 +63,8 @@ public class Atividade extends Bean {
         return responsaveis;
     }
 
-    public void setResponsaveis(ArrayList<ResponsavelAtividade> responsaveis) {
-        this.responsaveis = responsaveis;
+    public void setResponsaveis(List<ResponsavelAtividade> responsaveis) {
+        this.responsaveis = new ArrayList<>(responsaveis);
     }
 
     public TipoAtividade getTipo() {
@@ -106,7 +107,7 @@ public class Atividade extends Bean {
         return cargaHoraria;
     }
     
-    public static ArrayList<Long> getIdsAtividadeCeriticadoLiberado(ArrayList<InscricaoAtividade> ias){
+    public static ArrayList<Long> getIdsAtividadeCertificadoLiberado(ArrayList<InscricaoAtividade> ias){
         ArrayList<Long> ids = new ArrayList<Long>();
         for(InscricaoAtividade ia : ias){
             if(ia.isConfirmaCertificado())

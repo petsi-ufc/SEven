@@ -29,7 +29,7 @@ public class CmdValidarDocumento implements Comando {
             if(inscricao != null){
                 AtividadeService as = new AtividadeService();
                 ArrayList<InscricaoAtividade> ias = as.getIncricaoAtividadeByInscricao(inscricao.getId());
-                ArrayList<Long> idsAtiv = Atividade.getIdsAtividadeCeriticadoLiberado(ias);
+                ArrayList<Long> idsAtiv = Atividade.getIdsAtividadeCertificadoLiberado(ias);
                 
                 ArrayList<Atividade> atividadesCertificadoLiberado = new ArrayList<Atividade>();
                 for(Atividade a : inscricao.getAtividades()){

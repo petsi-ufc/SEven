@@ -1,3 +1,2 @@
-/dist/
-/nbproject/private/
-/build/
+.settings
+build

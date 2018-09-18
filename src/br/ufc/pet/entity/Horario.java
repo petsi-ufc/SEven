@@ -1,4 +1,4 @@
-package br.ufc.pet.evento;
+package br.ufc.pet.entity;
 
 import br.ufc.pet.util.UtilSeven;
 import java.util.Date;

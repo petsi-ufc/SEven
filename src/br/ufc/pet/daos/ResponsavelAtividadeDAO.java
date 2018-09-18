@@ -1,7 +1,8 @@
 package br.ufc.pet.daos;
 
 import br.ufc.pet.config.PostgresMapConfig;
-import br.ufc.pet.evento.ResponsavelAtividade;
+import br.ufc.pet.entity.ResponsavelAtividade;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 

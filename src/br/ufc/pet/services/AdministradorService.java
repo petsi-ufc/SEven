@@ -3,7 +3,7 @@ package br.ufc.pet.services;
 import java.sql.SQLException;
 
 import br.ufc.pet.daos.AdministradorDAO;
-import br.ufc.pet.evento.Administrador;
+import br.ufc.pet.entity.Administrador;
 import br.ufc.pet.util.UtilSeven;
 
 

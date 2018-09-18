@@ -1,7 +1,7 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.ParticipanteDAO;
-import br.ufc.pet.evento.Participante;
+import br.ufc.pet.entity.Participante;
 import br.ufc.pet.util.UtilSeven;
 import java.sql.SQLException;
 import java.util.ArrayList;

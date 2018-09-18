@@ -1,7 +1,8 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.PrecoAtividadeDAO;
-import br.ufc.pet.evento.PrecoAtividade;
+import br.ufc.pet.entity.PrecoAtividade;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;

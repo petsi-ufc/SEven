@@ -1,9 +1,10 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.AtividadeDAO;
-import br.ufc.pet.evento.Atividade;
-import br.ufc.pet.evento.Horario;
-import br.ufc.pet.evento.InscricaoAtividade;
+import br.ufc.pet.entity.Atividade;
+import br.ufc.pet.entity.Horario;
+import br.ufc.pet.entity.InscricaoAtividade;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 

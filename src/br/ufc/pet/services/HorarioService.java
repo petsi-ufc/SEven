@@ -1,7 +1,8 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.HorarioDAO;
-import br.ufc.pet.evento.Horario;
+import br.ufc.pet.entity.Horario;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,7 +1,8 @@
 package br.ufc.pet.daos;
 
 import br.ufc.pet.config.PostgresMapConfig;
-import br.ufc.pet.evento.Administrador;
+import br.ufc.pet.entity.Administrador;
+
 import java.sql.SQLException;
 
 /*

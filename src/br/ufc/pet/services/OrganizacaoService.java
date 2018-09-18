@@ -1,7 +1,8 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.OrganizacaoDAO;
-import br.ufc.pet.evento.Organizacao;
+import br.ufc.pet.entity.Organizacao;
+
 import java.util.ArrayList;
 import java.sql.SQLException;
 

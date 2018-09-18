@@ -1,8 +1,9 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.UsuarioDAO;
-import br.ufc.pet.evento.Perfil;
-import br.ufc.pet.evento.Usuario;
+import br.ufc.pet.entity.Perfil;
+import br.ufc.pet.entity.Usuario;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;

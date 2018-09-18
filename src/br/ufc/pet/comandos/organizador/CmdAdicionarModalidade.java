@@ -1,9 +1,9 @@
 package br.ufc.pet.comandos.organizador;
 
-import br.ufc.pet.evento.Evento;
-import br.ufc.pet.evento.ModalidadeInscricao;
-import br.ufc.pet.evento.PrecoAtividade;
-import br.ufc.pet.evento.TipoAtividade;
+import br.ufc.pet.entity.Evento;
+import br.ufc.pet.entity.ModalidadeInscricao;
+import br.ufc.pet.entity.PrecoAtividade;
+import br.ufc.pet.entity.TipoAtividade;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.ModalidadeInscricaoService;
 import br.ufc.pet.util.UtilSeven;

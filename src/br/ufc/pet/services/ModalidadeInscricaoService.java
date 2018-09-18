@@ -1,7 +1,8 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.ModalidadeInscricaoDAO;
-import br.ufc.pet.evento.ModalidadeInscricao;
+import br.ufc.pet.entity.ModalidadeInscricao;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 

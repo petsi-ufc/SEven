@@ -1,7 +1,8 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.TipoAtividadeDAO;
-import br.ufc.pet.evento.TipoAtividade;
+import br.ufc.pet.entity.TipoAtividade;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;

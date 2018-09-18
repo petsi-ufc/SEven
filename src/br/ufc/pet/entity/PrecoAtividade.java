@@ -1,4 +1,4 @@
-package br.ufc.pet.evento;
+package br.ufc.pet.entity;
 
 public class PrecoAtividade extends Bean{
 

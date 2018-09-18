@@ -1,14 +1,14 @@
-<%@page import="br.ufc.pet.evento.ResponsavelAtividade"%>
-<%@page import="br.ufc.pet.evento.Atividade"%>
-<%@page import="br.ufc.pet.evento.Inscricao"%>
-<%@page import="br.ufc.pet.evento.Organizador"%>
+<%@page import="br.ufc.pet.entity.ResponsavelAtividade"%>
+<%@page import="br.ufc.pet.entity.Atividade"%>
+<%@page import="br.ufc.pet.entity.Inscricao"%>
+<%@page import="br.ufc.pet.entity.Organizador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList" %>
 <%@include file="../ErroAutenticacaoUser.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%    br.ufc.pet.evento.Evento e = (br.ufc.pet.evento.Evento) session.getAttribute("evento");
+<%    br.ufc.pet.entity.Evento e = (br.ufc.pet.entity.Evento) session.getAttribute("evento");
     Organizador organizador = (Organizador) session.getAttribute("user");
     ArrayList<Inscricao> inscricoesNoEvento = (ArrayList<Inscricao>) session.getAttribute("inscricoes");
     String estado = null;

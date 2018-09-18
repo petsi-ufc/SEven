@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="br.ufc.pet.evento.Usuario"%>
+<%@page import="br.ufc.pet.entity.Usuario"%>
 <%@include file="../ErroAutenticacaoUser.jsp" %>
 <%    String mensagem = (String) request.getAttribute("mensagem");
     Usuario usuarioTemp = (Usuario) session.getAttribute("usuarioTemp");

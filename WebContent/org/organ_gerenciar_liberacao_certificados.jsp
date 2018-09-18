@@ -1,9 +1,9 @@
-<%@page import="br.ufc.pet.evento.Inscricao"%>
-<%@page import="br.ufc.pet.evento.Participante"%>
+<%@page import="br.ufc.pet.entity.Inscricao"%>
+<%@page import="br.ufc.pet.entity.Participante"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.lang.Exception" %>
-<%@page import="br.ufc.pet.evento.Atividade,br.ufc.pet.evento.Organizador,br.ufc.pet.evento.Organizacao,br.ufc.pet.evento.ResponsavelAtividade" %>
+<%@page import="br.ufc.pet.entity.Atividade,br.ufc.pet.entity.Organizador,br.ufc.pet.entity.Organizacao,br.ufc.pet.entity.ResponsavelAtividade" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
     <%@include file="../ErroAutenticacaoUser.jsp" %>
@@ -39,7 +39,7 @@
 
 
     <body>
-        <%            br.ufc.pet.evento.Evento e = (br.ufc.pet.evento.Evento) session.getAttribute("evento");
+        <%            br.ufc.pet.entity.Evento e = (br.ufc.pet.entity.Evento) session.getAttribute("evento");
             Organizador organizador = (Organizador) session.getAttribute("user");
             ArrayList<Atividade> ats = e.getAtividades();
 

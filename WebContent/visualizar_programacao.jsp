@@ -1,13 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%@page import="br.ufc.pet.evento.Evento"%>
+<%@page import="br.ufc.pet.entity.Evento"%>
 <%@page import="br.ufc.pet.util.UtilSeven"%>
-<%@page import="br.ufc.pet.evento.Atividade"%>
-<%@page import="br.ufc.pet.evento.Organizador"%>
-<%@page import="br.ufc.pet.evento.Participante"%>
-<%@page import="br.ufc.pet.evento.Administrador"%>
-<%@page import="br.ufc.pet.evento.Horario"%>
-<%@page import="br.ufc.pet.evento.ResponsavelAtividade"%>
+<%@page import="br.ufc.pet.entity.Atividade"%>
+<%@page import="br.ufc.pet.entity.Organizador"%>
+<%@page import="br.ufc.pet.entity.Participante"%>
+<%@page import="br.ufc.pet.entity.Administrador"%>
+<%@page import="br.ufc.pet.entity.Horario"%>
+<%@page import="br.ufc.pet.entity.ResponsavelAtividade"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Date"%>
 

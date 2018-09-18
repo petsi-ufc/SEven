@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="br.ufc.pet.evento.ModalidadeInscricao"%>
-<%@page import="br.ufc.pet.evento.Evento"%>
+<%@page import="br.ufc.pet.entity.ModalidadeInscricao"%>
+<%@page import="br.ufc.pet.entity.Evento"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">

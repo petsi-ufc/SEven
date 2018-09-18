@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="br.ufc.pet.evento.Evento"%>
+<%@page import="br.ufc.pet.entity.Evento"%>
 
 <%            Evento eventSelected = (Evento) session.getAttribute("evento");
 %>

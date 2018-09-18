@@ -15,23 +15,23 @@
         errorTracingEnabled="true" />
 
     <!--aliases-->
-    <typeAlias alias="administrador" type="br.ufc.pet.evento.Administrador"/>
-    <typeAlias alias="atividade" type="br.ufc.pet.evento.Atividade"/>
-    <typeAlias alias="evento" type="br.ufc.pet.evento.Evento"/>
-    <typeAlias alias="horario" type="br.ufc.pet.evento.Horario"/>
-    <typeAlias alias="inscricao" type="br.ufc.pet.evento.Inscricao"/>
-    <typeAlias alias="modalidadeInscricao" type="br.ufc.pet.evento.ModalidadeInscricao"/>
-    <typeAlias alias="movimentacaoFinanceira" type="br.ufc.pet.evento.MovimentacaoFinanceira"/>
-    <typeAlias alias="organizacao" type="br.ufc.pet.evento.Organizacao"/>
-    <typeAlias alias="organizador" type="br.ufc.pet.evento.Organizador"/>
-    <typeAlias alias="participante" type="br.ufc.pet.evento.Participante"/>
-    <typeAlias alias="perfil" type="br.ufc.pet.evento.Perfil"/>
-    <typeAlias alias="precoAtividade" type="br.ufc.pet.evento.PrecoAtividade"/>
-    <typeAlias alias="responsavelAtividade" type="br.ufc.pet.evento.ResponsavelAtividade"/>
-    <typeAlias alias="tipoAtividade" type="br.ufc.pet.evento.TipoAtividade"/>
-    <typeAlias alias="usuario" type="br.ufc.pet.evento.Usuario"/>
-    <typeAlias alias="utility" type="br.ufc.pet.evento.Utility"/>
-    <typeAlias alias="inscricaoAtividade" type="br.ufc.pet.evento.InscricaoAtividade"/>
+    <typeAlias alias="administrador" type="br.ufc.pet.entity.Administrador"/>
+    <typeAlias alias="atividade" type="br.ufc.pet.entity.Atividade"/>
+    <typeAlias alias="evento" type="br.ufc.pet.entity.Evento"/>
+    <typeAlias alias="horario" type="br.ufc.pet.entity.Horario"/>
+    <typeAlias alias="inscricao" type="br.ufc.pet.entity.Inscricao"/>
+    <typeAlias alias="modalidadeInscricao" type="br.ufc.pet.entity.ModalidadeInscricao"/>
+    <typeAlias alias="movimentacaoFinanceira" type="br.ufc.pet.entity.MovimentacaoFinanceira"/>
+    <typeAlias alias="organizacao" type="br.ufc.pet.entity.Organizacao"/>
+    <typeAlias alias="organizador" type="br.ufc.pet.entity.Organizador"/>
+    <typeAlias alias="participante" type="br.ufc.pet.entity.Participante"/>
+    <typeAlias alias="perfil" type="br.ufc.pet.entity.Perfil"/>
+    <typeAlias alias="precoAtividade" type="br.ufc.pet.entity.PrecoAtividade"/>
+    <typeAlias alias="responsavelAtividade" type="br.ufc.pet.entity.ResponsavelAtividade"/>
+    <typeAlias alias="tipoAtividade" type="br.ufc.pet.entity.TipoAtividade"/>
+    <typeAlias alias="usuario" type="br.ufc.pet.entity.Usuario"/>
+    <typeAlias alias="utility" type="br.ufc.pet.entity.Utility"/>
+    <typeAlias alias="inscricaoAtividade" type="br.ufc.pet.entity.InscricaoAtividade"/>
     
     <transactionManager type="JDBC">
         <dataSource type="SIMPLE">

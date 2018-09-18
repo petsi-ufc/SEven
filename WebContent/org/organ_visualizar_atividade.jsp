@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList, br.ufc.pet.evento.TipoAtividade,br.ufc.pet.evento.ResponsavelAtividade,br.ufc.pet.evento.Horario,br.ufc.pet.evento.Atividade" %>
+<%@page import="java.util.ArrayList, br.ufc.pet.entity.TipoAtividade,br.ufc.pet.entity.ResponsavelAtividade,br.ufc.pet.entity.Horario,br.ufc.pet.entity.Atividade" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
     <%@include file="../ErroAutenticacaoUser.jsp" %>

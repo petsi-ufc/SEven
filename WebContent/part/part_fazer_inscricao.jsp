@@ -1,12 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*"%>
 <%@page import="br.ufc.pet.util.UtilSeven"%>
-<%@page import="br.ufc.pet.evento.Atividade"%>
-<%@page import="br.ufc.pet.evento.Evento"%>
-<%@page import="br.ufc.pet.evento.Horario"%>
-<%@page import="br.ufc.pet.evento.Inscricao"%>
-<%@page import="br.ufc.pet.evento.ModalidadeInscricao"%>
-<%@page import="br.ufc.pet.evento.TipoAtividade"%>
+<%@page import="br.ufc.pet.entity.Atividade"%>
+<%@page import="br.ufc.pet.entity.Evento"%>
+<%@page import="br.ufc.pet.entity.Horario"%>
+<%@page import="br.ufc.pet.entity.Inscricao"%>
+<%@page import="br.ufc.pet.entity.ModalidadeInscricao"%>
+<%@page import="br.ufc.pet.entity.TipoAtividade"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
     <%@include file="../ErroAutenticacaoUser.jsp" %>

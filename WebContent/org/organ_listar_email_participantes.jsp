@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList, br.ufc.pet.evento.Participante,br.ufc.pet.evento.Evento,br.ufc.pet.evento.Atividade" %>
+<%@page import="java.util.ArrayList, br.ufc.pet.entity.Participante,br.ufc.pet.entity.Evento,br.ufc.pet.entity.Atividade" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>

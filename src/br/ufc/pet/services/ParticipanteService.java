@@ -70,8 +70,8 @@ public class ParticipanteService {
             if (part != null) {
                 UsuarioService us = new UsuarioService();
                 part.setUsuario(us.getById(part.getUsuario().getId()));
-                InscricaoService is = new InscricaoService();
-                //part.setInscricoes(is.getAllInscricaoByParticipanteId(part.getUsuario().getId()));
+//                InscricaoService is = new InscricaoService();
+//                part.setInscricoes(is.getAllInscricaoByParticipanteId(part.getUsuario().getId()));
                 return part;
             }
         } catch (SQLException ex) {

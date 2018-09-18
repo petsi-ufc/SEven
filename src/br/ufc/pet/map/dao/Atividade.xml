@@ -22,9 +22,7 @@
         <result property="tipo.id" column="tipo_id"/>
         <result property="tipo.nome" column="tipo_nome"/>
         <result property="aceitaInscricao" column="aceita_insc"/>
-        
-
-        
+             
 
         <!--<result property="responsaveis" column="id" select="getResponsaveisAtividadeByAtividadeId"/>-->
     </resultMap>

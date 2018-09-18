@@ -20,7 +20,6 @@ public class OrganizacaoService {
         try {
             ArrayList<Organizacao> orgs = organizacaoDAO.getByOrganizacoesByOrganizadorId(id);
             EventoService es = new EventoService();
-            OrganizadorService os = new OrganizadorService();
             for (Organizacao o : orgs) {
                 o.setEvento(es.getEventoById(o.getEvento().getId()));
             }

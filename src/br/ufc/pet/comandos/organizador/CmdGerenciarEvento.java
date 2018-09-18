@@ -21,6 +21,7 @@ public class CmdGerenciarEvento implements Comando {
 
         EventoService es = new EventoService();
         Evento e = es.getEventoById(codigo);
+        System.out.println(e.getAdministrador());
 
         if (e != null) {
             session.setAttribute("evento", e);

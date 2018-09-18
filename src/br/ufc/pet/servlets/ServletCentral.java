@@ -124,7 +124,7 @@ public class ServletCentral extends HttpServlet {
 
         try {
             String tela = comando.executa(request, response);
-            if (tela != null && !tela.trim().equals("")) {
+            /*if (tela != null && !tela.trim().equals("")) {
                 if (debug) {
 
                     System.out.print("Tela:" + tela + " - ");
@@ -132,7 +132,8 @@ public class ServletCentral extends HttpServlet {
 //                    System.out.println("Hora" + new Date());
                 }
                 response.sendRedirect(request.getContextPath() + tela);
-            }
+            }*/
+            response.sendRedirect(request.getContextPath() + tela);
         } catch (Exception e) {
             response.sendRedirect(request.getContextPath() + "/index.jsp");
             e.printStackTrace();
@@ -380,6 +381,6 @@ public class ServletCentral extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servle Central da Aplicação SEven.";
     }// </editor-fold>
 }

@@ -16,7 +16,7 @@
     <resultMap id="tipoAtividadeResult" class="tipoAtividade">
         <result property="id" column="tipo_id"/>
         <result property="nome" column="tipo_nome"/>
-        <result property="eventoId" column="evento_id" />
+        <result property="eventoId" column="evento_id"/>
     </resultMap>
     
     <select id="getTipoAtividadeById" resultClass="tipoAtividade"

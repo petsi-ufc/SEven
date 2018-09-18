@@ -14,7 +14,7 @@
         <result property="fimPeriodoInscricao" column="fim_inscricao"/>
         <result property="descricao" column="descricao"/>
         <result property="ativo" column="ativo"/>
-        <result property="administrador.id" column="admin_id"/>
+        <result property="administrador" column="admin_id" select="getAdministradorById" />
         <result property="inicioPeriodoEvento" column="inicio"/>
         <result property="fimPeriodoEvento" column="fim"/>
         <result property="limiteAtividadePorParticipante" column="limite_atividade_por_participante"/> 

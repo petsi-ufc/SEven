@@ -1,3 +1,3 @@
-# SEven
+# SEven (NetBeans)
 
-Repositório Atualizado do SEven
+Branch com os fontes antigos

@@ -2,6 +2,7 @@ package br.ufc.pet.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Evento extends Bean {
 
@@ -77,8 +78,8 @@ public class Evento extends Bean {
         return ats;
     }
 
-    public void setAtividades(ArrayList<Atividade> atividades) {
-        this.atividades = atividades;
+    public void setAtividades(List<Atividade> atividades) {
+        this.atividades = new ArrayList<>(atividades);
     }
 
     public boolean isAtivo() {
@@ -125,8 +126,8 @@ public class Evento extends Bean {
         return organizadores;
     }
 
-    public void setOrganizadores(ArrayList<Organizador> organizador) {
-        this.organizadores = organizador;
+    public void setOrganizadores(List<Organizador> organizador) {
+        this.organizadores = new ArrayList<>(organizador);
     }
 
     public String getSigla() {

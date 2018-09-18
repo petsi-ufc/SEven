@@ -67,7 +67,7 @@ public class AtividadeService {
         }
     }
 
-    public ArrayList<Atividade> getAtividadeByEventoId(Long id) {
+    public ArrayList<Atividade> getAtividadesByEventoId(Long id) {
         try {
             ArrayList<Atividade> aa = atividadeDAO.getByEventoId(id);
             for (Atividade a : aa) {

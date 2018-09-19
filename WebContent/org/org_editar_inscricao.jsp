@@ -169,13 +169,13 @@
                                 <%}%>
 
                                 <hr style="height: 10px; border: 0; box-shadow: 0 10px 10px -10px #8c8b8b inset;"/>
-                                <div class="radio-inline"
+                                <div class="radio-inline">
                                      <%if (modalidades.isEmpty()) {%>
                                      <p>Nenhuma modalidade de inscrição cadastrada.</p>
                                     <%} else {%>
                                     <p>Tipo de inscrição:</p><%--Modalidade da inscrição, Estudante ou profissional--%>
                                     <%for (ModalidadeInscricao m : modalidades) {%>
-                                    <label<p><input class="radio" type="radio" name="tipo_inscricao" value="<%=m.getId()%>" <%if (m.getId().equals(anterior.getModalidade().getId())) {%> checked="checked" <%}%>/> <%=m.getTipo()%></p></label>
+                                    <label><p><input class="radio" type="radio" name="tipo_inscricao" value="<%=m.getId()%>" <%if (m.getId().equals(anterior.getModalidade().getId())) {%> checked="checked" <%}%>/> <%=m.getTipo()%></p></label>
                                     <%}%>
                                     <%}%>
                                     <br/>

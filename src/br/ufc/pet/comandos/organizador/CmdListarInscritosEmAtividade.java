@@ -17,9 +17,12 @@ public class CmdListarInscritosEmAtividade implements Comando {
         HttpSession session = request.getSession(true);
         String cod = request.getParameter("aId");
         Long codigo = Long.parseLong(cod);
-
+        
+        AtividadeService atividadeService = new AtividadeService();
+        System.out.println(atividadeService.getAtividadeById(codigo).getHorarios().get(0).getDia());
+        
         InscricaoService is = new InscricaoService();
-        session.setAttribute("atividade", new AtividadeService().getAtividadeById(codigo));
+        session.setAttribute("atividade", atividadeService.getAtividadeById(codigo));
         session.setAttribute("inscAtiv", is.getAllInscricoesByAtividadeId(codigo));
         return "/org/organ_gerenciar_inscricoes_atividade.jsp";
     }

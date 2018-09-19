@@ -114,7 +114,6 @@
                                 <tbody>
                                     <% for (Inscricao i : inscricoesNoEvento) {%>
                                     <tr>
-
                                         <td><%= i.getParticipante().getUsuario().getNome()%></td>
                                         <%
                                             if (i.isConfirmada()) {

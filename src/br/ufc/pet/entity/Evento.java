@@ -67,9 +67,7 @@ public class Evento extends Bean {
     }
 
     public ArrayList<Atividade> getAtividadeQueAceitamInscricao() {
-
         ArrayList<Atividade> ats = new ArrayList<Atividade>();
-
         for (Atividade a : atividades) {
             if (a.isAceitaInscricao()) {
                 ats.add(a);

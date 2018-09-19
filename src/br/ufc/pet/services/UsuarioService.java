@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * @author fernando
- */
 public class UsuarioService {
 
     private final UsuarioDAO usuarioDAO;
@@ -23,35 +20,24 @@ public class UsuarioService {
     public Perfil validaUsuario(Usuario usuarioEntrada, String conta) {
 
         Usuario user = getByEmail(usuarioEntrada.getEmail());
-        //System.out.println("id do usuario:  "+user.getId());
         
         if (user != null) {
             Perfil perfil = null;
             if (conta.trim().equals("participante")) {
                 ParticipanteService service = new ParticipanteService();
                 perfil = service.getByUsuarioId(user.getId());
-                if (perfil == null || perfil.getStatus() == false) {
-                    return null;
-                }
-                //System.out.println("pegou o id do perfil : "+perfil.getId());
             } else if (conta.trim().equals("organizador")) {
                 OrganizadorService service = new OrganizadorService();
                 perfil = service.getByUsuarioId(user.getId());
-                if (perfil == null || perfil.getStatus() == false) {
-                    return null;
-                }
-                //System.out.println("pegou o id do perfil : "+perfil.getId());
             } else if (conta.trim().equals("administrador")) {
                 AdministradorService service = new AdministradorService();
                 perfil = service.getByUsuarioId(user.getId());
-                if (perfil == null || perfil.getStatus() == false) {
-                    return null;
-                }
-                //System.out.println(perfil==null);
             }
+            
             if (perfil != null && perfil.getUsuario().validaSenha(usuarioEntrada.getSenha())) {
-                //System.out.println("retornou o perfil");
                 return perfil;
+            }else if (perfil == null || perfil.getStatus() == false) {
+                return null;
             }
         }
 
@@ -60,8 +46,7 @@ public class UsuarioService {
 
     public Usuario getByEmail(String email) {
         try {
-            Usuario user = usuarioDAO.getByEmail(email);
-            return user;
+            return usuarioDAO.getByEmail(email);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -70,13 +55,8 @@ public class UsuarioService {
 
     public Usuario getById(Long id) {
         try {
-            Usuario user = usuarioDAO.getById(id);
-
-            //System.out.println("" + user.getNome());
-
-            return user;
+            return usuarioDAO.getById(id);
         } catch (SQLException ex) {
-
             ex.printStackTrace();
         }
         return null;
@@ -84,29 +64,23 @@ public class UsuarioService {
 
     public ArrayList<Usuario> getByNome(String nome) {
         try {
-            ArrayList<Usuario> user = usuarioDAO.getByNome(nome);
-            return user;
+            return usuarioDAO.getByNome(nome);
         } catch (SQLException ex) {
             return null;
         }
     }
-
-
 
     public ArrayList<Usuario> getAllUsers() {
         try {
-            ArrayList<Usuario> user = usuarioDAO.getAll();
-            return user;
+            return usuarioDAO.getAll();
         } catch (SQLException ex) {
             return null;
         }
     }
 
-
     public ArrayList<Usuario> getResponsavelAtividade(Long ativId) {
         try {
-            ArrayList<Usuario> user = usuarioDAO.geResponsavelAtividade(ativId);
-            return user;
+            return usuarioDAO.geResponsavelAtividade(ativId);
         } catch (SQLException ex) {
             return null;
         }
@@ -132,7 +106,6 @@ public class UsuarioService {
         }
     }
     
-    
     public boolean updateSemSenha(Usuario u) {
         try {
             usuarioDAO.editarSemSenha(u);
@@ -142,7 +115,6 @@ public class UsuarioService {
             return false;
         }
     }
-
 
     public boolean updateSenhaUser(Usuario u) {
         try {

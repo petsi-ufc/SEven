@@ -36,7 +36,7 @@ public class EventoDAO {
         return (Evento) PostgresMapConfig.getSqlMapClient().queryForObject("getEventoById", id);
     }
 
-    public Evento getBySilga(String sigla) throws SQLException{
+    public Evento getBySigla(String sigla) throws SQLException{
         return (Evento)PostgresMapConfig.getSqlMapClient().queryForObject("getEventoBySigla", sigla);
     }
     

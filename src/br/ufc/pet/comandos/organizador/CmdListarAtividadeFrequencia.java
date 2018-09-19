@@ -19,7 +19,7 @@ public class CmdListarAtividadeFrequencia implements Comando {
         HttpSession session = request.getSession(true);
         Evento en= (Evento)session.getAttribute("evento");
         AtividadeService ats = new AtividadeService();
-        ArrayList<Atividade> ativis = ats.getAtividadeByEventoId(en.getId());
+        ArrayList<Atividade> ativis = ats.getAtividadesByEventoId(en.getId());
         session.setAttribute("atividades", ativis);
         return "/org/organ_listar_atividades_frequencia.jsp";
     }

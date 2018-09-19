@@ -110,15 +110,7 @@ public class EventoService {
 
     public Evento getEventoById(long id) {
         try {
-            Evento en = eventoDAO.getById(id);
-            if (en != null) {
-//                OrganizadorService orgS = new OrganizadorService();
-//                ArrayList<Organizador> organizadores = orgS.getOrganizadoresByEventoId(id);
-//                en.setOrganizadores(organizadores);
-                AtividadeService aS = new AtividadeService();
-                en.setAtividades(aS.getAtividadeByEventoId(id));
-            }
-            return en;
+            return eventoDAO.getById(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -131,16 +123,7 @@ public class EventoService {
 
     public Evento getEventoBySigla(String sigla) {
         try {
-
-            Evento en = eventoDAO.getBySilga(sigla);
-            if (en == null) {
-                return null;
-            }
-            OrganizadorService orgS = new OrganizadorService();
-            en.setOrganizadores(orgS.getOrganizadoresByEventoId(en.getId()));
-            AtividadeService aS = new AtividadeService();
-            en.setAtividades(aS.getAtividadeByEventoId(en.getId()));
-            return en;
+            return eventoDAO.getBySigla(sigla);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -151,15 +134,7 @@ public class EventoService {
     public Evento getEventoByNome(String nome) {
         try {
 
-            Evento en = eventoDAO.getByNome(nome);
-            if (en == null) {
-                return null;
-            }
-            OrganizadorService orgS = new OrganizadorService();
-            en.setOrganizadores(orgS.getOrganizadoresByEventoId(en.getId()));
-            AtividadeService aS = new AtividadeService();
-            en.setAtividades(aS.getAtividadeByEventoId(en.getId()));
-            return en;
+            return eventoDAO.getByNome(nome);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;

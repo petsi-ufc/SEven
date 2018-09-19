@@ -58,10 +58,10 @@ public class EventoDAO {
 
     private Long proxId() throws SQLException{
         Long id= (Long) PostgresMapConfig.getSqlMapClient().queryForObject("getMaxIdEvento");
-        if(id==null){
-        id=0L;
+        if(id == null){
+        	id = 0L;
         }
-        return id+1L;
+        return id + 1L;
     }
 
 }

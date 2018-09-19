@@ -17,7 +17,6 @@ public class Usuario extends Bean {
     private String cidade;
     private String uf;
     private boolean certificadoGerado;
-    
 
     public String getBairro() {
         return bairro;
@@ -34,10 +33,6 @@ public class Usuario extends Bean {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
-
-    
-
-    
 
     public String getEmail() {
         return email;
@@ -126,16 +121,10 @@ public class Usuario extends Bean {
         return false;
     }
 
-    /**
-     * @return the dataNascimento
-     */
     public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    /**
-     * @param dataNascimento the dataNascimento to set
-     */
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }

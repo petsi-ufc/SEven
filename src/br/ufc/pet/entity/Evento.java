@@ -13,7 +13,7 @@ public class Evento extends Bean {
     private Date fimPeriodoInscricao;
     private String descricao;
     private boolean ativo;
-    private ArrayList<Atividade> atividades;
+    private List<Atividade> atividades;
     private ArrayList<Organizador> organizadores;
     private Administrador administrador;
     private ArrayList<MovimentacaoFinanceira> movimentacoesFinanceiras;
@@ -63,7 +63,7 @@ public class Evento extends Bean {
 
     public ArrayList<Atividade> getAtividades() {
 
-        return atividades;
+        return new ArrayList<>(atividades);
     }
 
     public ArrayList<Atividade> getAtividadeQueAceitamInscricao() {
@@ -77,7 +77,7 @@ public class Evento extends Bean {
     }
 
     public void setAtividades(List<Atividade> atividades) {
-        this.atividades = new ArrayList<>(atividades);
+        this.atividades = atividades;
     }
 
     public boolean isAtivo() {

@@ -48,7 +48,7 @@
     <select id="getAtividadesByEventoId" resultClass="atividade"
             parameterClass="long"
             resultMap="atividadeResult">
-        SELECT a.id, a.local, a.nome, a.evento_id, a.vagas, a.tipo_id, ta.nome as tipo_nome,a.aceita_insc
+        SELECT a.id, a.local, a.nome, a.evento_id, a.vagas, a.tipo_id, ta.nome as tipo_nome, a.aceita_insc
         FROM evento.atividade a, evento.tipo_atividade ta
         WHERE a.tipo_id=ta.id and
         a.evento_id=#var#;

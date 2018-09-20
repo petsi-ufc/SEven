@@ -123,15 +123,13 @@ public class ServletCentral extends HttpServlet {
         Comando comando = (Comando) comandos.get(cmd);
 
         try {
-            String tela = comando.executa(request, response);
-            if (tela != null && !tela.trim().equals("")) {
+            String page = comando.executa(request, response);
+            if (page != null && !page.trim().equals("")) {
                 if (debug) {
-
-                    System.out.print("Tela:" + tela + " - ");
+                    System.out.print("Page:" + page + " - ");
                     System.out.print("IP Máquima" + request.getRemoteAddr() + " - ");
-//                    System.out.println("Hora" + new Date());
                 }
-                response.sendRedirect(request.getContextPath() + tela);
+                response.sendRedirect(request.getContextPath() + page);
             }
         } catch (Exception e) {
             response.sendRedirect(request.getContextPath() + "/index.jsp");
@@ -139,13 +137,24 @@ public class ServletCentral extends HttpServlet {
         }
     }
 
+    
+    // Esse método coloca todos os possíveis comandos dentro de uma HasTable.
+    //HashTable:
+    // 1) É syncronized;
+    // 2) Não aceita null;
+    // 3) Vem na Collections Framework (desde java 1.0);
+ 
     public void init() {
-        Comando cmdo;
+       //comando recebido pela  requisição
+    	Comando cmdo;
         comandos = new Hashtable();
         cmdo = new CmdCheckUserLogged();
         comandos.put("CmdCheckLogged", cmdo);
         cmdo = new CmdLogin();
         comandos.put("CmdLogin", cmdo);
+       
+        
+        // Comandos relacionados ao evento
         cmdo = new CmdAdicionarEvento();
         comandos.put("CmdAdicionarEvento", cmdo);
         cmdo = new CmdAlterarEvento();
@@ -170,10 +179,16 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdListarEventosAbertos", cmdo);
         cmdo = new CmdSelecionarEvento();
         comandos.put("CmdSelecionarEvento", cmdo);
+       
+        
+        //Comandos Relacionados a inscrição
         cmdo = new CmdMontarInscricao();
         comandos.put("CmdMontarInscricao", cmdo);
         cmdo = new CmdSubmeterInscricao();
         comandos.put("CmdSubmeterInscricao", cmdo);
+        
+        
+        //Comandos relacionados a movimentação financeira
         cmdo = new CmdListarMovimentacaoFinanceira();
         comandos.put("CmdListarMovimentacaoFinanceira", cmdo);
         cmdo = new CmdAddMovimentacaoFinanceira();
@@ -182,6 +197,9 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdExcluirMovimentacaoFinanceira", cmdo);
         cmdo = new CmdUpdateMovimentacaoFinanceira();
         comandos.put("CmdUpdateMovimentacaoFinanceira", cmdo);
+        
+        
+        //Comandos relacionados a atividades
         cmdo = new CmdSelecionarAtividade();
         comandos.put("CmdSelecionarAtividade", cmdo);
         cmdo = new CmdCadastrarParticipante();
@@ -191,12 +209,17 @@ public class ServletCentral extends HttpServlet {
         cmdo = new CmdListarAtividadeFrequencia();
         comandos.put("CmdListarAtividadeFrequencia", cmdo);
         
+        //Comando de relatorios
         cmdo = new CmdRelatorioParticipanteAtividade();
         comandos.put("CmdRelatorioParticipanteAtividade", cmdo);
         
+        
+        //Comandos de Frequencia
         cmdo = new CmdGerarFrequenciaAtividade();
         comandos.put("CmdGerarFrequenciaAtividade", cmdo);
         
+        
+        //Comandos relacionados as  atividades 
         cmdo = new CmdSelecionarAtividade();
         comandos.put("CmdSelecionarAtividade", cmdo);
         cmdo = new CmdRemoverAtividade();
@@ -209,8 +232,15 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdEditarAtividade", cmdo);
         cmdo = new CmdExcluirAtividade();
         comandos.put("CmdExcluirAtividade", cmdo);
+       
+        //comando Logout
         cmdo = new CmdLogout();
         comandos.put("CmdLogout", cmdo);
+        
+       
+        
+        //Comandos Relacionados ao gerenciamento de eventos
+       
         cmdo = new CmdGerenciarEvento();
         comandos.put("CmdGerenciarEvento", cmdo);
         cmdo = new CmdBuscarUsuarioResponsavel();
@@ -219,6 +249,8 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdIncluirResponsavel", cmdo);
         cmdo = new CmdMontarPaginaAdicaoAtividade();
         comandos.put("CmdMontarPaginaAdicaoAtividade", cmdo);
+        
+      
         cmdo = new CmdListarEventos();
         comandos.put("CmdListarEventos", cmdo);
         cmdo = new CmdVisualizarInscricaoDownload();
@@ -338,7 +370,6 @@ public class ServletCentral extends HttpServlet {
         comandos.put("CmdGerenciarLiberacaoCertificadoAtividade", cmdo);
         cmdo = new CmdConfirmarLiberacaoCertificado();
         comandos.put("CmdConfirmarLiberacaoCertificado", cmdo);
-        
         cmdo = new CmdUploadModeloCertificado();
         comandos.put("CmdUploadModeloCertificado", cmdo);
         

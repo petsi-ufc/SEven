@@ -6,9 +6,6 @@ import br.ufc.pet.entity.Organizacao;
 import java.util.ArrayList;
 import java.sql.SQLException;
 
-/*
- * @author fernando
- */
 public class OrganizacaoService {
 
     private final OrganizacaoDAO organizacaoDAO;
@@ -38,7 +35,6 @@ public class OrganizacaoService {
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
-
         }
     }
 
@@ -50,7 +46,6 @@ public class OrganizacaoService {
             ex.printStackTrace();
             return false;
         }
-
     }
 
     public Organizacao getOrganizacaoByOrganizadorIdAndEventoId(Organizacao org) {
@@ -60,7 +55,6 @@ public class OrganizacaoService {
             ex.printStackTrace();
             return null;
         }
-
     }
 
     public boolean delete(Organizacao organizacao) {
@@ -71,6 +65,5 @@ public class OrganizacaoService {
             ex.printStackTrace();
             return false;
         }
-
     }
 }

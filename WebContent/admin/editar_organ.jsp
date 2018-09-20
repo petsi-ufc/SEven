@@ -12,8 +12,8 @@
                 String manterAtvi = "";
                 String manterMod = "";
                 if (org != null) {
-                    boolean matAt = org.getManterAtividade();
-                    boolean matMod = org.getManterModuloFinanceiro();
+                    boolean matAt = org.isManterAtividade();
+                    boolean matMod = org.isManterModuloFinanceiro();
                     if (matAt) {
                         manterAtvi = "checked";
                     }

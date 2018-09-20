@@ -35,7 +35,7 @@ public class CmdListarMovimentacaoFinanceira implements Comando {
         ArrayList<MovimentacaoFinanceira> movfs = movimentacaofinanceiraservice.getMovimentacaoFinanceirasByEventoId(ev.getId());
         ev.setMovimentacoesFinanceiras(movfs);
 
-        session.setAttribute("permissao", organizacao.getManterModuloFinanceiro());
+        session.setAttribute("permissao", organizacao.isManterModuloFinanceiro());
         session.removeAttribute("atualizarmovimentacaofinanceira");
 
         return "/org/organ_listar_movimentacao.jsp";

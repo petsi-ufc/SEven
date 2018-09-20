@@ -17,7 +17,8 @@
         <result property="id" column="id"/>
         <result property="dataCriacao" column="data_criacao"/>
         <result property="status" column="status"/>
-        <result property="usuario.id" column="usuario_id"/>
+        <result property="usuario" column="usuario_id" select="getUsuarioById"/>
+        <result property="inscricoes" column="id" select="getInscricaoByParticipanteId"/>
     </resultMap>
 
 

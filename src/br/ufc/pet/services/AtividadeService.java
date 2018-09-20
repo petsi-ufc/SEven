@@ -1,9 +1,10 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.AtividadeDAO;
-import br.ufc.pet.evento.Atividade;
-import br.ufc.pet.evento.Horario;
-import br.ufc.pet.evento.InscricaoAtividade;
+import br.ufc.pet.entity.Atividade;
+import br.ufc.pet.entity.Horario;
+import br.ufc.pet.entity.InscricaoAtividade;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -12,14 +13,14 @@ import java.util.ArrayList;
  */
 public class AtividadeService {
 
-    private final HorarioService hs = new HorarioService();
+    private final HorarioService horarioService = new HorarioService();
     private final AtividadeDAO atividadeDAO;
-    private final EventoService es;
+    private final EventoService eventoService;
     private final ResponsavelAtividadeService responsavelService;
 
     public AtividadeService() {
         atividadeDAO = new AtividadeDAO();
-        es = new EventoService();
+        eventoService = new EventoService();
         responsavelService = new ResponsavelAtividadeService();
     }
 
@@ -55,22 +56,22 @@ public class AtividadeService {
 
     public Atividade getAtividadeById(Long id) {
         try {
-            Atividade at = atividadeDAO.getById(id);
-            at.setHorarios(hs.getHorariosByAtivideId(id));
-            at.setEvento(es.getEventoById(at.getEvento().getId()));
-            at.setResponsaveis(responsavelService.getResponsavelAtividade(at.getId()));
-            return at;
+            Atividade atividade = atividadeDAO.getById(id);
+//            atividade.setHorarios(horarioService.getHorariosByAtivideId(id));
+//            atividade.setEvento(eventoService.getEventoById(atividade.getEvento().getId()));
+//            atividade.setResponsaveis(responsavelService.getResponsavelAtividade(atividade.getId()));
+            return atividade;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
         }
     }
 
-    public ArrayList<Atividade> getAtividadeByEventoId(Long id) {
+    public ArrayList<Atividade> getAtividadesByEventoId(Long id) {
         try {
             ArrayList<Atividade> aa = atividadeDAO.getByEventoId(id);
             for (Atividade a : aa) {
-                a.setHorarios(hs.getHorariosByAtivideId(a.getId()));
+                a.setHorarios(horarioService.getHorariosByAtivideId(a.getId()));
                 a.setResponsaveis(responsavelService.getResponsavelAtividade(a.getId()));
             }
             return aa;
@@ -84,7 +85,7 @@ public class AtividadeService {
         try {
             ArrayList<Atividade> aa = atividadeDAO.getByInscricaoId(id);
             for (Atividade a : aa) {
-                a.setHorarios(hs.getHorariosByAtivideId(a.getId()));
+                a.setHorarios(horarioService.getHorariosByAtivideId(a.getId()));
                 a.setResponsaveis(responsavelService.getResponsavelAtividade(a.getId()));
             }
             return aa;
@@ -98,7 +99,7 @@ public class AtividadeService {
         try {
             ArrayList<Atividade> aa = atividadeDAO.getByOrganizadorId(id);
             for (Atividade a : aa) {
-                a.setHorarios(hs.getHorariosByAtivideId(a.getId()));
+                a.setHorarios(horarioService.getHorariosByAtivideId(a.getId()));
                 a.setResponsaveis(responsavelService.getResponsavelAtividade(a.getId()));
             }
             return aa;

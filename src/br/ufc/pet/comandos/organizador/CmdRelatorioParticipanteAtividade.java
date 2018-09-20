@@ -1,7 +1,7 @@
 package br.ufc.pet.comandos.organizador;
 
-import br.ufc.pet.evento.Atividade;
-import br.ufc.pet.evento.Participante;
+import br.ufc.pet.entity.Atividade;
+import br.ufc.pet.entity.Participante;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.AtividadeService;
 import br.ufc.pet.services.ParticipanteService;

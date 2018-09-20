@@ -1,9 +1,9 @@
 package br.ufc.pet.comandos.organizador;
 
-import br.ufc.pet.evento.Evento;
-import br.ufc.pet.evento.MovimentacaoFinanceira;
-import br.ufc.pet.evento.Organizacao;
-import br.ufc.pet.evento.Organizador;
+import br.ufc.pet.entity.Evento;
+import br.ufc.pet.entity.MovimentacaoFinanceira;
+import br.ufc.pet.entity.Organizacao;
+import br.ufc.pet.entity.Organizador;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.MovimentacaoFinanceiraService;
 import br.ufc.pet.util.UtilSeven;

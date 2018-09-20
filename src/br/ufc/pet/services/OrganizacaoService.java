@@ -1,7 +1,8 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.OrganizacaoDAO;
-import br.ufc.pet.evento.Organizacao;
+import br.ufc.pet.entity.Organizacao;
+
 import java.util.ArrayList;
 import java.sql.SQLException;
 
@@ -20,7 +21,6 @@ public class OrganizacaoService {
         try {
             ArrayList<Organizacao> orgs = organizacaoDAO.getByOrganizacoesByOrganizadorId(id);
             EventoService es = new EventoService();
-            OrganizadorService os = new OrganizadorService();
             for (Organizacao o : orgs) {
                 o.setEvento(es.getEventoById(o.getEvento().getId()));
             }

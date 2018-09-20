@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="br.ufc.pet.evento.Participante" %>
+<%@page import="br.ufc.pet.entity.Participante" %>
 <%@page import="br.ufc.pet.util.UtilSeven" %>
-<%@page import="br.ufc.pet.evento.Administrador" %>
+<%@page import="br.ufc.pet.entity.Administrador" %>
 <%@page import="java.util.Date" %>
 <%@include file="../ErroAutenticacaoUser.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">

@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <%
     br.ufc.pet.services.EventoService es = new br.ufc.pet.services.EventoService();
-    java.util.ArrayList<br.ufc.pet.evento.Evento> eventos = es.buscarEventosAbertos();
+    java.util.ArrayList<br.ufc.pet.entity.Evento> eventos = es.buscarEventosAbertos();
 %>
 <html>
     <head>
@@ -40,7 +40,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% for (br.ufc.pet.evento.Evento e : eventos) {%>
+                                    <% for (br.ufc.pet.entity.Evento e : eventos) {%>
                                     <tr>
                                         <td> <%= e.getNome()%>  </td>
                                         <td> <%= e.getSigla()%> </td>

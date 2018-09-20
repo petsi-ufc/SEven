@@ -1,7 +1,7 @@
 package br.ufc.pet.comandos.administrador;
 
+import br.ufc.pet.entity.Evento;
 import br.ufc.pet.interfaces.Comando;
-import br.ufc.pet.evento.Evento;
 import br.ufc.pet.services.EventoService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

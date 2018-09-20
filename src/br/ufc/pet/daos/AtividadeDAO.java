@@ -1,8 +1,9 @@
 package br.ufc.pet.daos;
 
 import br.ufc.pet.config.PostgresMapConfig;
-import br.ufc.pet.evento.Atividade;
-import br.ufc.pet.evento.InscricaoAtividade;
+import br.ufc.pet.entity.Atividade;
+import br.ufc.pet.entity.InscricaoAtividade;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 

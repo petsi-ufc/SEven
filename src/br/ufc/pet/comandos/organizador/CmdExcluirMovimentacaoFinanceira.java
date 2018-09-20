@@ -1,6 +1,6 @@
 package br.ufc.pet.comandos.organizador;
 
-import br.ufc.pet.evento.MovimentacaoFinanceira;
+import br.ufc.pet.entity.MovimentacaoFinanceira;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.MovimentacaoFinanceiraService;
 import javax.servlet.http.HttpServletRequest;

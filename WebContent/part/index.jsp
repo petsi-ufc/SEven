@@ -1,6 +1,6 @@
-<%@page import="br.ufc.pet.evento.Participante"%>
+<%@page import="br.ufc.pet.entity.Participante"%>
 <%
-    java.util.ArrayList<br.ufc.pet.evento.Evento> eventos = (java.util.ArrayList<br.ufc.pet.evento.Evento>) session.getAttribute("eventosAbertos");
+    java.util.ArrayList<br.ufc.pet.entity.Evento> eventos = (java.util.ArrayList<br.ufc.pet.entity.Evento>) session.getAttribute("eventosAbertos");
     Participante part = (Participante) session.getAttribute("user");
     String nomeSaudacao = part.getUsuario().getNome().split(" ")[0];
 %>
@@ -52,7 +52,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% for (br.ufc.pet.evento.Evento e : eventos) {%>
+                            <% for (br.ufc.pet.entity.Evento e : eventos) {%>
                             <tr class="text-center">
                                 <td> <%= e.getSigla()%> </td>
                                 <td> <a href="../ServletCentral?comando=CmdSelecionarEvento&id=<%=e.getId()%>"><%= e.getNome()%></a>  </td>

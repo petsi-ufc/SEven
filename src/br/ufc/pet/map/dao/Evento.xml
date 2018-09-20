@@ -14,11 +14,13 @@
         <result property="fimPeriodoInscricao" column="fim_inscricao"/>
         <result property="descricao" column="descricao"/>
         <result property="ativo" column="ativo"/>
-        <result property="administrador.id" column="admin_id"/>
+        <result property="administrador" column="admin_id" select="getAdministradorById" />
         <result property="inicioPeriodoEvento" column="inicio"/>
         <result property="fimPeriodoEvento" column="fim"/>
         <result property="limiteAtividadePorParticipante" column="limite_atividade_por_participante"/> 
         <result property="gratuito" column="gratuito"/>
+        <result property="organizadores" column="id" select="getAllOrganizadorByEvento" />
+        <result property="atividades" column="id" select="getAtividadesByEventoId" />
     </resultMap>
 
     <insert id="addEvento" parameterClass="evento" >
@@ -112,8 +114,4 @@
         SELECT MAX(id)
         FROM evento.evento;
     </select>
-
-   
-
-
 </sqlMap>

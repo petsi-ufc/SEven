@@ -1,4 +1,4 @@
-<%@page import="br.ufc.pet.evento.Perfil" %>
+<%@page import="br.ufc.pet.entity.Perfil" %>
 
 <%
             Perfil perfilUser = (Perfil) session.getAttribute("user");

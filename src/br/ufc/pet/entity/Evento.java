@@ -1,7 +1,8 @@
-package br.ufc.pet.evento;
+package br.ufc.pet.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Evento extends Bean {
 
@@ -12,7 +13,7 @@ public class Evento extends Bean {
     private Date fimPeriodoInscricao;
     private String descricao;
     private boolean ativo;
-    private ArrayList<Atividade> atividades;
+    private List<Atividade> atividades;
     private ArrayList<Organizador> organizadores;
     private Administrador administrador;
     private ArrayList<MovimentacaoFinanceira> movimentacoesFinanceiras;
@@ -62,13 +63,11 @@ public class Evento extends Bean {
 
     public ArrayList<Atividade> getAtividades() {
 
-        return atividades;
+        return new ArrayList<>(atividades);
     }
 
     public ArrayList<Atividade> getAtividadeQueAceitamInscricao() {
-
         ArrayList<Atividade> ats = new ArrayList<Atividade>();
-
         for (Atividade a : atividades) {
             if (a.isAceitaInscricao()) {
                 ats.add(a);
@@ -77,7 +76,7 @@ public class Evento extends Bean {
         return ats;
     }
 
-    public void setAtividades(ArrayList<Atividade> atividades) {
+    public void setAtividades(List<Atividade> atividades) {
         this.atividades = atividades;
     }
 
@@ -125,8 +124,8 @@ public class Evento extends Bean {
         return organizadores;
     }
 
-    public void setOrganizadores(ArrayList<Organizador> organizador) {
-        this.organizadores = organizador;
+    public void setOrganizadores(List<Organizador> organizador) {
+        this.organizadores = new ArrayList<>(organizador);
     }
 
     public String getSigla() {

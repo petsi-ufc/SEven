@@ -1,8 +1,8 @@
 package br.ufc.pet.comandos.participante;
 
-import br.ufc.pet.evento.Inscricao;
-import br.ufc.pet.evento.ModalidadeInscricao;
-import br.ufc.pet.evento.TipoAtividade;
+import br.ufc.pet.entity.Inscricao;
+import br.ufc.pet.entity.ModalidadeInscricao;
+import br.ufc.pet.entity.TipoAtividade;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.ModalidadeInscricaoService;
 import br.ufc.pet.services.TipoAtividadeService;

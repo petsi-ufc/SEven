@@ -1,13 +1,13 @@
-<%@page import="br.ufc.pet.evento.Atividade"%>
+<%@page import="br.ufc.pet.entity.Atividade"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="br.ufc.pet.util.UtilSeven"%>
-<%@page import="br.ufc.pet.evento.Evento"%>
-<%@page import="br.ufc.pet.evento.Inscricao"%>
+<%@page import="br.ufc.pet.entity.Evento"%>
+<%@page import="br.ufc.pet.entity.Inscricao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <%
     br.ufc.pet.services.EventoService es = new br.ufc.pet.services.EventoService();
-    java.util.ArrayList<br.ufc.pet.evento.Evento> eventos = es.buscarEventosAbertos();
+    java.util.ArrayList<br.ufc.pet.entity.Evento> eventos = es.buscarEventosAbertos();
 
     Inscricao inscricao = (Inscricao) session.getAttribute("dados_inscricao");
     session.removeAttribute("dados_inscricao");

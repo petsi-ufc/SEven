@@ -1,11 +1,11 @@
 <%@page import="br.ufc.pet.services.UsuarioService"%>
-<%@page import="br.ufc.pet.evento.InscricaoAtividade"%>
+<%@page import="br.ufc.pet.entity.InscricaoAtividade"%>
 <%@page import="br.ufc.pet.services.AtividadeService"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*"%>
-<%@page import="br.ufc.pet.evento.Inscricao"%>
+<%@page import="br.ufc.pet.entity.Inscricao"%>
 <%@page import="br.ufc.pet.services.InscricaoService"%>
-<%@page import="br.ufc.pet.evento.Participante"%>
+<%@page import="br.ufc.pet.entity.Participante"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
 <html>

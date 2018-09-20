@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="br.ufc.pet.evento.Inscricao" %>
+<%@page import="br.ufc.pet.entity.Inscricao" %>
 <%@page import="java.util.*"%>
-<%@page import="br.ufc.pet.evento.Participante"%>
+<%@page import="br.ufc.pet.entity.Participante"%>
 <%@page import="br.ufc.pet.services.ParticipanteService"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">

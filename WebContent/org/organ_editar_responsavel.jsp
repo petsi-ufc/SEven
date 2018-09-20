@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="br.ufc.pet.evento.ResponsavelAtividade, br.ufc.pet.evento.Usuario" %>
+<%@page import="br.ufc.pet.entity.ResponsavelAtividade, br.ufc.pet.entity.Usuario" %>
 <%@page import="br.ufc.pet.util.UtilSeven" %>
 <%@page import="java.util.Date" %>
 <%@include file="../ErroAutenticacaoUser.jsp" %>

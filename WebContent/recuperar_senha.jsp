@@ -17,7 +17,7 @@
          <%@include file="menu_index.jsp"%>
         <div id="container-register">
             <h1 class="title-register">Recuperar Senha</h1><hr>
-            <form action="ServletCentral?comando=CmdRecuperarSenha" method="POST">
+            <form action="ServletCentral?comando=CmdRecuperarSenha" method="post">
                 <div class="form-group">
                    <label for="">Email cadastrado</label>
                     <input data-toggle="tooltip" title="Email Cadastrado" type="text" class="form-control" placeholder="Digite o Email Cadastrado" name="email" required/>

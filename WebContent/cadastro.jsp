@@ -1,5 +1,5 @@
-<%@page import="br.ufc.pet.evento.Participante"%>
-<%@page import="br.ufc.pet.evento.Usuario"%>
+<%@page import="br.ufc.pet.entity.Participante"%>
+<%@page import="br.ufc.pet.entity.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String mensagem = (String)request.getAttribute("mensagem");

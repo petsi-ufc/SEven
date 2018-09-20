@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="br.ufc.pet.evento.Inscricao"%>
-<%@page import="br.ufc.pet.evento.Evento"%>
+<%@page import="br.ufc.pet.entity.Inscricao"%>
+<%@page import="br.ufc.pet.entity.Evento"%>
 <%@page import="java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
@@ -18,7 +18,7 @@
 
     <%
             br.ufc.pet.services.EventoService es = new br.ufc.pet.services.EventoService();
-            java.util.ArrayList<br.ufc.pet.evento.Evento> eventos = es.buscarEventosAbertos();
+            java.util.ArrayList<br.ufc.pet.entity.Evento> eventos = es.buscarEventosAbertos();
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>

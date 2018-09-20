@@ -1,12 +1,13 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.InscricaoDAO;
-import br.ufc.pet.evento.Atividade;
-import br.ufc.pet.evento.Evento;
-import br.ufc.pet.evento.Inscricao;
-import br.ufc.pet.evento.InscricaoAtividade;
-import br.ufc.pet.evento.PrecoAtividade;
-import br.ufc.pet.evento.Utility;
+import br.ufc.pet.entity.Atividade;
+import br.ufc.pet.entity.Evento;
+import br.ufc.pet.entity.Inscricao;
+import br.ufc.pet.entity.InscricaoAtividade;
+import br.ufc.pet.entity.PrecoAtividade;
+import br.ufc.pet.entity.Utility;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;

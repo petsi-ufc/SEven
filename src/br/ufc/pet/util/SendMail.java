@@ -32,7 +32,7 @@ public class SendMail {
         String texto = Mensagem;
         texto = texto.replaceAll("\n", "\r\n");
 
-        mailSession.setDebug(true);
+        mailSession.setDebug(false);
         mailProps.put("mail.debug", "true");
         mailProps.put("mail.smtp.debug", "true");
         mailProps.put("mail.mime.charset", "ISO-8859-1");

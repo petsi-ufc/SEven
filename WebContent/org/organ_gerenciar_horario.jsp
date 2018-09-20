@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList" %>
-<%@page import="br.ufc.pet.evento.Horario,br.ufc.pet.util.UtilSeven" %>
+<%@page import="br.ufc.pet.entity.Horario,br.ufc.pet.util.UtilSeven" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
     <%@include file="../ErroAutenticacaoUser.jsp" %>
@@ -16,7 +16,7 @@
         <script type="text/javascript" src="../Script.js"></script>
     </head>
     <body>
-        <%            br.ufc.pet.evento.Evento e = (br.ufc.pet.evento.Evento) session.getAttribute("evento");
+        <%            br.ufc.pet.entity.Evento e = (br.ufc.pet.entity.Evento) session.getAttribute("evento");
             ArrayList<Horario> horarios = (ArrayList<Horario>) session.getAttribute("horarios");
             session.removeAttribute("horario");
         %>

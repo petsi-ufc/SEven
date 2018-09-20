@@ -1,6 +1,6 @@
 package br.ufc.pet.comandos;
 
-import br.ufc.pet.evento.Usuario;
+import br.ufc.pet.entity.Usuario;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.UsuarioService;
 import br.ufc.pet.util.SendMail;

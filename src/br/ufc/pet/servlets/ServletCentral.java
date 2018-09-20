@@ -123,14 +123,25 @@ public class ServletCentral extends HttpServlet {
         Comando comando = (Comando) comandos.get(cmd);
 
         try {
+<<<<<<< HEAD
             String page = comando.executa(request, response);
             if (page != null && !page.trim().equals("")) {
+=======
+            String tela = comando.executa(request, response);
+            /*if (tela != null && !tela.trim().equals("")) {
+>>>>>>> 4382fe4a9d9692bf007c3e82baa1f68ebde4bd4e
                 if (debug) {
                     System.out.print("Page:" + page + " - ");
                     System.out.print("IP Máquima" + request.getRemoteAddr() + " - ");
                 }
+<<<<<<< HEAD
                 response.sendRedirect(request.getContextPath() + page);
             }
+=======
+                response.sendRedirect(request.getContextPath() + tela);
+            }*/
+            response.sendRedirect(request.getContextPath() + tela);
+>>>>>>> 4382fe4a9d9692bf007c3e82baa1f68ebde4bd4e
         } catch (Exception e) {
             response.sendRedirect(request.getContextPath() + "/index.jsp");
             e.printStackTrace();
@@ -411,6 +422,6 @@ public class ServletCentral extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servle Central da Aplicação SEven.";
     }// </editor-fold>
 }

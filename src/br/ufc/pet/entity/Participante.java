@@ -1,6 +1,7 @@
-package br.ufc.pet.evento;
+package br.ufc.pet.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Participante extends Perfil implements Comparable<Participante> {
 
@@ -14,8 +15,8 @@ public class Participante extends Perfil implements Comparable<Participante> {
         return inscricoes;
     }
 
-    public void setInscricoes(ArrayList<Inscricao> inscricoes) {
-        this.inscricoes = inscricoes;
+    public void setInscricoes(List<Inscricao> inscricoes) {
+        this.inscricoes = new ArrayList<>(inscricoes);
     }
 
     public Inscricao getInscricaoByEvento(Long eveId) {

@@ -1,7 +1,8 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.MovimentacaoFinanceiraDAO;
-import br.ufc.pet.evento.MovimentacaoFinanceira;
+import br.ufc.pet.entity.MovimentacaoFinanceira;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 

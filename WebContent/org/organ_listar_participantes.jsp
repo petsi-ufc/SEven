@@ -38,7 +38,7 @@
                     <label>Filtrar Por Atividade:</label>
                     <select name="ativEscolhida" class="form-control" onchange="forceSubmitListarRelatoriosAtividades('formListarAtividade')">
                         <option value="null" >Todas as inscricoes</option>
-                        <% for (Atividade a : ativService.getAtividadeByEventoId(ev.getId())) {
+                        <% for (Atividade a : ativService.getAtividadesByEventoId(ev.getId())) {
                                     if (ativId != null && ativId.compareTo(a.getId()) == 0) {%>
                         <option selected="selected" value="<%= a.getId()%>"><%=a.getNome()%></option>
                         <%} else if (a.isAceitaInscricao()) {%>

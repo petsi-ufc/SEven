@@ -104,7 +104,7 @@
                              <div class="col-lg-2 space-top">    
                                 <div class="form-group">
                                     <label>N° de Vagas:</label><br />
-                                    <input data-toggle="tooltip" title="Quantidade de Vagas Disponibilizadas" type="number" min="0" max="999" onkeypress="return validaNumerosSilencioso(event)" name="vagas" value="<%=vagas%>" class="form-control"/>
+                                    <input data-toggle="tooltip" title="Quantidade de Vagas Disponibilizadas" type="number" min="1" max="1000" onkeypress="return validaNumerosSilencioso(event)" name="vagas" value="<%=vagas%>" class="form-control"/>
                                 </div>
                              </div>
                              <div class="col-lg-3">       

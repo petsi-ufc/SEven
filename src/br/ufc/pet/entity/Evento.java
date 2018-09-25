@@ -124,7 +124,7 @@ public class Evento extends Bean {
     }
 
     public void setOrganizadores(List<Organizador> organizador) {
-        this.organizadores = new ArrayList<>(organizador);
+        this.organizadores = organizador;
     }
 
     public String getSigla() {

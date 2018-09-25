@@ -16,7 +16,7 @@ public class Organizador extends Perfil {
     }
 
     public void setOrganizacoes(List<Organizacao> organizacoes) {
-        this.organizacoes = new ArrayList<>(organizacoes);
+        this.organizacoes = organizacoes;
     }
 
     public void setOrganizacaoAdd(Organizacao organizacao) {

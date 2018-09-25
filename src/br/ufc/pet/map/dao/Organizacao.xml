@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-    Document   : Organizacao.xml
-    Created on : 14 de Maio de 2010, 14:30
-    Author     : fernando
-    Description:
-        Purpose of the document follows.
--->
-
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
@@ -15,10 +7,8 @@
 
     <resultMap id="organizacaoResult" class="organizacao">
         <result property="id" column="id"/>
-<!--         <result property="organizador.id" column="organizador_id"/> -->
-        <result property="evento.id" column="evento_id"/>
         <result property="organizador" column="organizador_id" select="getOrganizadorById"/>
-<!--         <result property="evento" column="evento_id" select="getEventoById"/> -->
+        <result property="evento" column="evento_id" select="getEventoById"/>
         <result property="manterModuloFinanceiro" column="manter_mod_financeiro"/>
         <result property="manterAtividade" column="manter_atividade"/>
     </resultMap>

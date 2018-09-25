@@ -37,14 +37,7 @@ public class OrganizadorService {
 
     public ArrayList<Organizador> getOrganizadoresByEventoId(Long idEvento) {
         try {
-            UsuarioService u = new UsuarioService();
-            ArrayList<Organizador> orgs = organizadorDAO.getOrganizadoresByEvento(idEvento);
-            if (orgs != null) {
-                for (Organizador o : orgs) {
-                    o.setUsuario(u.getById(o.getUsuario().getId()));
-                }
-            }
-            return orgs;
+            return organizadorDAO.getOrganizadoresByEvento(idEvento);
         } catch (SQLException ex) {
             return null;
         }

@@ -16,12 +16,7 @@ public class OrganizacaoService {
 
     public ArrayList<Organizacao> getAllOrganizacoesByOrganizadorId(Long id) {
         try {
-            ArrayList<Organizacao> orgs = organizacaoDAO.getByOrganizacoesByOrganizadorId(id);
-            EventoService es = new EventoService();
-            for (Organizacao o : orgs) {
-                o.setEvento(es.getEventoById(o.getEvento().getId()));
-            }
-            return orgs;
+            return organizacaoDAO.getByOrganizacoesByOrganizadorId(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;

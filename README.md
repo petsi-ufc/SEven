@@ -38,20 +38,26 @@ Pronto agora seu projeto já foi importado para o eclipse agora nos proximos pas
 ![Imgur](https://i.imgur.com/gKDXDS1.png)
 
 ### 4° Passo: Configurando BuildPath
-- Primeiro clique com o botão direito no projeto e seleciona a opção *Build Path > Configure Build Path...*<br>
+- Primeiro clique com o botão direito no projeto e seleciona a opção *Build Path > Configure Build Path...* <br>
 ![Imgur](https://i.imgur.com/2XjUq4K.jpg)
 
 - Agora vamos configurar o *JRE System Library*, selecione a opção, se ela não existir você pode clicar em *Add Library...* e adiciona-lá.
-- Após selecionar a opção clique em *Edit...* para ir á próxima tela.<br>
+- Após selecionar a opção clique em *Edit...* para ir á próxima tela. <br>
 ![Imgur](https://i.imgur.com/JMtE7Bs.png)
 
 - Após isso marque o radio e selecione no dropdown a JDK instalada e clique em *Apply*.
-- Se não estiver aparecendo a JDK clique em *Installed JREs...*
+- Se não estiver aparecendo a JDK clique em *Installed JREs...* <br>
 ![Imgur](https://i.imgur.com/s93FjTk.png)
 
-- e vá na pasta de instalação da sua JDK, e depois clique em *Apply*.
+- Clique em *Search* e vá na pasta de instalação da sua JDK, selecione a pasta e marque a checkbox e depois clique em *Apply*. Após isso volte para o anterior e refaça.<br>
 ![Imgur](https://i.imgur.com/BJkoulc.png)
 
 ### 5° Passo: Configurando as *Project Facets*
-- 
+- Agora vamos configurar as *Project Facets*, para isso digite o atalho **ALT + ENTER** e selecione no menu do lado esquerdo o *Project Facets*.
+- Na tela das *Project Facets* selecione as facets mostradas na imagem.
+  - *Dynamic Web Module* na versão 2.5
+  - *Java* na versão 1.8
+  - *JavaScript* na versão 1.0
 ![Imgur](https://i.imgur.com/HB0XAoj.png)
+
+#### Após executar todos esses passos seu projeto estará configurado. Agora é o famoso "**Te vira NEGÃO**"

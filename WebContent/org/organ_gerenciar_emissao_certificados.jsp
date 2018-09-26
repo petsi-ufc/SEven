@@ -30,7 +30,7 @@
             <div id="content">
                 <h1 class="titulo">Gerenciar Emissão de Certificados por Atividades do evento <br/><span style="color: black"><%=e.getNome()%></span></h1>
                 <%@include file="/error.jsp" %>
-                <% if (organizador.recuperarOrganizaçãoByEvendoId(e.getId()).getManterAtividade()) {%>
+                <% if (organizador.recuperarOrganizacaoByEvendoId(e.getId()).isManterAtividade()) {%>
 
 
                 <%}%>

@@ -92,7 +92,7 @@ public class CmdAddOrganizadorNovo implements Comando {
                     OrganizacaoService orgaS = new OrganizacaoService();
                     if (orgaS.adicionar(orga)) {
                         en.addOrganizador(o);
-                        o.setOrganizacoes(orga);
+                        o.setOrganizacaoAdd(orga);
                         session.setAttribute("sucesso", "Cadastrado com sucesso!");
                         session.removeAttribute("nome");
                         session.removeAttribute("rua");

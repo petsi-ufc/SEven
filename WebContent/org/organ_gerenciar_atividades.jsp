@@ -26,7 +26,7 @@
             <div id="content">
                 <h1 class="titulo">Gerenciar as Atividades do evento<br/> <%=e.getNome()%></h1>
                  <%@include file="/error.jsp" %>
-                <% if (organizador.recuperarOrganizaçãoByEvendoId(e.getId()).getManterAtividade()) {%>
+                <% if (organizador.recuperarOrganizacaoByEvendoId(e.getId()).isManterAtividade()) {%>
                 <div style="margin-top: 65px;">
                 <div class="col-lg-6">
                     <div class="panel panel-default space-top">
@@ -100,7 +100,7 @@
                                     sb.append("<br>");
                                 }%>
                             <td><%=sb.toString()%></td>
-                            <% if (organizador.recuperarOrganizaçãoByEvendoId(e.getId()).getManterAtividade()) {%>
+                            <% if (organizador.recuperarOrganizacaoByEvendoId(e.getId()).isManterAtividade()) {%>
                             <td><a href="../ServletCentral?comando=CmdEditarAtividade&ativ_id=<%=a.getId()%>" title="Alterar Atividade"><span class="text-uppercase label label-success">Alterar</span></a></td> 
                             <td><a href="../ServletCentral?comando=CmdExcluirAtividade&ativ_id=<%=a.getId()%>" title="Excluir Atividade" onclick="return confirm('Tem certeza que deseja excluir essa atividade?')"><span class="text-uppercase label label-danger">Excluir</span></a></td>
                             <% } else {%>

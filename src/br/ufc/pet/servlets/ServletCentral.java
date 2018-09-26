@@ -125,7 +125,7 @@ public class ServletCentral extends HttpServlet {
         try {
 
             String page = comando.executa(request, response);
-            response.sendRedirect(request.getContextPath() + tela);
+            response.sendRedirect(request.getContextPath() + page);
         } catch (Exception e) {
             response.sendRedirect(request.getContextPath() + "/index.jsp");
             e.printStackTrace();

@@ -7,9 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
-/*
- * @author Caio
- */
 public class HorarioService {
 
     private final HorarioDAO horarioDAO;
@@ -31,8 +28,7 @@ public class HorarioService {
 
     public Horario getHorarioById(long id) {
         try {
-            Horario en = horarioDAO.getById(id);
-            return en;
+            return horarioDAO.getById(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -41,8 +37,7 @@ public class HorarioService {
 
     public ArrayList<Horario> getHorariosByAtivideId(long id) {
         try {
-            ArrayList<Horario> horarios = horarioDAO.getByAtividadeId(id);
-            return horarios;
+            return horarioDAO.getByAtividadeId(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -51,8 +46,7 @@ public class HorarioService {
 
     public ArrayList<Horario> getHorariosByEventoId(long id) {
         try {
-            ArrayList<Horario> horarios = horarioDAO.getByEventoId(id);
-            return horarios;
+            return horarioDAO.getByEventoId(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -61,8 +55,7 @@ public class HorarioService {
 
     public ArrayList<Horario> getAllHorarios() {
         try {
-            ArrayList<Horario> horarios = horarioDAO.getAllHorarios();
-            return horarios;
+            return horarioDAO.getAllHorarios();
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;

@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * @author Escritorio projetos
- */
 public class TipoAtividadeService {
 
     private final TipoAtividadeDAO tipoAtividadeDAO;

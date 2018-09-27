@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Participante extends Perfil implements Comparable<Participante> {
 
-    private ArrayList<Inscricao> inscricoes;
+    private List<Inscricao> inscricoes;
 
     public Participante() {
         this.inscricoes = new ArrayList<Inscricao>();
     }
 
     public ArrayList<Inscricao> getInscricoes() {
-        return inscricoes;
+        return new ArrayList<>(inscricoes);
     }
 
     public void setInscricoes(List<Inscricao> inscricoes) {

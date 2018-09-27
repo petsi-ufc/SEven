@@ -1,8 +1,5 @@
 package br.ufc.pet.entity;
 
-/*
- * @author Escritorio projetos
- */
 public class TipoAtividade extends Bean {
 
     private String nome;
@@ -26,7 +23,4 @@ public class TipoAtividade extends Bean {
     public void setEventoId(Long eventoId) {
         this.eventoId = eventoId;
     }
-    
-
-
 }

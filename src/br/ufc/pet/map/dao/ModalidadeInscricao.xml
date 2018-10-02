@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-    Document   : ModalidadeInscricao.xml
-    Created on : 14 de Maio de 2010, 14:29
-    Author     : dodo
-    Description:
-        Purpose of the document follows.
--->
-
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
@@ -18,39 +10,32 @@
         <result property="id" column="id"/>
         <result property="tipo" column="tipo"/>
         <result property="eventoId" column="evento_id"/>
+        <result property="precoAtividades" column="id" select="getAllPrecoByModalidadeId"/>
     </resultMap>
 
-    <select id="getModalidadeInscricaoById" resultClass="modalidadeInscricao"
-            parameterClass="long"
-            resultMap="modalidadeInscricaoResult">
+    <select id="getModalidadeInscricaoById" resultClass="modalidadeInscricao" parameterClass="long" resultMap="modalidadeInscricaoResult">
         SELECT id, tipo, evento_id
         FROM evento.modalidade_inscricao WHERE id=#var#;
     </select>
 
-    <select id="getModalidadeInscricaoByTipo" resultClass="modalidadeInscricao"
-            parameterClass="String"
-            resultMap="modalidadeInscricaoResult">
+    <select id="getModalidadeInscricaoByTipo" resultClass="modalidadeInscricao" parameterClass="String" resultMap="modalidadeInscricaoResult">
         SELECT id, tipo, evento_id
         FROM evento.modalidade_inscricao WHERE tipo=#var#;
     </select>
 
-    <select id="getAllModalidadesInscricao" resultClass="modalidadeInscricao"
-            resultMap="modalidadeInscricaoResult">
+    <select id="getAllModalidadesInscricao" resultClass="modalidadeInscricao" resultMap="modalidadeInscricaoResult">
         SELECT *
         FROM evento.modalidade_inscricao;
     </select>
 
-    <select id="getModalidadesInscricaoByEventoId" resultClass="modalidadeInscricao"
-            parameterClass="long"
-            resultMap="modalidadeInscricaoResult">
+    <select id="getModalidadesInscricaoByEventoId" resultClass="modalidadeInscricao" parameterClass="long" resultMap="modalidadeInscricaoResult">
         SELECT *
         FROM evento.modalidade_inscricao
         WHERE evento_id=#var#;
     </select>
 
     <insert id="addModalidadeInscricao" parameterClass="modalidadeInscricao" >
-        INSERT INTO evento.modalidade_inscricao(
-        id, tipo, evento_id)
+        INSERT INTO evento.modalidade_inscricao(id, tipo, evento_id)
         VALUES (#id#, #tipo#, #eventoId#);
 
         <iterate property="precoAtividades" open=" INSERT INTO evento.modalidade_tipo_atividade(
@@ -58,7 +43,6 @@
                  VALUES"  conjunction="," >
             (#id#, #precoAtividades[].tipoAtividadeId#, #precoAtividades[].valor#)
         </iterate>
-
     </insert>
 
     <update id="updateModalidadeInscricao" parameterClass="modalidadeInscricao">

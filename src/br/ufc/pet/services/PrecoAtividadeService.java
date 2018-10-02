@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * @author Caio
- */
 public class PrecoAtividadeService {
 
     private final PrecoAtividadeDAO PrecoAtividadeDAO;
@@ -53,8 +50,7 @@ public class PrecoAtividadeService {
 
     public ArrayList<PrecoAtividade> getPrecosByModalidadeId(Long id) {
         try {
-            ArrayList<PrecoAtividade> precos = PrecoAtividadeDAO.getAllPrecosByModalidadeId(id);
-            return precos;
+            return PrecoAtividadeDAO.getAllPrecosByModalidadeId(id);
         } catch (SQLException ex) {
             Logger.getLogger(PrecoAtividadeService.class.getName()).log(Level.SEVERE, null, ex);
             return null;

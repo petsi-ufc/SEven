@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-    Document   : Atividade.xml
-    Created on : 14 de Maio de 2010, 14:27
-    Author     : caio/adriano/lucas
-    Description:
-        Purpose of the document follows.
--->
-
-
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
@@ -25,10 +16,7 @@
         <result property="horarios" column="id" select="getHorariosByAtividadeId"/>
     </resultMap>
 
-
-    <select id="getAtividadesByOrganizadorId" resultClass="atividade"
-            parameterClass="long"
-            resultMap="atividadeResult">
+    <select id="getAtividadesByOrganizadorId" resultClass="atividade" parameterClass="long" resultMap="atividadeResult">
         SELECT *
         FROM evento.perfil, evento.papel
         WHERE perfil.usuario_id = #var# AND
@@ -36,27 +24,19 @@
         papel.id = 4;
     </select>
 
-    <select id="getAtividadeById" resultClass="atividade"
-            parameterClass="long"
-            resultMap="atividadeResult">
+    <select id="getAtividadeById" resultClass="atividade" parameterClass="long" resultMap="atividadeResult">
         SELECT a.id, a.local, a.nome, a.evento_id, a.vagas, a.tipo_id, ta.nome as tipo_nome, a.aceita_insc
         FROM evento.tipo_atividade ta,evento.atividade a
-        WHERE
-        ta.id=a.tipo_id and a.id=#var#;
+        WHERE ta.id=a.tipo_id and a.id=#var#;
     </select>
 
-    <select id="getAtividadesByEventoId" resultClass="atividade"
-            parameterClass="long"
-            resultMap="atividadeResult">
+    <select id="getAtividadesByEventoId" resultClass="atividade" parameterClass="long" resultMap="atividadeResult">
         SELECT a.id, a.local, a.nome, a.evento_id, a.vagas, a.tipo_id, ta.nome as tipo_nome, a.aceita_insc
         FROM evento.atividade a, evento.tipo_atividade ta
-        WHERE a.tipo_id=ta.id and
-        a.evento_id=#var#;
+        WHERE a.tipo_id=ta.id and a.evento_id=#var#;
     </select>
 
-    <select id="getAtividadesByInscricaoId" resultClass="atividade"
-            parameterClass="long"
-            resultMap="atividadeResult">
+    <select id="getAtividadesByInscricaoId" resultClass="atividade" parameterClass="long" resultMap="atividadeResult">
         SELECT a.id, "local", a.nome, a.evento_id, a.vagas, a.tipo_id, ta.nome as tipo_nome, a.aceita_insc
         FROM evento.atividade as a, evento.tipo_atividade as ta, evento.inscricao_atividade as ia WHERE a.tipo_id=ta.id and a.id = ia.atividade_id and ia.inscricao_id=#var#;
     </select>
@@ -98,9 +78,6 @@
         </iterate>
 
     </update>
-    
-    
-    
 
     <delete id="deleteAtividade" parameterClass="long">
         DELETE FROM evento.atividade_horario WHERE atividade_id=#var#;
@@ -115,8 +92,4 @@
         SELECT MAX(id)
         FROM evento.atividade;
     </select>
-    
-    
-  
-
 </sqlMap>

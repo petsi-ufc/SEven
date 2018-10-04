@@ -1,18 +1,16 @@
 package br.ufc.pet.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
-/*
- * @author Escritorio projetos
- */
 public class ResponsavelAtividade extends Perfil{
-    private ArrayList<Atividade> atividades;
+    private List<Atividade> atividades;
 
     public ArrayList<Atividade> getAtividades() {
-        return atividades;
+        return new ArrayList<>(atividades);
     }
 
-    public void setAtividades(ArrayList<Atividade> atividades) {
+    public void setAtividades(List<Atividade> atividades) {
         this.atividades = atividades;
     }
 

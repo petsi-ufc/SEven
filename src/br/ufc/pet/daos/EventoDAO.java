@@ -6,9 +6,6 @@ import br.ufc.pet.entity.Evento;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * @author Escritorio projetos
- */
 public class EventoDAO {
 
     public void insert(Evento evento) throws SQLException{
@@ -63,5 +60,4 @@ public class EventoDAO {
         }
         return id + 1L;
     }
-
 }

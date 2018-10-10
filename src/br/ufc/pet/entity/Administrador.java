@@ -34,19 +34,15 @@ public class Administrador extends Perfil {
         this.eventos = eventos;
     }
 
-
     public void removerEventoById(Long id){
-
-            for(int i=0;i<eventos.size();i++){
-                if(eventos.get(i).getId().equals(id)){
-                eventos.remove(i);
-                }
-            }
-
-    }
-    public void addEvento(Evento en){
-    	eventos.add(en);
+	    for(int i=0;i<eventos.size();i++){
+		    if(eventos.get(i).getId().equals(id)){
+		    	eventos.remove(i);
+		    }
+	    }
     }
     
+    public void addEvento(Evento en){
+    	eventos.add(en);
+    }   
 }
- 

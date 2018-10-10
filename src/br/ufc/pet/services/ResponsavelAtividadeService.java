@@ -41,6 +41,5 @@ public class ResponsavelAtividadeService {
             Logger.getLogger(ResponsavelAtividadeService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
-
     }
 }

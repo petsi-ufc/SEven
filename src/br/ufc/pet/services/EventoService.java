@@ -8,9 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
-/*
- * @author fernando
- */
 public class EventoService {
 
     private final EventoDAO eventoDAO;
@@ -128,7 +125,6 @@ public class EventoService {
             ex.printStackTrace();
             return null;
         }
-
     }
     
     public Evento getEventoByNome(String nome) {
@@ -139,6 +135,5 @@ public class EventoService {
             ex.printStackTrace();
             return null;
         }
-
     }
 }

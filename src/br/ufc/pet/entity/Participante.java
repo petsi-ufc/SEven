@@ -36,4 +36,3 @@ public class Participante extends Perfil implements Comparable<Participante> {
         return this.getUsuario().getNome().compareToIgnoreCase(p.getUsuario().getNome());
     }
 }
- 

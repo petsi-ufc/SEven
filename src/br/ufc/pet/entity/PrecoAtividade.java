@@ -30,4 +30,3 @@ public class PrecoAtividade extends Bean{
         this.valor = valor;
     }
 }
- 

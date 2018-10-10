@@ -6,9 +6,6 @@ import br.ufc.pet.entity.MovimentacaoFinanceira;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * @author fernando
- */
 public class MovimentacaoFinanceiraDAO {
 
     public void insert(MovimentacaoFinanceira movimentacaoFinanceira) throws SQLException {

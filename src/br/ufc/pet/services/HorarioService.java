@@ -11,8 +11,6 @@ public class HorarioService {
 
     private final HorarioDAO horarioDAO;
     
-    //Atributos de data usados para conferir se os horários cadastrados estão entre
-    //os dias de evento.
     private Date dataEventoFim;
     private Date dataEventoInicio;
     
@@ -97,8 +95,7 @@ public class HorarioService {
         }
     }
     
-    //Esse método confere se a data do horário informado pelo organizador está
-    //entre a data de inicio e de fim do evento.
+    //Esse método confere se a data do horário informado pelo organizador está entre a data de inicio e de fim do evento.
     public boolean conferirHorario(Horario horario){
         if(dataEventoFim != null && dataEventoInicio != null){
            if(horario.getDia().before(dataEventoFim) && 

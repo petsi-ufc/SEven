@@ -6,10 +6,6 @@ import br.ufc.pet.daos.AdministradorDAO;
 import br.ufc.pet.entity.Administrador;
 import br.ufc.pet.util.UtilSeven;
 
-
-/*
- * @author fernando
- */
 public class AdministradorService {
 
     private final AdministradorDAO administradorDAO;

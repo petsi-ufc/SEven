@@ -12,7 +12,5 @@ public class ResponsavelAtividade extends Perfil{
 
     public void setAtividades(List<Atividade> atividades) {
         this.atividades = atividades;
-    }
-
-    
+    }    
 }

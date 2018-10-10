@@ -1,8 +1,5 @@
 package br.ufc.pet.entity;
 
-/*
- * @author mardson
- */
 public class Utility {
   private Long part_id;
   private Long event_id;
@@ -22,7 +19,4 @@ public class Utility {
     public void setPart_id(Long part_id) {
         this.part_id = part_id;
     }
-
-  
-
 }

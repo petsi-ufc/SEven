@@ -37,5 +37,4 @@
         SELECT MAX(id)
         FROM evento.evento;
     </select>
-
 </sqlMap>

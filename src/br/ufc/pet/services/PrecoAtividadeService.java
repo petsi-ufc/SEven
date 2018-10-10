@@ -34,7 +34,6 @@ public class PrecoAtividadeService {
             ex.printStackTrace();
             return false;
         }
-
     }
 
     public boolean excluir(PrecoAtividade precoAtividade){
@@ -45,7 +44,6 @@ public class PrecoAtividadeService {
             ex.printStackTrace();
             return false;
         }
-
     }
 
     public ArrayList<PrecoAtividade> getPrecosByModalidadeId(Long id) {

@@ -49,10 +49,6 @@ public class ParticipanteService {
         try {
             Participante part = participanteDAO.getByUsuarioId(id);
             if (part != null) {
-//                UsuarioService us = new UsuarioService();
-//                part.setUsuario(us.getById(part.getUsuario().getId()));
-//                InscricaoService is = new InscricaoService();
-//                part.setInscricoes(is.getAllInscricaoByParticipanteId(part.getId()));
                 return part;
             }
         } catch (SQLException ex) {
@@ -65,10 +61,6 @@ public class ParticipanteService {
         try {
             Participante part = participanteDAO.getById(id);
             if (part != null) {
-//                UsuarioService us = new UsuarioService();
-//                part.setUsuario(us.getById(part.getUsuario().getId()));
-//                InscricaoService is = new InscricaoService();
-//                part.setInscricoes(is.getAllInscricaoByParticipanteId(part.getUsuario().getId()));
                 return part;
             }
         } catch (SQLException ex) {
@@ -80,14 +72,8 @@ public class ParticipanteService {
     public ArrayList<Participante> getParticipanteByAtividadeId(Long id) {
         try {
             ArrayList<Participante> parts = participanteDAO.getParticipantesByAtividadeId(id);
-//            for (Participante p : parts) {
-//                p.setUsuario(us.getById(p.getUsuario().getId()));
-//                InscricaoService is = new InscricaoService();
-//                p.setInscricoes(is.getAllInscricaoByParticipanteId(p.getId()));
-//            }
-            //Ordena por ordem alfabetica
             Collections.sort(parts);
-        return parts;
+            return parts;
         } catch (SQLException ex) {
             return null;
         }
@@ -96,14 +82,8 @@ public class ParticipanteService {
     public ArrayList<Participante> getParticipanteByAtividadeIdQuites(Long id) {
         try {
             ArrayList<Participante> parts = participanteDAO.getParticipanteByAtividadeIdQuites(id);
-//            for (Participante p : parts) {
-//                p.setUsuario(us.getById(p.getUsuario().getId()));
-//                InscricaoService is = new InscricaoService();
-//                p.setInscricoes(is.getAllInscricaoByParticipanteId(p.getId()));
-//            }
-            //Ordena por ordem alfabetica
             Collections.sort(parts);
-        return parts;
+            return parts;
         } catch (SQLException ex) {
             return null;
         }
@@ -112,11 +92,6 @@ public class ParticipanteService {
     public ArrayList<Participante> getParticipantesQuitesByEventoId(Long id) {
         try {
             ArrayList<Participante> parts = participanteDAO.getParticipantesQuistesByEventoID(id);
-//            for (Participante p : parts) {
-//                p.setUsuario(us.getById(p.getUsuario().getId()));
-//                InscricaoService is = new InscricaoService();
-//                p.setInscricoes(is.getAllInscricaoByParticipanteId(p.getId()));
-//            }
             return parts;
         } catch (SQLException ex) {
             return null;
@@ -126,11 +101,6 @@ public class ParticipanteService {
     public ArrayList<Participante> getParticipantesByEventoId(Long id) {
         try {
             ArrayList<Participante> parts = participanteDAO.getParticipantesByEventoID(id);
-//            for (Participante p : parts) {
-//                p.setUsuario(us.getById(p.getUsuario().getId()));
-//                InscricaoService is = new InscricaoService();
-//                p.setInscricoes(is.getAllInscricaoByParticipanteId(p.getId()));
-//            }
             return parts;
         } catch (SQLException ex) {
             return null;
@@ -140,8 +110,6 @@ public class ParticipanteService {
     public String getSenhaPart(Long id){
          try {
             Participante part = participanteDAO.getByUsuarioId(id);
-//            UsuarioService us = new UsuarioService();
-//            part.setUsuario(us.getById(part.getUsuario().getId())); 
             return part.getUsuario().getSenha();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -153,8 +121,6 @@ public class ParticipanteService {
          try {
             Participante part = participanteDAO.getByUsuarioId(id);
             if (part != null) {
-//                UsuarioService us = new UsuarioService();
-//                part.setUsuario(us.getById(part.getUsuario().getId()));
                 part.getUsuario().setSenha(UtilSeven.criptografar(senha));
                 us.updateSenhaUser(part.getUsuario());
             }

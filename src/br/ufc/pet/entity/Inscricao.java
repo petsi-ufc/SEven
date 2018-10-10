@@ -100,7 +100,5 @@ public class Inscricao extends Bean {
     @Override
     public String toString() {
         return "Inscricao{" + "confirmada=" + confirmada + ", dataRealizada=" + dataRealizada + ", dataPagamento=" + dataPagamento + ", evento=" + evento + ", atividades=" + atividades + ", participante=" + participante + ", modalidade=" + modalidade + ", codigoValidacaoCertificado=" + codigoValidacaoCertificado + '}';
-    }
-    
+    }   
 }
- 

@@ -38,8 +38,4 @@ public class Perfil extends Bean{
     public boolean getStatus() {
         return status;
     }
-
-
-
 }
- 

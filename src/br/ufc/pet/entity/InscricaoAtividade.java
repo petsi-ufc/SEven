@@ -1,22 +1,14 @@
 package br.ufc.pet.entity;
 
-
-/*
- * @author anderson
- */
-
 public class InscricaoAtividade extends Bean{
 
     private Long atividadeId;
     private Long inscricaoId;
-    private boolean confirmaCertificado;
-
-    
+    private boolean confirmaCertificado;  
     
     public InscricaoAtividade(){
     
     }
-    
     
     public Long getAtividadeId() {
         return atividadeId;
@@ -40,6 +32,5 @@ public class InscricaoAtividade extends Bean{
     
     public void setConfirmaCertificado(boolean confirmaCertificado) {
         this.confirmaCertificado = confirmaCertificado;
-    }
-    
+    }   
 }

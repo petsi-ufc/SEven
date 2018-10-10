@@ -13,9 +13,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * @author fernando
- */
 public class InscricaoService {
 
     private final InscricaoDAO inscricaoDAO;
@@ -186,9 +183,6 @@ public class InscricaoService {
                 //en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
             }
             return a;
-
-
-
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -217,7 +211,6 @@ public class InscricaoService {
     
     
     public void confirmaLiberacaoCertificadoAtividade(InscricaoAtividade a ){
-    
     
     }
 }

@@ -31,5 +31,4 @@
         from evento.atividade as a, evento.atividade_responsavel as ar, evento.perfil as pe
         where a.id=ar.atividade_id and pe.id=ar.responsavel_id and a.id=#var#  and pe.papel_id=4;
     </select>
-
 </sqlMap> 

@@ -1,11 +1,12 @@
 package br.ufc.pet.services;
 
-import br.ufc.pet.daos.HorarioDAO;
-import br.ufc.pet.entity.Horario;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+
+import br.ufc.pet.daos.HorarioDAO;
+import br.ufc.pet.entity.Horario;
 
 public class HorarioService {
 
@@ -106,6 +107,15 @@ public class HorarioService {
           return false;
         }
         return false;
+    }
+    
+    //Metodo statico
+    
+    public static ArrayList<Horario> getHorariosByEvento(Long idEvento) {
+        br.ufc.pet.services.HorarioService hs = new br.ufc.pet.services.HorarioService();
+        ArrayList<Horario> horarios=hs.getHorariosByEventoId(idEvento);
+        Collections.sort(horarios);
+        return horarios;
     }
     
 }

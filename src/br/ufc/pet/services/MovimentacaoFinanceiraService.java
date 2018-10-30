@@ -6,9 +6,6 @@ import br.ufc.pet.entity.MovimentacaoFinanceira;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * @author fernando
- */
 public class MovimentacaoFinanceiraService {
 
     private final MovimentacaoFinanceiraDAO movimentacaoFinanceiraDAO;
@@ -35,7 +32,6 @@ public class MovimentacaoFinanceiraService {
             ex.printStackTrace();
             return false;
         }
-
     }
 
     public boolean atualizar(MovimentacaoFinanceira movimentacaofinanceira) {
@@ -46,7 +42,6 @@ public class MovimentacaoFinanceiraService {
             ex.printStackTrace();
             return false;
         }
-
     }
 
     public MovimentacaoFinanceira getById(Long id) {

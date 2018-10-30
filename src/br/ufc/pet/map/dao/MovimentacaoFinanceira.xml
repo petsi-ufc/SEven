@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-    Document   : MovimentacaoFinanceira.xml
-    Created on : 14 de Maio de 2010, 14:29
-    Author     : fernando
-    Description:
-        Purpose of the document follows.
--->
-
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
     "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
@@ -38,15 +30,13 @@
         DELETE FROM evento.movimentacao WHERE id = #var#;
     </delete>
 
-    <select id="getMovimentacaoFinanceiraById" resultClass="movimentacaoFinanceira"
-    	parameterClass="long" resultMap="movimentacaoFinanceiraResult">
+    <select id="getMovimentacaoFinanceiraById" resultClass="movimentacaoFinanceira" parameterClass="long" resultMap="movimentacaoFinanceiraResult">
         SELECT id, data, valor, tipo, descricao, evento_id
         FROM evento.movimentacao
         WHERE id = #var#;
     </select>
 
-    <select id="getAllMovimentacaoFinanceiraByEventoId" resultClass="movimentacaoFinanceira"
-    	parameterClass="long" resultMap="movimentacaoFinanceiraResult">
+    <select id="getAllMovimentacaoFinanceiraByEventoId" resultClass="movimentacaoFinanceira" parameterClass="long" resultMap="movimentacaoFinanceiraResult">
         SELECT id, data, valor, tipo, descricao, evento_id
         FROM evento.movimentacao
         WHERE evento_id = #var#;
@@ -56,5 +46,4 @@
         SELECT MAX(id)
         FROM evento.movimentacao;
     </select>
-    
 </sqlMap>

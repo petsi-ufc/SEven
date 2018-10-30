@@ -40,7 +40,6 @@ public class UsuarioService {
                 return null;
             }
         }
-
         return null;
     }
 

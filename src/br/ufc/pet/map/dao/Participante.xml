@@ -26,9 +26,7 @@
         values (#id#, #dataCriacao#, #status#, #usuario.id#, 1);
     </insert>
 
-    <select id="getParticipanteByUsuarioId" resultClass="participante"
-            parameterClass="long"
-            resultMap="participanteResult">
+    <select id="getParticipanteByUsuarioId" resultClass="participante" parameterClass="long" resultMap="participanteResult">
         SELECT *
         FROM evento.perfil, evento.papel
         WHERE perfil.usuario_id = #var# AND
@@ -36,9 +34,7 @@
         papel.id = 1;
     </select>
 
-    <select id="getParticipanteById" resultClass="participante"
-            parameterClass="long"
-            resultMap="participanteResult">
+    <select id="getParticipanteById" resultClass="participante" parameterClass="long" resultMap="participanteResult">
         SELECT *
         FROM evento.perfil, evento.papel
         WHERE perfil.id = #var# AND
@@ -46,21 +42,16 @@
         papel.id = 1;
     </select>
 
-    <select id="getParticipanteByAtividadeId" resultClass="participante"
-            parameterClass="long"
-            resultMap="participanteResult">
+    <select id="getParticipanteByAtividadeId" resultClass="participante" parameterClass="long" resultMap="participanteResult">
         select p.id, p.usuario_id,p.papel_id, p.data_criacao, p.status
         from evento.perfil as p, evento.inscricao as insc,
         evento.inscricao_atividade as insc_ati
         where p.id=insc.participante_id and
         insc.id= insc_ati.inscricao_id and
         insc_ati.atividade_id=#var#;
-
     </select>
     
-    <select id="getParticipanteByAtividadeIdQuites" resultClass="participante"
-            parameterClass="long"
-            resultMap="participanteResult">
+    <select id="getParticipanteByAtividadeIdQuites" resultClass="participante" parameterClass="long" resultMap="participanteResult">
         select p.id, p.usuario_id,p.papel_id, p.data_criacao, p.status
         from evento.perfil as p, evento.inscricao as insc,
         evento.inscricao_atividade as insc_ati
@@ -68,12 +59,9 @@
         insc.id= insc_ati.inscricao_id and
         insc_ati.atividade_id=#var# and 
         insc.confirmada=true;
-
     </select>
 
-    <select id="getParticipantesQuitesByEventoId" resultClass="participante"
-            parameterClass="long"
-            resultMap="participanteResult">
+    <select id="getParticipantesQuitesByEventoId" resultClass="participante" parameterClass="long" resultMap="participanteResult">
         SELECT  p.id,p.data_criacao,p.status, p.usuario_id
         FROM evento.perfil p,evento.inscricao i WHERE
         p.id=i.participante_id AND
@@ -81,14 +69,9 @@
         i.evento_id=#var#;
     </select>
     
-    <select id="getParticipantesByEventoId" resultClass="participante"
-            parameterClass="long"
-            resultMap="participanteResult">
+    <select id="getParticipantesByEventoId" resultClass="participante" parameterClass="long" resultMap="participanteResult">
         SELECT  p.id,p.data_criacao,p.status, p.usuario_id
         FROM evento.perfil p,evento.inscricao i WHERE
         p.papel_id=1 and p.id=i.participante_id and i.evento_id=#var#;
     </select>
-    
-    
-
 </sqlMap>

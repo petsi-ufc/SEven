@@ -2,14 +2,6 @@ package br.ufc.pet.entity;
 
 import java.util.Date;
 
-/**
- * Regra de Negocio 1 - Uma movimenta��o financeira s� poder� ser criada por um organizador 
- * com permiss�o para manipular o m�culo financeiro.
- * Regra de Negocio 2 - As atividades s� poder�o ser manipuladas por organizadores com
- * permiss�o para isso.
- * Regra de Negocio 3 - Uma movimenta��o financeira pode ser um d�bito ou um credito
- * 
- */
 public class MovimentacaoFinanceira extends Bean {
 
     private Date data;
@@ -66,17 +58,17 @@ public class MovimentacaoFinanceira extends Bean {
     public void setValor(double valor) {
         this.valor = valor;
     }
+    
     private MovimentacaoFinanceira AlterarMovimentacaoFinanceira(String descricao,Double valor, Date data, String tipo, Evento evento, Organizador organizador){
-    MovimentacaoFinanceira movfinan = new MovimentacaoFinanceira();
-
-    movfinan.setDescricao(descricao);
-    movfinan.setValor(valor);
-    movfinan.setData(data);
-    movfinan.setTipo(tipo);
-    movfinan.setEvento(evento);
-    movfinan.setOrganizador(organizador);
-
-    return movfinan;
+	    MovimentacaoFinanceira movfinan = new MovimentacaoFinanceira();
+	
+	    movfinan.setDescricao(descricao);
+	    movfinan.setValor(valor);
+	    movfinan.setData(data);
+	    movfinan.setTipo(tipo);
+	    movfinan.setEvento(evento);
+	    movfinan.setOrganizador(organizador);
+	
+	    return movfinan;
     }
 }
- 

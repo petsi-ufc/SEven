@@ -4,6 +4,8 @@ import br.ufc.pet.entity.Evento;
 import br.ufc.pet.entity.Horario;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.HorarioService;
+import br.ufc.pet.util.UtilSeven;
+
 //import br.ufc.pet.util.UtilSeven;
 //import java.sql.Time;
 //import java.text.ParseException;
@@ -66,12 +68,12 @@ public class CmdAdicionarHorario implements Comando {
                     session.setAttribute("erro", "Digite números inteiros nos campos para hora e minuto!");
                     return "/org/organ_add_horario.jsp";
                 }
-//                if (UtilSeven.validaData(data) != true) {
-//                    session.setAttribute("erro", "Data Inválida, digite no formato dd/mm/aaaa");
-//                    return "/org/organ_add_horario.jsp";
-//                } else {
-//                    novoH.setDia(UtilSeven.treatToDate(data));
-//                }
+                if (UtilSeven.validaData(data) != true) {
+                    session.setAttribute("erro", "Data Inválida, digite no formato dd/mm/aaaa");
+                    return "/org/organ_add_horario.jsp";
+                } else {
+                    novoH.setDia(UtilSeven.treatToDate(data));
+                }
                 
                 novoH.setEventoId(evento.getId());
                 

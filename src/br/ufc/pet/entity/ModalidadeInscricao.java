@@ -1,14 +1,12 @@
 package br.ufc.pet.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
-/*
- * @author Escritorio projetos
- */
 public class ModalidadeInscricao extends Bean{
-private String tipo;
-private ArrayList<PrecoAtividade> precoAtividades;
-private Long eventoId;
+	private String tipo;
+	private List<PrecoAtividade> precoAtividades;
+	private Long eventoId;
 
     public Long getEventoId() {
         return eventoId;
@@ -19,10 +17,10 @@ private Long eventoId;
     }
 
     public ArrayList<PrecoAtividade> getPrecoAtividades() {
-        return precoAtividades;
+        return new ArrayList<>(precoAtividades);
     }
 
-    public void setPrecoAtividades(ArrayList<PrecoAtividade> precoAtividades) {
+    public void setPrecoAtividades(List<PrecoAtividade> precoAtividades) {
         this.precoAtividades = precoAtividades;
     }
 

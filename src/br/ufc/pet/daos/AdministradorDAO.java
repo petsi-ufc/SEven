@@ -5,13 +5,9 @@ import br.ufc.pet.entity.Administrador;
 
 import java.sql.SQLException;
 
-/*
- * @author Escritorio projetos
- */
 public class AdministradorDAO {
 
     public Administrador getByUsuarioId(Long id) throws SQLException {
-        Administrador admin = (Administrador) PostgresMapConfig.getSqlMapClient().queryForObject("getAdministradorByUsuarioId", id);
-        return admin;
+        return (Administrador) PostgresMapConfig.getSqlMapClient().queryForObject("getAdministradorByUsuarioId", id);
     }
 }

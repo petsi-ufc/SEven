@@ -7,9 +7,6 @@ import br.ufc.pet.entity.InscricaoAtividade;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * @author fernando
- */
 public class AtividadeDAO {
 
     public void insert(Atividade atividade) throws SQLException {
@@ -46,22 +43,15 @@ public class AtividadeDAO {
         Long id = (Long) PostgresMapConfig.getSqlMapClient().queryForObject("getMaxIdAtividade");
         if (id == null) {
             id = 0L;
-
         }
         return id + 1L;
     }
     
-    
-    
-     public void confirmaLiberacaoCertificadoAtividade(InscricaoAtividade utility) throws SQLException{
-        
-         
-         PostgresMapConfig.getSqlMapClient().update("confirmaLiberacaoCertificadoAtividade", utility);
-         
-     }
+    public void confirmaLiberacaoCertificadoAtividade(InscricaoAtividade utility) throws SQLException{     
+    	PostgresMapConfig.getSqlMapClient().update("confirmaLiberacaoCertificadoAtividade", utility);
+    }
      
-     public ArrayList<InscricaoAtividade> getIncricaoAtividadeByInscricao(Long idInscricao) throws SQLException{
-         return (ArrayList<InscricaoAtividade>) PostgresMapConfig.getSqlMapClient().queryForList("getInscricaoAtividadeByInscricao", idInscricao);
-     }
-             
+    public ArrayList<InscricaoAtividade> getIncricaoAtividadeByInscricao(Long idInscricao) throws SQLException{
+    	return (ArrayList<InscricaoAtividade>) PostgresMapConfig.getSqlMapClient().queryForList("getInscricaoAtividadeByInscricao", idInscricao);
+    }
 }

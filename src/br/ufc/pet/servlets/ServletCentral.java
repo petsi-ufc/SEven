@@ -124,17 +124,8 @@ public class ServletCentral extends HttpServlet {
 
         try {
 
-            String tela = comando.executa(request, response);
-            /*if (tela != null && !tela.trim().equals("")) {
-                if (debug) {
-                    System.out.print("Page:" + page + " - ");
-                    System.out.print("IP Máquima" + request.getRemoteAddr() + " - ");
-                }
-                response.sendRedirect(request.getContextPath() + page);
-            }
-                response.sendRedirect(request.getContextPath() + tela);
-            }*/
-            response.sendRedirect(request.getContextPath() + tela);
+            String page = comando.executa(request, response);
+            response.sendRedirect(request.getContextPath() + page);
         } catch (Exception e) {
             response.sendRedirect(request.getContextPath() + "/index.jsp");
             e.printStackTrace();

@@ -7,10 +7,15 @@ import br.ufc.pet.entity.ResponsavelAtividade;
 import br.ufc.pet.entity.TipoAtividade;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.AtividadeService;
+import br.ufc.pet.services.HorarioService;
+import br.ufc.pet.services.InscricaoService;
 import br.ufc.pet.services.ResponsavelAtividadeService;
 import br.ufc.pet.services.TipoAtividadeService;
 import br.ufc.pet.util.UtilSeven;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,15 +28,26 @@ public class CmdAdicionarAtividade implements Comando {
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-        AtividadeService as = new AtividadeService();
+        AtividadeService atividadeService = new AtividadeService();
         String nome = request.getParameter("nome_atividade");
         String local = request.getParameter("local");
         String vagas = request.getParameter("vagas");
         String tipo = request.getParameter("tipo_id");
-
-        Atividade ativ = (Atividade) session.getAttribute("atividade");
+        long vagasOcupadas = 0;
+        
+        InscricaoService inscricaoService = new InscricaoService();
+        
+        Atividade atividade = (Atividade) session.getAttribute("atividade");
         String aceitaInscricao = request.getParameter("inscritivel");
         Atividade ativTemp = new Atividade();
+        
+        if(atividade != null){
+            try{
+                vagasOcupadas = inscricaoService.getInscritosByAtividadeId(atividade.getId());
+            }catch (SQLException ex) {
+                Logger.getLogger(CmdAdicionarAtividade.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         if (nome != null) {
             ativTemp.setNome(nome);
         } else {
@@ -58,11 +74,12 @@ public class CmdAdicionarAtividade implements Comando {
             return "/org/organ_add_atividades.jsp";
         } else {
             boolean inscritivel = true;
-            Evento ev = (Evento) session.getAttribute("evento");
+            Evento evento = (Evento) session.getAttribute("evento");
 
             //Coletar os horários selecionados para o evento
             ArrayList<Horario> horariosEscolhidos = new ArrayList<Horario>();
-            for (Horario h : UtilSeven.getHorariosByEvento(ev.getId())) {
+            HorarioService horarios = new HorarioService();
+            for (Horario h : horarios.getHorariosByEventoId(evento.getId())) {
                 String horario = request.getParameter("cb_horario_" + h.getId());
                 if (horario != null) {
                     horariosEscolhidos.add(h);
@@ -110,36 +127,63 @@ public class CmdAdicionarAtividade implements Comando {
                 }
             }
 
-            if (ativ == null) {
-                ativ = new Atividade();
-                ativ.setAceitaInscricao(inscritivel);
-                ativ.setNome(nome);
-                ativ.setLocal(local);
-                ativ.setVagas(Integer.parseInt(vagas));
-                ativ.setTipo(ta);
-                ativ.setEvento(ev);
-                ativ.setResponsaveis(resps);
+            if (atividade == null) {       
+             
+                atividade = new Atividade();
+                atividade.setAceitaInscricao(inscritivel);
+                atividade.setNome(nome);
+               
+                atividade.setLocal(local);                
+                atividade.setTipo(ta);
+                atividade.setEvento(evento);
+                atividade.setResponsaveis(resps); 
+                
+                int numeroVagas = Integer.parseInt(vagas);
+                
+                if(numeroVagas > 0 && numeroVagas <= 1000){
+                   atividade.setVagas(numeroVagas);
+                } else {
+                    session.setAttribute("erro", "Número de vagas deve ser diverente de Zero e menor ou igual a Mil.");
+                    return "/org/organ_add_atividades.jsp";
+                }
 
                 //horarios escolhidos sao setados na ativadade
-                ativ.setHorarios(horariosEscolhidos);
-                if (as.adicionar(ativ)) {
+                atividade.setHorarios(horariosEscolhidos);                
+                if (atividadeService.adicionar(atividade)) {
                     //inclui atividade no evento da sessão
-                    ev.getAtividades().add(ativ);
+                    evento.getAtividades().add(atividade);
                     session.setAttribute("sucesso", "Atividade cadastrada com sucesso!");
                     return "/org/organ_gerenciar_atividades.jsp";
                 }
+                             
             } else {
-                ativ.setAceitaInscricao(inscritivel);
-                ativ.setNome(nome);
-                ativ.setLocal(local);
-                ativ.setVagas(Integer.parseInt(vagas));
-                ativ.setTipo(ta);
-                ativ.setEvento(ev);
-                ativ.setResponsaveis(resps);
-
+                atividade.setAceitaInscricao(inscritivel);
+                atividade.setNome(nome);
+                atividade.setLocal(local);
+                atividade.setTipo(ta);
+                atividade.setEvento(evento);
+                atividade.setResponsaveis(resps);
+                
                 //horarios escolhidos sao setados na ativadade
-                ativ.setHorarios(horariosEscolhidos);
-                if (as.atualizar(ativ)) {
+                atividade.setHorarios(horariosEscolhidos);
+                
+                int numeroVagas = Integer.parseInt(vagas);
+                
+                if(vagasOcupadas <= numeroVagas){
+                
+                    if(numeroVagas > 0 && numeroVagas <= 1000){
+                       atividade.setVagas(numeroVagas);
+                    } else {
+                        session.setAttribute("erro", "Número de vagas deve ser diverente de Zero e menor ou igual a Mil.");
+                        return "/org/organ_add_atividades.jsp";
+                    }
+                     
+                } else{
+                    session.setAttribute("erro", "Número de inscritos maior que número de vagas");
+                    return "/org/organ_add_atividades.jsp";
+                } 
+                
+                if (atividadeService.atualizar(atividade)) {
                     session.removeAttribute("atividade");
                     session.setAttribute("sucesso", "Atividade atualizada com sucesso!");
                     return "/org/organ_gerenciar_atividades.jsp";

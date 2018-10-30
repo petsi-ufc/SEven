@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * @author fernando
- */
 public class ResponsavelAtividadeService {
 
     private final ResponsavelAtividadeDAO responsavelAtividadeDAO;
@@ -21,10 +18,7 @@ public class ResponsavelAtividadeService {
 
     public ResponsavelAtividade getByUsuarioId(Long id) {
         try {
-            ResponsavelAtividade res = responsavelAtividadeDAO.getByUsuarioId(id);
-            if (res != null) {
-                return res;
-            }
+            return responsavelAtividadeDAO.getByUsuarioId(id);
         } catch (SQLException ex) {
             Logger.getLogger(ParticipanteService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -33,8 +27,7 @@ public class ResponsavelAtividadeService {
 
     public ArrayList<ResponsavelAtividade> getResponsavelAtividade(Long ativId) {
         try {
-            ArrayList<ResponsavelAtividade> responsaveis = responsavelAtividadeDAO.geResponsaveisByAtividade(ativId);
-            return responsaveis;
+            return responsavelAtividadeDAO.geResponsaveisByAtividade(ativId);
         } catch (SQLException ex) {
             return null;
         }
@@ -44,11 +37,9 @@ public class ResponsavelAtividadeService {
         try {
             responsavelAtividadeDAO.insert(responsavel);
             return true;
-
         } catch (SQLException ex) {
             Logger.getLogger(ResponsavelAtividadeService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
-
     }
 }

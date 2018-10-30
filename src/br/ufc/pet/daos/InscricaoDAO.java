@@ -30,6 +30,7 @@ public class InscricaoDAO {
     public Inscricao getParticipanteEvento(Utility utility) throws SQLException {
         return (Inscricao) PostgresMapConfig.getSqlMapClient().queryForObject("getInscricaoByParticipanteEvento", utility);
     }
+    
     public ArrayList<Inscricao> getByParticipanteId(Long id) throws SQLException {
         return (ArrayList<Inscricao>) PostgresMapConfig.getSqlMapClient().queryForList("getInscricaoByParticipanteId", id);
     }

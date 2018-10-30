@@ -6,7 +6,7 @@ import java.util.List;
 public class Participante extends Perfil implements Comparable<Participante> {
 
     private List<Inscricao> inscricoes;
-
+    
     public Participante() {
         this.inscricoes = new ArrayList<Inscricao>();
     }

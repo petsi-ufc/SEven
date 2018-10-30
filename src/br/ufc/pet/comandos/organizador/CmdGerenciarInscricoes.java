@@ -31,6 +31,11 @@ public class CmdGerenciarInscricoes implements Comando {
             InscricaoService is = new InscricaoService();
             session.setAttribute("evento", e);
             List<Inscricao> i = is.getAllInscricoesByEventoId(e.getId());
+            
+            for(Inscricao inscricao : i){
+            	System.out.println(inscricao.getParticipante().getUsuario().getNome() + " ------ " + inscricao.getParticipante().getId() + " ----- " + inscricao.getEvento().getNome());
+            }
+            
             for (int j = 0; j < i.size(); j++) {
                 Inscricao o = i.get(j);
                 for (int k = j + 1; k < i.size(); k++) {

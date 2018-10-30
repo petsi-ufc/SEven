@@ -29,7 +29,6 @@ public class InscricaoService {
         try {
             inscricaoDAO.insert(inscricao);
             //fazer com que as atividades no array de atividades insiram uma tupla na tabela inscricao_atividade
-
             return true;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -53,7 +52,6 @@ public class InscricaoService {
             if (en != null) {
                 en.setEvento(eS.getEventoById(en.getEvento().getId()));
                 en.setParticipante(pS.getById(en.getParticipante().getId()));
-//                System.out.println(en.getParticipante() == null);
                 en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
                 en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
             }
@@ -70,7 +68,6 @@ public class InscricaoService {
             if (en != null) {
                 en.setEvento(eS.getEventoById(en.getEvento().getId()));
                 en.setParticipante(pS.getById(en.getParticipante().getId()));
-//                System.out.println(en.getParticipante() == null);
                 en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
                 en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
             }
@@ -88,7 +85,6 @@ public class InscricaoService {
             if (en != null) {
                 en.setEvento(eS.getEventoById(en.getEvento().getId()));
                 en.setParticipante(pS.getById(en.getParticipante().getId()));
-//                System.out.println(en.getParticipante() == null);
                 en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
                 en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
             }
@@ -135,20 +131,14 @@ public class InscricaoService {
         }
         return a;
     }
-
+    
     public ArrayList<Inscricao> getAllInscricoesByEventoId(Long id) {
-        ArrayList<Inscricao> a = null;
         try {
-            a = inscricaoDAO.getInscricoesByEventoId(id);
+            return inscricaoDAO.getInscricoesByEventoId(id);
         } catch (SQLException ex) {
             Logger.getLogger(InscricaoService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
-        Evento evento = eS.getEventoById(id);
-        for (Inscricao en : a) {
-            en.setEvento(evento);
-            en.setParticipante(pS.getById(en.getParticipante().getId()));
-        }
-        return a;
     }
 
     public boolean excluir(Long id) {
@@ -180,7 +170,6 @@ public class InscricaoService {
                 en.setEvento(eS.getEventoById(en.getEvento().getId()));
                 en.setParticipante(pS.getById(en.getParticipante().getId()));
                 en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
-                //en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
             }
             return a;
         } catch (SQLException ex) {
@@ -208,7 +197,6 @@ public class InscricaoService {
         }
         return false;
     }
-    
     
     public void confirmaLiberacaoCertificadoAtividade(InscricaoAtividade a ){
     

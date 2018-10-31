@@ -6,7 +6,7 @@ import java.util.List;
 public class Participante extends Perfil implements Comparable<Participante> {
 
     private List<Inscricao> inscricoes;
-
+    
     public Participante() {
         this.inscricoes = new ArrayList<Inscricao>();
     }
@@ -16,7 +16,7 @@ public class Participante extends Perfil implements Comparable<Participante> {
     }
 
     public void setInscricoes(List<Inscricao> inscricoes) {
-        this.inscricoes = new ArrayList<>(inscricoes);
+        this.inscricoes = inscricoes;
     }
 
     public Inscricao getInscricaoByEvento(Long eveId) {

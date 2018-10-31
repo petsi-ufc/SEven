@@ -2,6 +2,7 @@ package br.ufc.pet.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Inscricao extends Bean {
 
@@ -9,7 +10,7 @@ public class Inscricao extends Bean {
     private Date dataRealizada;
     private Date dataPagamento;
     private Evento evento;
-    private ArrayList<Atividade> atividades;
+    private List<Atividade> atividades;
     private Participante participante;
     private ModalidadeInscricao modalidade;
     private String codigoValidacaoCertificado;
@@ -20,16 +21,15 @@ public class Inscricao extends Bean {
         this.evento = new Evento();
         this.modalidade = new ModalidadeInscricao();
         this.participante = new Participante();
-        this.atividades=new ArrayList<Atividade>();
+        this.atividades = new ArrayList<Atividade>();
         this.emailP = participante.getUsuario().getEmail();
-
     }
 
     public ArrayList<Atividade> getAtividades() {
-        return atividades;
+        return new ArrayList<>(atividades);
     }
 
-    public void setAtividades(ArrayList<Atividade> atividades) {
+    public void setAtividades(List<Atividade> atividades) {
         this.atividades = atividades;
     }
 

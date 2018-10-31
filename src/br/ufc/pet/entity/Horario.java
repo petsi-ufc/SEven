@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Horario extends Bean implements Comparable<Horario> {
     
-    public static int DIA_EM_MINUTOS = 1440;
+    public static final int DIA_EM_MINUTOS = 1440;
 
     private Date dia;
     private int horaInicial;
@@ -131,8 +131,6 @@ public class Horario extends Bean implements Comparable<Horario> {
             }
             return 0;
         }
-
         return dia;
-
     }    
 }

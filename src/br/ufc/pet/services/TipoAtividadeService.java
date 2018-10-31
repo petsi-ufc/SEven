@@ -80,4 +80,13 @@ public class TipoAtividadeService {
             return false;
         }
     }
+    
+    public static TipoAtividade getTiposDeAtividadeById(Long id) {
+        TipoAtividadeService ts = new TipoAtividadeService();
+        return ts.getTipoDeAtividadeById(id);
+    }
+    public static ArrayList<TipoAtividade> getTiposDeAtividadeByEventoId(Long id) {
+        TipoAtividadeService ts = new TipoAtividadeService();
+        return ts.getTiposDeAtividadesByEventoId(id);
+    } 
 }

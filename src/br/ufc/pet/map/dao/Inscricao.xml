@@ -10,9 +10,10 @@
         <result property="dataRealizada" column="data_realizacao"/>
         <result property="confirmada" column="confirmada"/>
         <result property="dataPagamento" column="data_pagamento"/>
-        <result property="participante.id" column="participante_id"/>
-        <result property="evento.id" column="evento_id"/>
-        <result property="modalidade.id" column="modalidade_id"/>
+        <result property="atividades" column="id" select="getAtividadesByInscricaoId"/>
+        <result property="participante" column="participante_id" select="getParticipanteById"/>
+        <result property="evento" column="evento_id" select="getEventoById"/>
+        <result property="modalidade" column="modalidade_id" select="getModalidadeInscricaoById"/>
         <result property="codigoValidacaoCertificado" column="codigo_validacao_certificado"/>
     </resultMap>
 
@@ -35,38 +36,33 @@
         WHERE  id=#id#;
     </update>
 
-    <select id="getInscricaoById" resultClass="inscricao" parameterClass="long"
-            resultMap="inscricaoResult">
+    <select id="getInscricaoById" resultClass="inscricao" parameterClass="long" resultMap="inscricaoResult">
         SELECT id, data_realizacao, confirmada, data_pagamento, participante_id,
         evento_id, modalidade_id, codigo_validacao_certificado
         FROM evento.inscricao WHERE id=#var#;
     </select>
     
-    <select id="getInscricaoByCodigoValidacao" resultClass="inscricao" parameterClass="java.lang.String"
-            resultMap="inscricaoResult">
+    <select id="getInscricaoByCodigoValidacao" resultClass="inscricao" parameterClass="java.lang.String" resultMap="inscricaoResult">
         SELECT id, data_realizacao, confirmada, data_pagamento, participante_id,
         evento_id, modalidade_id, codigo_validacao_certificado
         FROM evento.inscricao WHERE codigo_validacao_certificado=#var#;
     </select>
 
-    <select id="getInscricaoByParticipanteId" resultClass="inscricao" parameterClass="long"
-            resultMap="inscricaoResult">
+    <select id="getInscricaoByParticipanteId" resultClass="inscricao" parameterClass="long" resultMap="inscricaoResult">
         SELECT inscricao.id, data_realizacao, confirmada, data_pagamento, participante_id,
         evento_id, modalidade_id, codigo_validacao_certificado
         FROM evento.inscricao, evento.evento
         WHERE evento.id=inscricao.evento_id and evento.ativo=true and inscricao.participante_id=#var#;
     </select>
 
-    <select id="getInscricaoByParticipanteEvento" resultClass="inscricao" parameterClass="utility"
-            resultMap="inscricaoResult">
+    <select id="getInscricaoByParticipanteEvento" resultClass="inscricao" parameterClass="utility" resultMap="inscricaoResult">
         SELECT inscricao.id, data_realizacao, confirmada, data_pagamento, participante_id,
         evento_id, modalidade_id, codigo_validacao_certificado
         FROM evento.inscricao, evento.evento
         WHERE evento.id=inscricao.evento_id and evento.ativo=true and inscricao.participante_id=#part_id# and evento_id=#event_id#;
     </select>
 
-    <select id="getInscricaoByEventoId" resultClass="inscricao" parameterClass="long"
-            resultMap="inscricaoResult">
+    <select id="getInscricaoByEventoId" resultClass="inscricao" parameterClass="long" resultMap="inscricaoResult">
         SELECT id, data_realizacao, confirmada, data_pagamento, participante_id,
         evento_id, modalidade_id, codigo_validacao_certificado
         FROM evento.inscricao WHERE evento_id=#var#;
@@ -119,13 +115,10 @@
         WHERE evento_id = #var#;
     </update>
 
-    <select id="getAllInscricoesByAuxInscricao" resultClass="inscricao" parameterClass="inscricao"
-            resultMap="inscricaoResult">
-
+    <select id="getAllInscricoesByAuxInscricao" resultClass="inscricao" parameterClass="inscricao" resultMap="inscricaoResult">
         SELECT ins.id, data_realizacao, confirmada, data_pagamento, participante_id,
         evento_id, modalidade_id, codigo_validacao_certificado
         FROM evento.inscricao ins , evento.perfil p, evento.usuario u
         WHERE ins.evento_id=#evento.id# and p.usuario_id=u.id and ins.participante_id= p.id and u.nome ILIKE '%$participante.usuario.nome$%';
-
     </select>
 </sqlMap>

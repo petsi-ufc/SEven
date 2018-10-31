@@ -6,9 +6,6 @@ import br.ufc.pet.entity.Horario;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * @author Escritorio projetos
- */
 public class HorarioDAO {
 
     public void insert(Horario horario) throws SQLException {
@@ -48,6 +45,4 @@ public class HorarioDAO {
     public void update(Horario horario) throws SQLException {
         PostgresMapConfig.getSqlMapClient().update("updateHorario", horario);
     }
-
-    
 }

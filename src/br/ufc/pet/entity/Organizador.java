@@ -42,4 +42,3 @@ public class Organizador extends Perfil {
         return null;
     }
 }
- 

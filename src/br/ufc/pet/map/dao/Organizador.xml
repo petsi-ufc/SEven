@@ -46,5 +46,4 @@
         perfil.papel_id = papel.id AND
         papel.id = 2 AND organizacao.evento_id=#var#;
    </select>
-
 </sqlMap>

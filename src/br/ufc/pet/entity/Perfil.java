@@ -36,4 +36,3 @@ public class Perfil extends Bean{
         this.usuario = usuario;
     }
 }
- 

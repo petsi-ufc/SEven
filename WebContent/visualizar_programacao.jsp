@@ -7,9 +7,11 @@
 <%@page import="br.ufc.pet.entity.Participante"%>
 <%@page import="br.ufc.pet.entity.Administrador"%>
 <%@page import="br.ufc.pet.entity.Horario"%>
+<%@page import="br.ufc.pet.services.HorarioService"%>
 <%@page import="br.ufc.pet.entity.ResponsavelAtividade"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Date"%>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html  ng-app="app">
@@ -46,7 +48,7 @@
                 <!--<div id="content_left"></div>-->
                 <h1 class="title-register">Programação <br/> <%=evento.getNome()%></h1>
                 <%                    
-                    ArrayList<Horario> horarios = br.ufc.pet.util.UtilSeven.getHorariosByEvento(evento.getId());
+                    ArrayList<Horario> horarios = HorarioService.getHorariosByEvento(evento.getId());
                    
                     String[] arrS = new String[horarios.size()];
                     for(int i = 0; i < horarios.size(); i++){

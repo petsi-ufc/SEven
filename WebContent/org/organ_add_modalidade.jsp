@@ -2,6 +2,8 @@
 <%@page import="br.ufc.pet.entity.ModalidadeInscricao"%>
 <%@page import="br.ufc.pet.util.UtilSeven"%>
 <%@page import="br.ufc.pet.entity.TipoAtividade"%>
+<%@page import=" br.ufc.pet.services.TipoAtividadeService"%>
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="br.ufc.pet.entity.Evento"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,7 +24,7 @@
     </head>
     <body>
         <%            Evento e = (Evento) session.getAttribute("evento");
-            ArrayList<TipoAtividade> tipos = UtilSeven.getTiposDeAtividadeByEventoId(e.getId());
+            ArrayList<TipoAtividade> tipos = TipoAtividadeService.getTiposDeAtividadeByEventoId(e.getId());
             ModalidadeInscricao modalidade = (ModalidadeInscricao) session.getAttribute("atualiazar_modalidade");
             session.removeAttribute("atualiazar_modalidade");
             Double valor = 0.0;

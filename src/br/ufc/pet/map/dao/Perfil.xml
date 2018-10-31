@@ -7,11 +7,11 @@
 
     <resultMap id="perfilResult" class="perfil">
         <result property="id" column="id"/>
-        <result property="usuario.id" column="usuario_id"/>
-        <!--<result property="papel.id" column="papel_id"/>-->
-        <result property="dataCriacao" column="data_criacao,"/>
+        <result property="usuario" column="usuario_id" select="getUsuarioById"/>
+        <result property="dataCriacao" column="data_criacao"/>
         <result property="status" column="status"/>
     </resultMap>
+    
     <resultMap id="participanteResult" class="participante">
         <result property="usuario.id" column="id"/>
         <result property="usuario.nome" column="nome"/>
@@ -65,30 +65,6 @@
         <result property="dataCriacao" column="data_criacao"/>
         <result property="status" column="status"/>
     </resultMap>
-
-    <select id="getPerfilParticipanteById" resultClass="participante" parameterClass="java.lang.Long" resultMap="participanteResult">
-    SELECT usuario.id,usuario.nome,usuario.senha, usuario.fone,usuario.data_nasc, usuario.email,
-        usuario.sexo, usuario.instituicao, usuario.rua, usuario.bairro,usuario.num_casa, usuario.cidade,
-        usuario.uf, perfil.data_criacao, perfil.status
-    FROM evento.usuario, evento.perfil, evento.papel
-    WHERE evento.usuario.id=evento.perfil.usuario_id AND evento.papel.nome='PARTICIPANTE' AND evento.perfil.papel_id=evento.papel.id AND usuario.id=#var# ;
-    </select>
-    
-    <select id="getPerfilOrganizadorById" resultClass="organizador"	parameterClass="java.lang.Long" resultMap="organizadorResult">
-    SELECT usuario.id,usuario.nome,usuario.senha, usuario.fone,usuario.data_nasc, usuario.email,
-        usuario.sexo, usuario.instituicao, usuario.rua, usuario.bairro,usuario.num_casa, usuario.cidade,
-        usuario.uf, perfil.data_criacao, perfil.status
-    FROM evento.usuario, evento.perfil, evento.papel
-    WHERE evento.usuario.id=evento.perfil.usuario_id AND evento.papel.nome='ORGANIZADOR' AND evento.perfil.papel_id=evento.papel.id AND usuario.id=#var# ;
-    </select>
-
-    <select id="getPerfilAdministradorById" resultClass="administrador" parameterClass="java.lang.Long"	resultMap="administradorResult">
-    SELECT usuario.id,usuario.nome,usuario.senha, usuario.fone,usuario.data_nasc, usuario.email,
-        usuario.sexo, usuario.instituicao, usuario.rua, usuario.bairro,usuario.num_casa, usuario.cidade,
-        usuario.uf, perfil.data_criacao, perfil.status
-    FROM evento.usuario, evento.perfil, evento.papel
-    WHERE evento.usuario.id=evento.perfil.usuario_id AND evento.papel.nome='ADMINISTRADOR' AND evento.perfil.papel_id=evento.papel.id AND usuario.id=#var# ;
-    </select>
 
     <select id="getMaxIdPerfil" resultClass="long">
         SELECT MAX(id)

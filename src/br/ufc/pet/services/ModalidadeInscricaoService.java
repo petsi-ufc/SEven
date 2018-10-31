@@ -61,4 +61,11 @@ public class ModalidadeInscricaoService {
             return null;
         }
     }
+    
+    //Metodo statico
+    
+    public static ArrayList<ModalidadeInscricao> getModalidadeByEvento(Long idEvento) {
+        br.ufc.pet.services.ModalidadeInscricaoService mis = new br.ufc.pet.services.ModalidadeInscricaoService();
+        return mis.getModalidadesInscricaoByEventoId(idEvento);
+    }
 }

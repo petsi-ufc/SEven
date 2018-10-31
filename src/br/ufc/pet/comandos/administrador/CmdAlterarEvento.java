@@ -60,11 +60,11 @@ public class CmdAlterarEvento implements Comando {
             session.setAttribute("erro", "Preencha todos os campos");
             session.setAttribute("evento", E);
             return "/admin/edit_events.jsp";
-        } else if (UtilSeven.validaData(inicioInscricao) != true || UtilSeven.validaData(fimInscricao) != true
+        } /*else if (UtilSeven.validaData(inicioInscricao) != true || UtilSeven.validaData(fimInscricao) != true
                 || !UtilSeven.validaData(inicioEvento) || !UtilSeven.validaData(fimEvento)) {
             session.setAttribute("erro", "Data Inválida, digite no formato dd/mm/aaaa");
             return "/admin/edit_events.jsp";
-        } else {
+        }*/ else {
 
             try{
                 limiteDeAtividades = Integer.parseInt(limiteDeAtividadesPorParticipante);

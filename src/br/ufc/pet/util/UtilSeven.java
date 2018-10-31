@@ -1,22 +1,17 @@
 package br.ufc.pet.util;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 import br.ufc.pet.entity.Atividade;
-import br.ufc.pet.entity.Horario;
 import br.ufc.pet.entity.ModalidadeInscricao;
 import br.ufc.pet.entity.PrecoAtividade;
 import br.ufc.pet.entity.TipoAtividade;
 import br.ufc.pet.services.ModalidadeInscricaoService;
-import br.ufc.pet.services.TipoAtividadeService;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.mail.MessagingException;
 import sun.misc.BASE64Encoder;
 
 /*
@@ -45,7 +40,7 @@ public class UtilSeven {
         }
         return "";
     }
-
+    
     public static String treatToLongString(Date param) {
         if (param != null) {
             SimpleDateFormat formatter = new SimpleDateFormat("EEEE, dd 'de' MMMM 'de' yyyy");
@@ -61,70 +56,25 @@ public class UtilSeven {
             String data = formatter.format(param);
             return data;
         }
-        return "";
-    }
-    public static ArrayList<TipoAtividade> getTiposDeAtividade() {
-        TipoAtividadeService ts = new TipoAtividadeService();
-        return ts.getTiposDeAtividades();
-    }
-
-    public static TipoAtividade getTiposDeAtividadeById(Long id) {
-        TipoAtividadeService ts = new TipoAtividadeService();
-        return ts.getTipoDeAtividadeById(id);
-    }
- public static ArrayList<TipoAtividade> getTiposDeAtividadeByEventoId(Long id) {
-        TipoAtividadeService ts = new TipoAtividadeService();
-        return ts.getTiposDeAtividadesByEventoId(id);
-    }
-    public static ArrayList<Horario> getHorarios() {
-        br.ufc.pet.services.HorarioService hs = new br.ufc.pet.services.HorarioService();
-        return hs.getAllHorarios();
-    }
-
-    public static ArrayList<Horario> getHorariosByEvento(Long idEvento) {
-        br.ufc.pet.services.HorarioService hs = new br.ufc.pet.services.HorarioService();
-        ArrayList<Horario> horarios=hs.getHorariosByEventoId(idEvento);
-        Collections.sort(horarios);
-        return horarios;
-    }
-    public static ArrayList<ModalidadeInscricao> getModalidadeByEvento(Long idEvento) {
-        br.ufc.pet.services.ModalidadeInscricaoService mis = new br.ufc.pet.services.ModalidadeInscricaoService();
-        return mis.getModalidadesInscricaoByEventoId(idEvento);
+           return "";
     }
 
     public static boolean validaData(String data) {
-
-
-        if (data.length() != 10) {
-            return false;
-
-        }
-
-        for (int i = 0; i < data.length(); i++) {
-
-//            System.out.println(data.charAt(i));
-            if (i != 2 && i != 5) {
-                if (isNumeber(data.charAt(i)) != true) {
-                    return false;
-                }
-
-            }
-            if ((i == 2 || i == 5) && data.charAt(i) != '/') {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private static boolean isNumeber(char a) {
-
-        if (a == '0' || a == '1' || a == '2' || a == '3' || a == '4' || a == '5'
-                || a == '6' || a == '7' || a == '8' || a == '9') {
-            return true;
-        }
-        return false;
-    }
-
+    	
+    	@SuppressWarnings("unused")
+		Date dataConvertida = null;
+    	SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+    	try {
+    		format.setLenient(false);
+    		dataConvertida = format.parse(data);
+    		return true;
+    	
+    	} catch (ParseException e) {
+			e.printStackTrace();
+			return false;
+		}	
+    }    
+    
     public static String precoFormater(double preco) {
         java.text.DecimalFormat df = new java.text.DecimalFormat("R$ ###,###,##0.00");
         return df.format(preco);
@@ -148,7 +98,7 @@ public class UtilSeven {
         }
         return preco;
     }
-
+    
     public static double getPrecoTipo(TipoAtividade t, ModalidadeInscricao m) {
         if (m == null || t==null) {
             return 0;
@@ -163,7 +113,7 @@ public class UtilSeven {
         }
         return preco;
     }
-    
+ 
     
     public static String criptografar(String senha) {
         try {
@@ -175,10 +125,6 @@ public class UtilSeven {
             ns.printStackTrace();
             return senha;
         }
-        
-    }//fim do método
-
-    public static void main(String args[]) throws SQLException{
         
     }
 }

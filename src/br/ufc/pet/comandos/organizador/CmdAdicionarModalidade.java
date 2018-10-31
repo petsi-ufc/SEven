@@ -6,6 +6,7 @@ import br.ufc.pet.entity.PrecoAtividade;
 import br.ufc.pet.entity.TipoAtividade;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.ModalidadeInscricaoService;
+import br.ufc.pet.services.TipoAtividadeService;
 import br.ufc.pet.util.UtilSeven;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,7 @@ public class CmdAdicionarModalidade implements Comando {
             return "/org/organ_add_modalidade.jsp";
         }
         
-        ArrayList<TipoAtividade> tipos = UtilSeven.getTiposDeAtividadeByEventoId(evento.getId());
+        ArrayList<TipoAtividade> tipos = TipoAtividadeService.getTiposDeAtividadeByEventoId(evento.getId());
         String id = request.getParameter("id_atualizar");
         
         

@@ -49,12 +49,12 @@ public class InscricaoService {
     public Inscricao getInscricaoById(long id) {
         try {
             Inscricao en = inscricaoDAO.getById(id);
-            if (en != null) {
-                en.setEvento(eS.getEventoById(en.getEvento().getId()));
-                en.setParticipante(pS.getById(en.getParticipante().getId()));
-                en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
-                en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
-            }
+//            if (en != null) {
+//                en.setEvento(eS.getEventoById(en.getEvento().getId()));
+//                en.setParticipante(pS.getById(en.getParticipante().getId()));
+//                en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
+//                en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
+//            }
             return en;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -65,12 +65,12 @@ public class InscricaoService {
     public Inscricao getInscricaoByCodigoValidacao(String codigo){
         try {
             Inscricao en = inscricaoDAO.getByCodigoValidacao(codigo);
-            if (en != null) {
-                en.setEvento(eS.getEventoById(en.getEvento().getId()));
-                en.setParticipante(pS.getById(en.getParticipante().getId()));
-                en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
-                en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
-            }
+//            if (en != null) {
+//                en.setEvento(eS.getEventoById(en.getEvento().getId()));
+//                en.setParticipante(pS.getById(en.getParticipante().getId()));
+//                en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
+//                en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
+//            }
             return en;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -82,12 +82,12 @@ public class InscricaoService {
     public Inscricao getInscricaoParticipanteEvento(Utility utility) {
         try {
             Inscricao en = inscricaoDAO.getParticipanteEvento(utility);
-            if (en != null) {
-                en.setEvento(eS.getEventoById(en.getEvento().getId()));
-                en.setParticipante(pS.getById(en.getParticipante().getId()));
-                en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
-                en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
-            }
+//            if (en != null) {
+//                en.setEvento(eS.getEventoById(en.getEvento().getId()));
+//                en.setParticipante(pS.getById(en.getParticipante().getId()));
+//                en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
+//                en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
+//            }
             return en;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -99,12 +99,12 @@ public class InscricaoService {
     public ArrayList<Inscricao> getAllInscricaoByParticipanteId(Long id) {
         try {
             ArrayList<Inscricao> a = inscricaoDAO.getByParticipanteId(id);
-            for (Inscricao en : a) {
-                en.setEvento(eS.getEventoById(en.getEvento().getId()));
-                en.setParticipante(pS.getById(id));
-                en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
-                en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
-            }
+//            for (Inscricao en : a) {
+//                en.setEvento(eS.getEventoById(en.getEvento().getId()));
+//                en.setParticipante(pS.getById(id));
+//                en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
+//                en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
+//            }
             return a;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -120,16 +120,18 @@ public class InscricaoService {
         ArrayList<Inscricao> a = null;
         try {
             a = inscricaoDAO.getInscricoesByAtividadeId(id);
+            return a;
         } catch (SQLException ex) {
             Logger.getLogger(InscricaoService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+            
         }
-        for (Inscricao en : a) {
-            en.setEvento(eS.getEventoById(en.getEvento().getId()));
-            en.setParticipante(pS.getById(en.getParticipante().getId()));
-            en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
-            en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
-        }
-        return a;
+//        for (Inscricao en : a) {
+//            en.setEvento(eS.getEventoById(en.getEvento().getId()));
+//            en.setParticipante(pS.getById(en.getParticipante().getId()));
+//            en.setModalidade(mS.getModalidadeInscricaoById(en.getModalidade().getId()));
+//            en.setAtividades(aS.getAtividadeByInscricaoId(en.getId()));
+//        }
     }
     
     public ArrayList<Inscricao> getAllInscricoesByEventoId(Long id) {

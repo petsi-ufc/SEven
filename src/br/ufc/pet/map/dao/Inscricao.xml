@@ -10,9 +10,10 @@
         <result property="dataRealizada" column="data_realizacao"/>
         <result property="confirmada" column="confirmada"/>
         <result property="dataPagamento" column="data_pagamento"/>
-        <result property="participante.id" column="participante_id"/>
-        <result property="evento.id" column="evento_id"/>
-        <result property="modalidade.id" column="modalidade_id"/>
+        <result property="atividades" column="id" select="getAtividadesByInscricaoId"/>
+        <result property="participante" column="participante_id" select="getParticipanteById"/>
+        <result property="evento" column="evento_id" select="getEventoById"/>
+        <result property="modalidade" column="modalidade_id" select="getModalidadeInscricaoById"/>
         <result property="codigoValidacaoCertificado" column="codigo_validacao_certificado"/>
     </resultMap>
 

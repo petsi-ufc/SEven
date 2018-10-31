@@ -16,7 +16,7 @@ public class Participante extends Perfil implements Comparable<Participante> {
     }
 
     public void setInscricoes(List<Inscricao> inscricoes) {
-        this.inscricoes = new ArrayList<>(inscricoes);
+        this.inscricoes = inscricoes;
     }
 
     public Inscricao getInscricaoByEvento(Long eveId) {

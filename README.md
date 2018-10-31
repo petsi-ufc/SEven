@@ -1,5 +1,7 @@
 # SEven
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3a8af3814b274b31ba0a1fbb80032fb5)](https://app.codacy.com/app/MateusPinheiro/SEven?utm_source=github.com&utm_medium=referral&utm_content=petufc/SEven&utm_campaign=Badge_Grade_Dashboard)
+
 ## Configurações para o sistema SEven
 
 ### Preparação para a importação do SEven

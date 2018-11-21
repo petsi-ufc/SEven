@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import br.ufc.pet.util.UtilSeven;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import javax.mail.MessagingException;
 
 /*
@@ -166,7 +162,7 @@ public class CmdAdicionarEvento implements Comando {
                 } else {
                     session.setAttribute("erro", "Erro ao adicionar evento");
                 }
-             } else { //Alterar
+             } else {
                 admin.removerEventoById(E.getId());
                 E.setNome(nomeEvento);
                 E.setSigla(siglaEvento);
@@ -188,26 +184,14 @@ public class CmdAdicionarEvento implements Comando {
                 EventoService es = new EventoService();
                 es.atualizar(E);
                 admin.addEvento(E);
-                E.setOrganizadores(es.getEventoById(E.getId()).getOrganizadores());
                 
-                for (Organizador org : E.getOrganizadores()) {
-					System.out.println(org.getUsuario().getEmail());
-				}
-                
-                for(Organizador org : E.getOrganizadores() ){
+                for(Organizador org : E.getOrganizadores()){
                     try {
                         String msg = "O administrador alterou os dados do evento, por favor verifique os horários das atividades!";
-                        System.out.println("Email organizador: "+org.getUsuario().getEmail());
                         SendMail.sendMail(org.getUsuario().getEmail(), "(SEVEN) Alteração no evento "+E.getNome(), msg);
                     } catch (MessagingException ex) {
                         System.out.println("Erro ao enviar o email para os organizadores: "+ex);
-                    } catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+                    }
                 }
                 session.setAttribute("sucesso", "Evento alterado com sucesso");
 

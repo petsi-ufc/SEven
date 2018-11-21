@@ -6,9 +6,6 @@ import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.EventoService;
 import br.ufc.pet.util.SendMail;
 import br.ufc.pet.util.UtilSeven;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -121,13 +118,7 @@ public class CmdAlterarPeriodoInscricaoeEvento implements Comando {
                 SendMail.sendMail(org.getUsuario().getEmail(), "(SEVEN) Alteração de data no evento "+evento.getNome(), msg);
             } catch (MessagingException ex) {
                System.out.println("ERRO AO ENVIAR E-MAIL");
-            } catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            }
         }
         
         session.setAttribute("sucesso", "Modificação realizada com sucesso");

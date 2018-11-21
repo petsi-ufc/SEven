@@ -14,7 +14,7 @@ public class Evento extends Bean {
     private String descricao;
     private boolean ativo;
     private List<Atividade> atividades;
-    private ArrayList<Organizador> organizadores;
+    private List<Organizador> organizadores;
     private Administrador administrador;
     private ArrayList<MovimentacaoFinanceira> movimentacoesFinanceiras;
     private Date inicioPeriodoEvento;
@@ -62,7 +62,6 @@ public class Evento extends Bean {
     }
 
     public ArrayList<Atividade> getAtividades() {
-
         return new ArrayList<>(atividades);
     }
 
@@ -121,11 +120,11 @@ public class Evento extends Bean {
     }
 
     public ArrayList<Organizador> getOrganizadores() {
-        return organizadores;
+        return new ArrayList<>(organizadores);
     }
 
     public void setOrganizadores(List<Organizador> organizador) {
-        this.organizadores = new ArrayList<>(organizador);
+        this.organizadores = organizador;
     }
 
     public String getSigla() {

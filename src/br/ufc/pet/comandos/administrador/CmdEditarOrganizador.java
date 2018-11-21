@@ -57,7 +57,7 @@ public class CmdEditarOrganizador implements Comando {
             if (orgaS.update(orga)) {
                 if (organizaEvento == false) {
                     orgaS.adicionar(orga);
-                    org.setOrganizacoes(orga);
+                    org.setOrganizacaoAdd(orga);
                     en.addOrganizador(org);
                 }
                 session.setAttribute("sucesso", "Alterado com sucesso!");
@@ -72,7 +72,7 @@ public class CmdEditarOrganizador implements Comando {
             Organizacao orga = criarOrganizacao(org, en, manterAtividade, manterModulo);
             if (orgS.adicionar(org)) {
                 if (orgaS.adicionar(orga)) {
-                    org.setOrganizacoes(orga);
+                    org.setOrganizacaoAdd(orga);
                     en.addOrganizador(org);
                     session.setAttribute("sucesso", "Alterado com sucesso!");
                     return "/admin/organ_listar_movimentacao.jsp";

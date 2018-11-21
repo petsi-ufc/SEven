@@ -1,14 +1,16 @@
 package br.ufc.pet.comandos.organizador;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import br.ufc.pet.entity.Evento;
 import br.ufc.pet.entity.Inscricao;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.EventoService;
 import br.ufc.pet.services.InscricaoService;
-import java.util.ArrayList;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /*
  * @author Caio
@@ -28,7 +30,7 @@ public class CmdGerenciarInscricoes implements Comando {
         if (e != null) {
             InscricaoService is = new InscricaoService();
             session.setAttribute("evento", e);
-            ArrayList<Inscricao> i = is.getAllInscricoesByEventoId(e.getId());
+            List<Inscricao> i = is.getAllInscricoesByEventoId(e.getId());            
             for (int j = 0; j < i.size(); j++) {
                 Inscricao o = i.get(j);
                 for (int k = j + 1; k < i.size(); k++) {

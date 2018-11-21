@@ -69,7 +69,7 @@ public class CmdAddOrganizadorNovo implements Comando {
 
             session.setAttribute("erro", "Preencha todos os campos!");
             return "/admin/admin_add_organ_novo.jsp";
-        } else if (UtilSeven.validaData(data) != true) {
+        } else if (UtilSeven.validaData(data)) {
             session.setAttribute("erro", "Data inválida, digite no formato dd/mm/aaaa!");
             return "/admin/admin_add_organ_novo.jsp";
         } else if (!senha.equals(ConfSenha)) {
@@ -92,7 +92,7 @@ public class CmdAddOrganizadorNovo implements Comando {
                     OrganizacaoService orgaS = new OrganizacaoService();
                     if (orgaS.adicionar(orga)) {
                         en.addOrganizador(o);
-                        o.setOrganizacoes(orga);
+                        o.setOrganizacaoAdd(orga);
                         session.setAttribute("sucesso", "Cadastrado com sucesso!");
                         session.removeAttribute("nome");
                         session.removeAttribute("rua");

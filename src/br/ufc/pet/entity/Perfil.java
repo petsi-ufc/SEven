@@ -35,11 +35,4 @@ public class Perfil extends Bean{
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    public boolean getStatus() {
-        return status;
-    }
-
-
-
 }
- 

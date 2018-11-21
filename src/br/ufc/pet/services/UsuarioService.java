@@ -36,7 +36,7 @@ public class UsuarioService {
             
             if (perfil != null && perfil.getUsuario().validaSenha(usuarioEntrada.getSenha())) {
                 return perfil;
-            }else if (perfil == null || perfil.getStatus() == false) {
+            }else if (perfil == null || perfil.isStatus() == false) {
                 return null;
             }
         }

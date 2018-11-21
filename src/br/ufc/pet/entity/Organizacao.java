@@ -1,8 +1,5 @@
 package br.ufc.pet.entity;
 
-/*
- * @author Escritorio projetos
- */
 public class Organizacao extends Bean {
 
     private Organizador organizador;
@@ -44,12 +41,4 @@ public class Organizacao extends Bean {
     public void setManterModuloFinanceiro(boolean manterModuloFinanceiro) {
         this.manterModuloFinanceiro = manterModuloFinanceiro;
     }
-    public boolean getManterAtividade() {
-        return manterAtividade;
-    }
-    public boolean getManterModuloFinanceiro() {
-        return manterModuloFinanceiro;
-    }
-
-    
 }

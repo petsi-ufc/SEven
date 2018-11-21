@@ -2,9 +2,6 @@ package br.ufc.pet.entity;
 
 import java.io.Serializable;
 
-/*
- * @author Escritorio projetos
- */
 public class Bean implements Serializable{
     protected Long id;
 
@@ -15,6 +12,4 @@ public class Bean implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
-    
-
 }

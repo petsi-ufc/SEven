@@ -7,6 +7,7 @@ import br.ufc.pet.entity.ResponsavelAtividade;
 import br.ufc.pet.entity.TipoAtividade;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.AtividadeService;
+import br.ufc.pet.services.HorarioService;
 import br.ufc.pet.services.InscricaoService;
 import br.ufc.pet.services.ResponsavelAtividadeService;
 import br.ufc.pet.services.TipoAtividadeService;
@@ -77,7 +78,8 @@ public class CmdAdicionarAtividade implements Comando {
 
             //Coletar os horários selecionados para o evento
             ArrayList<Horario> horariosEscolhidos = new ArrayList<Horario>();
-            for (Horario h : UtilSeven.getHorariosByEvento(evento.getId())) {
+            HorarioService horarios = new HorarioService();
+            for (Horario h : horarios.getHorariosByEventoId(evento.getId())) {
                 String horario = request.getParameter("cb_horario_" + h.getId());
                 if (horario != null) {
                     horariosEscolhidos.add(h);

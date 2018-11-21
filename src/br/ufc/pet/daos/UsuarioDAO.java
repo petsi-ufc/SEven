@@ -6,9 +6,6 @@ import br.ufc.pet.entity.Usuario;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * @author Escritorio projetos
- */
 public class UsuarioDAO {
 
     public void inserir(Usuario usuario) throws SQLException {

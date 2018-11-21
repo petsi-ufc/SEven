@@ -91,7 +91,6 @@ public class Atividade extends Bean {
                 return entrou;
             }
         }
-
         return entrou;
     }
     

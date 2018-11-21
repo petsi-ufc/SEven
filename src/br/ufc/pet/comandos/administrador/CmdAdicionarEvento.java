@@ -84,11 +84,11 @@ public class CmdAdicionarEvento implements Comando {
             session.setAttribute("erro", "Preencha todos os campos");
             session.setAttribute("evento", E);
             return "/admin/add_events.jsp";
-        } else if (UtilSeven.validaData(inicioInscricao) != true || UtilSeven.validaData(fimInscricao) != true
+        }else if (UtilSeven.validaData(inicioInscricao) != true || UtilSeven.validaData(fimInscricao) != true
                 || !UtilSeven.validaData(inicioEvento) || !UtilSeven.validaData(fimEvento)) {
-            session.setAttribute("erro", "Data Inválida, digite no formato dd/mm/aaaa");
+            session.setAttribute("erro", "Data Inválida, digite no formato dia/mês/ano");
             return "/admin/add_events.jsp";
-        } else {
+        }else {
             
 //            try{
                 limiteDeAtividades = Integer.parseInt(limiteDeAtividadesPorParticipante);

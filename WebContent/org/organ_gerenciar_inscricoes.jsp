@@ -2,16 +2,19 @@
 <%@page import="br.ufc.pet.entity.Atividade"%>
 <%@page import="br.ufc.pet.entity.Inscricao"%>
 <%@page import="br.ufc.pet.entity.Organizador"%>
+<%@page import="br.ufc.pet.entity.Participante"%>
+<%@page import="br.ufc.pet.entity.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList" %>
 <%@include file="../ErroAutenticacaoUser.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%    br.ufc.pet.entity.Evento e = (br.ufc.pet.entity.Evento) session.getAttribute("evento");
+<%  br.ufc.pet.entity.Evento e = (br.ufc.pet.entity.Evento) session.getAttribute("evento");
     Organizador organizador = (Organizador) session.getAttribute("user");
     ArrayList<Inscricao> inscricoesNoEvento = (ArrayList<Inscricao>) session.getAttribute("inscricoes");
-    String estado = null;
+    String estado = "";
+    String nome = "";
     int flag = 0;
     ArrayList<Atividade> ats = e.getAtividades();
 %>
@@ -112,9 +115,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% for (Inscricao i : inscricoesNoEvento) {%>
-                                    <tr>
-                                        <td><%= i.getParticipante().getUsuario().getNome()%></td>
+                                  <% for (Inscricao i : inscricoesNoEvento) {%>
+                                    <tr><%  if (i.getParticipante() != null){
+                                    			Participante p = i.getParticipante();
+                                    			if(p.getUsuario() != null){
+                                    				Usuario us = p.getUsuario();
+                                    				nome = us.getNome();
+                                    			}	
+                                    } %>
+                                        <td><%=nome%></td>
                                         <%
                                             if (i.isConfirmada()) {
                                                 estado = "Efetuado";

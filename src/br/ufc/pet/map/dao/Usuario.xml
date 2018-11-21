@@ -87,5 +87,4 @@
         SELECT MAX(id)
         FROM evento.usuario;
     </select>
-
 </sqlMap>

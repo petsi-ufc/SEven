@@ -1,32 +1,30 @@
 package br.ufc.pet.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Organizador extends Perfil {
 
-    private ArrayList<Organizacao> organizacoes;
+    private List<Organizacao> organizacoes;
 
     public Organizador() {
-
-        this.organizacoes = new ArrayList<Organizacao>();
+        
     }
 
     public ArrayList<Organizacao> getOrganizacoes() {
-        return organizacoes;
+        return new ArrayList<>(organizacoes);
     }
 
-    public void setOrganizacoes(ArrayList<Organizacao> organizacoes) {
+    public void setOrganizacoes(List<Organizacao> organizacoes) {
         this.organizacoes = organizacoes;
     }
 
-    public void setOrganizacoes(Organizacao organizacao) {
+    public void setOrganizacaoAdd(Organizacao organizacao) {
         this.organizacoes.add(organizacao);
     }
 
     public boolean deleteOrganizacao(Evento en) {
-
         for (int i = 0; i < organizacoes.size(); i++) {
-
             if (organizacoes.get(i).getEvento().getId().equals(en.getId())) {
                 organizacoes.remove(i);
                 return true;
@@ -35,7 +33,7 @@ public class Organizador extends Perfil {
         return false;
     }
 
-    public Organizacao recuperarOrganizaçãoByEvendoId(Long id) {
+    public Organizacao recuperarOrganizacaoByEvendoId(Long id) {
         for (int i = 0; i < this.organizacoes.size(); i++) {
             if (this.organizacoes.get(i).getEvento().getId().compareTo(id)== 0) {
                 return this.organizacoes.get(i);
@@ -44,4 +42,3 @@ public class Organizador extends Perfil {
         return null;
     }
 }
- 

@@ -80,11 +80,11 @@ public class ParticipanteService {
     public ArrayList<Participante> getParticipanteByAtividadeId(Long id) {
         try {
             ArrayList<Participante> parts = participanteDAO.getParticipantesByAtividadeId(id);
-//            for (Participante p : parts) {
-//                p.setUsuario(us.getById(p.getUsuario().getId()));
-//                InscricaoService is = new InscricaoService();
-//                p.setInscricoes(is.getAllInscricaoByParticipanteId(p.getId()));
-//            }
+            for (Participante p : parts) {
+                p.setUsuario(us.getById(p.getUsuario().getId()));
+                InscricaoService is = new InscricaoService();
+                p.setInscricoes(is.getAllInscricaoByParticipanteId(p.getId()));
+            }
             //Ordena por ordem alfabetica
             Collections.sort(parts);
         return parts;
@@ -93,6 +93,23 @@ public class ParticipanteService {
         }
     }
     
+//    
+//    public ArrayList<Participante> getParticipanteByAtividadeId(Long id) {
+//        try {
+//            ArrayList<Participante> parts = participanteDAO.getParticipantesByAtividadeId(id);
+////            for (Participante p : parts) {
+////                p.setUsuario(us.getById(p.getUsuario().getId()));
+////                InscricaoService is = new InscricaoService();
+////                p.setInscricoes(is.getAllInscricaoByParticipanteId(p.getId()));
+////            }
+//            //Ordena por ordem alfabetica
+//            Collections.sort(parts);
+//        return parts;
+//        } catch (SQLException ex) {
+//            return null;
+//        }
+//    }
+//    
     public ArrayList<Participante> getParticipanteByAtividadeIdQuites(Long id) {
         try {
             ArrayList<Participante> parts = participanteDAO.getParticipanteByAtividadeIdQuites(id);

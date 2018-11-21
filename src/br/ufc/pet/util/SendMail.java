@@ -1,46 +1,22 @@
 package br.ufc.pet.util;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Date;
-import java.util.Properties;
-
 /*
  * @author Gleyson
  */
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeUtility;
+import javax.mail.*;
+import javax.mail.internet.*;
+import java.util.*;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
 public class SendMail {
 
     public static void sendMail(String mailServer, String from, String to, String subject, String Mensagem)
-            throws AddressException, MessagingException, FileNotFoundException, IOException {
+            throws AddressException, MessagingException {
 
-    	System.out.println(to);
         Properties mailProps = new Properties();
-        
-        //Pegando os valores do properties
-        //Properties propeties = new Properties();
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();           
-        InputStream arq = loader.getResourceAsStream("mail.properties");
-        
-        mailProps.load(arq); 
-        
-        String usermail = mailProps.getProperty("mailuser");
-        String mailpassword = mailProps.getProperty("mailpassword");	
-                
         //definição do mailserver
+
         mailProps.put("mail.smtp.host", mailServer);
         mailProps.put("mail.smtp.auth", "true");
         
@@ -48,21 +24,22 @@ public class SendMail {
 
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(usermail,mailpassword );
+                return new PasswordAuthentication("petufc.quixada@gmail.com", "senhorjesus2017");
             }
         });
-       
+
+        
         String texto = Mensagem;
         texto = texto.replaceAll("\n", "\r\n");
 
         mailSession.setDebug(false);
-        mailProps.put("mail.debug", "false");
-        mailProps.put("mail.smtp.debug", "false");
+        mailProps.put("mail.debug", "true");
+        mailProps.put("mail.smtp.debug", "true");
         mailProps.put("mail.mime.charset", "ISO-8859-1");
         mailProps.put("mail.smtp.port", "465");
         mailProps.put("mail.smtp.starttls.enable", "true");
         mailProps.put("mail.smtp.socketFactory.port", "465");
-        mailProps.put("mail.smtp.socketFactory.fallback", "true");
+        mailProps.put("mail.smtp.socketFactory.fallback", "false");
         mailProps.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
         Message message = new MimeMessage(mailSession);
@@ -74,24 +51,17 @@ public class SendMail {
 
         message.setSubject(subject);
 
+
+
         message.setText(Mensagem);
+
 
         Transport.send(message);
     }
 
     public static void sendMail(String to, String subject, String Mensagem)
-            throws AddressException, MessagingException, FileNotFoundException, IOException {
-    	
-    	//Pegando o email inserido no properties 
-    	Properties propeties = new Properties();
-    	ClassLoader loader = Thread.currentThread().getContextClassLoader();           
-    	InputStream arq = loader.getResourceAsStream("mail.properties");
-    	
-    	propeties.load(arq);
-                
-        String usermail = propeties.getProperty("mailuser");
-         
-        SendMail.sendMail("smtp.gmail.com", usermail, to, subject, Mensagem);
+            throws AddressException, MessagingException {
+        SendMail.sendMail("smtp.gmail.com", "petufc.quixada@gmail.com", to, subject, Mensagem);
     }
 
 
@@ -122,7 +92,6 @@ public class SendMail {
             String password = s.getProperties().getProperty("mail.smtp.password");
 
             tr.connect(host, port, user, password);
-            
             message.saveChanges(); // don't forget this
             //envio da mensagem
             tr.sendMessage(message, message.getAllRecipients());

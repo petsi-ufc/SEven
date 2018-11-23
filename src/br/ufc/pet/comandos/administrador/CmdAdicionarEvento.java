@@ -188,16 +188,10 @@ public class CmdAdicionarEvento implements Comando {
                 EventoService es = new EventoService();
                 es.atualizar(E);
                 admin.addEvento(E);
-                E.setOrganizadores(es.getEventoById(E.getId()).getOrganizadores());
-                
-                for (Organizador org : E.getOrganizadores()) {
-					System.out.println(org.getUsuario().getEmail());
-				}
                 
                 for(Organizador org : E.getOrganizadores() ){
                     try {
                         String msg = "O administrador alterou os dados do evento, por favor verifique os horários das atividades!";
-                        System.out.println("Email organizador: "+org.getUsuario().getEmail());
                         SendMail.sendMail(org.getUsuario().getEmail(), "(SEVEN) Alteração no evento "+E.getNome(), msg);
                     } catch (MessagingException ex) {
                         System.out.println("Erro ao enviar o email para os organizadores: "+ex);

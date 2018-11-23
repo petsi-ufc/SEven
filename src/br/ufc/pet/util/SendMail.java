@@ -27,7 +27,6 @@ public class SendMail {
     public static void sendMail(String mailServer, String from, String to, String subject, String Mensagem)
             throws AddressException, MessagingException, FileNotFoundException, IOException {
 
-    	System.out.println(to);
         Properties mailProps = new Properties();
         
         //Pegando os valores do properties

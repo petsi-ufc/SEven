@@ -62,4 +62,22 @@ Pronto agora seu projeto já foi importado para o eclipse agora nos proximos pas
   - *JavaScript* na versão 1.0
 ![Imgur](https://i.imgur.com/HB0XAoj.png)
 
+### 6° Passo: Configurando o banco e mail.properties 
+- Após o download do projeto e abra o arquivo '''src/SqlMapConfig.xml'''
+- Procure o seguinte trecho no arquivo: 
+
+```
+    <transactionManager type="JDBC">
+        <dataSource type="SIMPLE">
+            <property name="JDBC.Driver" value="org.postgresql.Driver"/>
+            <property name="JDBC.ConnectionURL" value=DBHOST/>
+            <property name="JDBC.Username" value=DBUSERNAME/>
+            <property name="JDBC.Password" value=DBPASSWORD/>
+        </dataSource>
+    </transactionManager>
+```
+
+- Mude ```DBHOST```,```DBNAME```,```DBPASSWORD``` de acordo com sua configuração.
+- Em seguida vá no arquivo '''src/mail.properties''' e mude os valores de ```SENHA``` e ```USERNAME```
+
 #### Após executar todos esses passos seu projeto estará configurado. Agora é o famoso "**Te vira NEGÃO**"

@@ -1,12 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*"%>
 <%@page import="br.ufc.pet.util.UtilSeven"%>
-<%@page import="br.ufc.pet.evento.Atividade"%>
-<%@page import="br.ufc.pet.evento.Evento"%>
-<%@page import="br.ufc.pet.evento.Horario"%>
-<%@page import="br.ufc.pet.evento.Inscricao"%>
-<%@page import="br.ufc.pet.evento.ModalidadeInscricao"%>
-<%@page import="br.ufc.pet.evento.TipoAtividade"%>
+<%@page import="br.ufc.pet.entity.Atividade"%>
+<%@page import="br.ufc.pet.entity.Evento"%>
+<%@page import="br.ufc.pet.entity.Horario"%>
+<%@page import="br.ufc.pet.entity.Inscricao"%>
+<%@page import="br.ufc.pet.entity.ModalidadeInscricao"%>
+<%@page import="br.ufc.pet.entity.TipoAtividade"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
     <%@include file="../ErroAutenticacaoUser.jsp" %>
@@ -169,13 +169,13 @@
                                 <%}%>
 
                                 <hr style="height: 10px; border: 0; box-shadow: 0 10px 10px -10px #8c8b8b inset;"/>
-                                <div class="radio-inline"
+                                <div class="radio-inline">
                                      <%if (modalidades.isEmpty()) {%>
                                      <p>Nenhuma modalidade de inscrição cadastrada.</p>
                                     <%} else {%>
                                     <p>Tipo de inscrição:</p><%--Modalidade da inscrição, Estudante ou profissional--%>
                                     <%for (ModalidadeInscricao m : modalidades) {%>
-                                    <label<p><input class="radio" type="radio" name="tipo_inscricao" value="<%=m.getId()%>" <%if (m.getId().equals(anterior.getModalidade().getId())) {%> checked="checked" <%}%>/> <%=m.getTipo()%></p></label>
+                                    <label><p><input class="radio" type="radio" name="tipo_inscricao" value="<%=m.getId()%>" <%if (m.getId().equals(anterior.getModalidade().getId())) {%> checked="checked" <%}%>/> <%=m.getTipo()%></p></label>
                                     <%}%>
                                     <%}%>
                                     <br/>

@@ -1,10 +1,11 @@
 .settings
 build
 
-
 # Created by https://www.gitignore.io/api/java,eclipse,netbeans,intellij
 
 ### Eclipse ###
+
+ImportedClasses/
 
 .metadata
 bin/
@@ -185,3 +186,4 @@ nbdist/
 
 
 # End of https://www.gitignore.io/api/java,eclipse,netbeans,intellij
+/target/

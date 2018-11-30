@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="br.ufc.pet.evento.Evento" %>
-<%@page import="br.ufc.pet.evento.Usuario" %>
-<%@page import="br.ufc.pet.evento.Organizacao" %>
+<%@page import="br.ufc.pet.entity.Evento" %>
+<%@page import="br.ufc.pet.entity.Usuario" %>
+<%@page import="br.ufc.pet.entity.Organizacao" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
     <%@include file="../ErroAutenticacaoUser.jsp" %>
@@ -12,8 +12,8 @@
                 String manterAtvi = "";
                 String manterMod = "";
                 if (org != null) {
-                    boolean matAt = org.getManterAtividade();
-                    boolean matMod = org.getManterModuloFinanceiro();
+                    boolean matAt = org.isManterAtividade();
+                    boolean matMod = org.isManterModuloFinanceiro();
                     if (matAt) {
                         manterAtvi = "checked";
                     }

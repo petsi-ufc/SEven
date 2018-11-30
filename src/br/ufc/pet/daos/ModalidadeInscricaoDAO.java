@@ -1,15 +1,14 @@
 package br.ufc.pet.daos;
 
 import br.ufc.pet.config.PostgresMapConfig;
-import br.ufc.pet.evento.ModalidadeInscricao;
+import br.ufc.pet.entity.ModalidadeInscricao;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * @author Caio
- */
 public class ModalidadeInscricaoDAO {
-     public void insert(ModalidadeInscricao modalidadeInscricao) throws SQLException {
+     
+	public void insert(ModalidadeInscricao modalidadeInscricao) throws SQLException {
         Long id = getProxId();
         modalidadeInscricao.setId(id);
         PostgresMapConfig.getSqlMapClient().insert("addModalidadeInscricao", modalidadeInscricao);
@@ -33,13 +32,10 @@ public class ModalidadeInscricaoDAO {
 
     private Long getProxId() throws SQLException {
         Long id= (Long) PostgresMapConfig.getSqlMapClient().queryForObject("getMaxIdModalidadeInscricao");
-
-        if(id==null){
-        id=0L;
-
+        if(id == null){
+        	id = 0L;
         }
-
-        return id+1L;
+        return id + 1L;
     }
 
     public ArrayList<ModalidadeInscricao> getAll() throws SQLException {

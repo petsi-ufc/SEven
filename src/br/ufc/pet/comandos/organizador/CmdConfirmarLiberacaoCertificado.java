@@ -1,12 +1,15 @@
 package br.ufc.pet.comandos.organizador;
 
-import br.ufc.pet.evento.Atividade;
-import br.ufc.pet.evento.Inscricao;
-import br.ufc.pet.evento.InscricaoAtividade;
+import br.ufc.pet.entity.Atividade;
+import br.ufc.pet.entity.Inscricao;
+import br.ufc.pet.entity.InscricaoAtividade;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.AtividadeService;
 import br.ufc.pet.services.InscricaoService;
 import br.ufc.pet.util.SendMail;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
@@ -56,7 +59,13 @@ public class CmdConfirmarLiberacaoCertificado implements Comando {
                         SendMail.sendMail(insc.getParticipante().getUsuario().getEmail(), subject, messageBody);
                     } catch (MessagingException ex) {
                         Logger.getLogger(CmdConfirmarLiberacaoCertificado.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    } catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                 }
                 
             } catch (NumberFormatException e){

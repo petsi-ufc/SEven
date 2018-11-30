@@ -1,15 +1,13 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.PrecoAtividadeDAO;
-import br.ufc.pet.evento.PrecoAtividade;
+import br.ufc.pet.entity.PrecoAtividade;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * @author Caio
- */
 public class PrecoAtividadeService {
 
     private final PrecoAtividadeDAO PrecoAtividadeDAO;
@@ -36,7 +34,6 @@ public class PrecoAtividadeService {
             ex.printStackTrace();
             return false;
         }
-
     }
 
     public boolean excluir(PrecoAtividade precoAtividade){
@@ -47,13 +44,11 @@ public class PrecoAtividadeService {
             ex.printStackTrace();
             return false;
         }
-
     }
 
     public ArrayList<PrecoAtividade> getPrecosByModalidadeId(Long id) {
         try {
-            ArrayList<PrecoAtividade> precos = PrecoAtividadeDAO.getAllPrecosByModalidadeId(id);
-            return precos;
+            return PrecoAtividadeDAO.getAllPrecosByModalidadeId(id);
         } catch (SQLException ex) {
             Logger.getLogger(PrecoAtividadeService.class.getName()).log(Level.SEVERE, null, ex);
             return null;

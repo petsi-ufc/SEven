@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="br.ufc.pet.evento.MovimentacaoFinanceira"%>
+<%@page import="br.ufc.pet.entity.MovimentacaoFinanceira"%>
 <%@page import="java.util.*"%>
 <%@page import="br.ufc.pet.services.MovimentacaoFinanceiraService"%>
 <%@page import="br.ufc.pet.util.UtilSeven"%>

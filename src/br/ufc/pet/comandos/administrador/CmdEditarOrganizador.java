@@ -1,9 +1,9 @@
 package br.ufc.pet.comandos.administrador;
 
-import br.ufc.pet.evento.Evento;
-import br.ufc.pet.evento.Organizacao;
-import br.ufc.pet.evento.Organizador;
-import br.ufc.pet.evento.Usuario;
+import br.ufc.pet.entity.Evento;
+import br.ufc.pet.entity.Organizacao;
+import br.ufc.pet.entity.Organizador;
+import br.ufc.pet.entity.Usuario;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.OrganizacaoService;
 import br.ufc.pet.services.OrganizadorService;
@@ -57,7 +57,7 @@ public class CmdEditarOrganizador implements Comando {
             if (orgaS.update(orga)) {
                 if (organizaEvento == false) {
                     orgaS.adicionar(orga);
-                    org.setOrganizacoes(orga);
+                    org.setOrganizacaoAdd(orga);
                     en.addOrganizador(org);
                 }
                 session.setAttribute("sucesso", "Alterado com sucesso!");
@@ -72,7 +72,7 @@ public class CmdEditarOrganizador implements Comando {
             Organizacao orga = criarOrganizacao(org, en, manterAtividade, manterModulo);
             if (orgS.adicionar(org)) {
                 if (orgaS.adicionar(orga)) {
-                    org.setOrganizacoes(orga);
+                    org.setOrganizacaoAdd(orga);
                     en.addOrganizador(org);
                     session.setAttribute("sucesso", "Alterado com sucesso!");
                     return "/admin/organ_listar_movimentacao.jsp";

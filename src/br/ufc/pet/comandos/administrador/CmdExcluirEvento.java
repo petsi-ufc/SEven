@@ -1,7 +1,7 @@
 package br.ufc.pet.comandos.administrador;
 
-import br.ufc.pet.evento.Administrador;
-import br.ufc.pet.evento.Evento;
+import br.ufc.pet.entity.Administrador;
+import br.ufc.pet.entity.Evento;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.EventoService;
 import java.util.ArrayList;

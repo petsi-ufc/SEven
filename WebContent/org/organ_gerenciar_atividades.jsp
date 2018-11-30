@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList" %>
-<%@page import="br.ufc.pet.evento.Atividade,br.ufc.pet.evento.Organizador,br.ufc.pet.evento.Organizacao,br.ufc.pet.evento.ResponsavelAtividade" %>
+<%@page import="br.ufc.pet.entity.Atividade,br.ufc.pet.entity.Organizador,br.ufc.pet.entity.Organizacao,br.ufc.pet.entity.ResponsavelAtividade" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
     <%@include file="../ErroAutenticacaoUser.jsp" %>
@@ -16,7 +16,7 @@
 
     </head>
     <body>
-        <%            br.ufc.pet.evento.Evento e = (br.ufc.pet.evento.Evento) session.getAttribute("evento");
+        <%            br.ufc.pet.entity.Evento e = (br.ufc.pet.entity.Evento) session.getAttribute("evento");
             Organizador organizador = (Organizador) session.getAttribute("user");
             ArrayList<Atividade> ats = e.getAtividades();
         %>
@@ -26,7 +26,7 @@
             <div id="content">
                 <h1 class="titulo">Gerenciar as Atividades do evento<br/> <%=e.getNome()%></h1>
                  <%@include file="/error.jsp" %>
-                <% if (organizador.recuperarOrganizaçãoByEvendoId(e.getId()).getManterAtividade()) {%>
+                <% if (organizador.recuperarOrganizacaoByEvendoId(e.getId()).isManterAtividade()) {%>
                 <div style="margin-top: 65px;">
                 <div class="col-lg-6">
                     <div class="panel panel-default space-top">
@@ -100,7 +100,7 @@
                                     sb.append("<br>");
                                 }%>
                             <td><%=sb.toString()%></td>
-                            <% if (organizador.recuperarOrganizaçãoByEvendoId(e.getId()).getManterAtividade()) {%>
+                            <% if (organizador.recuperarOrganizacaoByEvendoId(e.getId()).isManterAtividade()) {%>
                             <td><a href="../ServletCentral?comando=CmdEditarAtividade&ativ_id=<%=a.getId()%>" title="Alterar Atividade"><span class="text-uppercase label label-success">Alterar</span></a></td> 
                             <td><a href="../ServletCentral?comando=CmdExcluirAtividade&ativ_id=<%=a.getId()%>" title="Excluir Atividade" onclick="return confirm('Tem certeza que deseja excluir essa atividade?')"><span class="text-uppercase label label-danger">Excluir</span></a></td>
                             <% } else {%>

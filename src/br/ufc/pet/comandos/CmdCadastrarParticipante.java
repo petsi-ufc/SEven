@@ -1,6 +1,6 @@
 package br.ufc.pet.comandos;
 
-import br.ufc.pet.evento.Participante;
+import br.ufc.pet.entity.Participante;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.EventoService;
 import br.ufc.pet.services.ParticipanteService;

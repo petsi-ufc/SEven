@@ -1,20 +1,17 @@
 package br.ufc.pet.services;
 
-import br.ufc.pet.daos.HorarioDAO;
-import br.ufc.pet.evento.Horario;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
-/*
- * @author Caio
- */
+import br.ufc.pet.daos.HorarioDAO;
+import br.ufc.pet.entity.Horario;
+
 public class HorarioService {
 
     private final HorarioDAO horarioDAO;
     
-    //Atributos de data usados para conferir se os horários cadastrados estão entre
-    //os dias de evento.
     private Date dataEventoFim;
     private Date dataEventoInicio;
     
@@ -30,8 +27,7 @@ public class HorarioService {
 
     public Horario getHorarioById(long id) {
         try {
-            Horario en = horarioDAO.getById(id);
-            return en;
+            return horarioDAO.getById(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -40,8 +36,7 @@ public class HorarioService {
 
     public ArrayList<Horario> getHorariosByAtivideId(long id) {
         try {
-            ArrayList<Horario> horarios = horarioDAO.getByAtividadeId(id);
-            return horarios;
+            return horarioDAO.getByAtividadeId(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -50,8 +45,7 @@ public class HorarioService {
 
     public ArrayList<Horario> getHorariosByEventoId(long id) {
         try {
-            ArrayList<Horario> horarios = horarioDAO.getByEventoId(id);
-            return horarios;
+            return horarioDAO.getByEventoId(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -60,8 +54,7 @@ public class HorarioService {
 
     public ArrayList<Horario> getAllHorarios() {
         try {
-            ArrayList<Horario> horarios = horarioDAO.getAllHorarios();
-            return horarios;
+            return horarioDAO.getAllHorarios();
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -103,8 +96,7 @@ public class HorarioService {
         }
     }
     
-    //Esse método confere se a data do horário informado pelo organizador está
-    //entre a data de inicio e de fim do evento.
+    //Esse método confere se a data do horário informado pelo organizador está entre a data de inicio e de fim do evento.
     public boolean conferirHorario(Horario horario){
         if(dataEventoFim != null && dataEventoInicio != null){
            if(horario.getDia().before(dataEventoFim) && 
@@ -115,6 +107,15 @@ public class HorarioService {
           return false;
         }
         return false;
+    }
+    
+    //Metodo statico
+    
+    public static ArrayList<Horario> getHorariosByEvento(Long idEvento) {
+        br.ufc.pet.services.HorarioService hs = new br.ufc.pet.services.HorarioService();
+        ArrayList<Horario> horarios=hs.getHorariosByEventoId(idEvento);
+        Collections.sort(horarios);
+        return horarios;
     }
     
 }

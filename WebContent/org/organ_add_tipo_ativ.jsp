@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<%@page import="java.util.ArrayList,br.ufc.pet.evento.TipoAtividade,br.ufc.pet.evento.ModalidadeInscricao"%>
+<%@page import="java.util.ArrayList,br.ufc.pet.entity.TipoAtividade,br.ufc.pet.entity.ModalidadeInscricao"%>
+<%@page import="br.ufc.pet.services.ModalidadeInscricaoService"%>
+
 <html>
     <%@include file="../ErroAutenticacaoUser.jsp" %>
     <head>
@@ -16,8 +18,8 @@
     </head>
     <body>
         <%
-                    br.ufc.pet.evento.Evento e = (br.ufc.pet.evento.Evento) session.getAttribute("evento");
-                    ArrayList<ModalidadeInscricao> modalidades = br.ufc.pet.util.UtilSeven.getModalidadeByEvento(e.getId());
+                    br.ufc.pet.entity.Evento e = (br.ufc.pet.entity.Evento) session.getAttribute("evento");
+                    ArrayList<ModalidadeInscricao> modalidades = ModalidadeInscricaoService.getModalidadeByEvento(e.getId());
                     TipoAtividade tipoAtividade = (TipoAtividade) session.getAttribute("tipoAtividade");
                     String ativNome = "";
                     String titulo = "Adicionar";

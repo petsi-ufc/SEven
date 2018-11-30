@@ -1,6 +1,6 @@
 package br.ufc.pet.comandos.organizador;
 
-import br.ufc.pet.evento.ResponsavelAtividade;
+import br.ufc.pet.entity.ResponsavelAtividade;
 import br.ufc.pet.interfaces.Comando;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;

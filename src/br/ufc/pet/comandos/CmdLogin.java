@@ -1,10 +1,10 @@
 package br.ufc.pet.comandos;
 
-import br.ufc.pet.evento.Administrador;
-import br.ufc.pet.evento.Organizador;
-import br.ufc.pet.evento.Participante;
-import br.ufc.pet.evento.Perfil;
-import br.ufc.pet.evento.Usuario;
+import br.ufc.pet.entity.Administrador;
+import br.ufc.pet.entity.Organizador;
+import br.ufc.pet.entity.Participante;
+import br.ufc.pet.entity.Perfil;
+import br.ufc.pet.entity.Usuario;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.EventoService;
 import br.ufc.pet.services.UsuarioService;

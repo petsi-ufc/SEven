@@ -54,51 +54,37 @@
         WHERE  id=#id#;
     </update>
 
-    <select id="getUsuarioByEmail" resultClass="usuario"
-            parameterClass="java.lang.String"
-            resultMap="usuarioResult">
-
+    <select id="getUsuarioByEmail" resultClass="usuario" parameterClass="java.lang.String" resultMap="usuarioResult">
         SELECT *
         FROM evento.usuario
         WHERE email = #var#;
     </select>
 
-    <select id="getUsuarioById" resultClass="usuario"
-            parameterClass="long"
-            resultMap="usuarioResult">
-
+    <select id="getUsuarioById" resultClass="usuario" parameterClass="long" resultMap="usuarioResult">
         SELECT *
         FROM evento.usuario
         WHERE id = #var#;
     </select>
 
-    <select id="getUsuarioByNome" resultClass="usuario"
-            parameterClass="java.lang.String"
-            resultMap="usuarioResult">
-
+    <select id="getUsuarioByNome" resultClass="usuario" parameterClass="java.lang.String" resultMap="usuarioResult">
         SELECT *
         FROM evento.usuario
         WHERE UPPER(nome) LIKE UPPER(#var#);
     </select>
 
-
-    <select id="getAllUsuarios" resultClass="usuario"
-            resultMap="usuarioResult">
-
+    <select id="getAllUsuarios" resultClass="usuario" resultMap="usuarioResult">
         SELECT *
         FROM evento.usuario;
     </select>
 
-    <select id="getUsuariosResponsaveisByAtividadeId" resultClass="usuario"
-            parameterClass="long"
-            resultMap="usuarioResult">
+    <select id="getUsuariosResponsaveisByAtividadeId" resultClass="usuario" parameterClass="long" resultMap="usuarioResult">
         select u.id, u.nome, u.senha, u.fone, u.data_nasc,u.email,u.sexo,u.instituicao, u.rua,u.bairro, u.num_casa, u.cidade, u.uf, u.certificado_gerado
         from evento.atividade as a, evento.atividade_responsavel as ar, evento.usuario as u
         where a.id=ar.atividade_id and u.id=ar.responsavel_id and a.id=#var#;
     </select>
+    
     <select id="getMaxIdUsuario" resultClass="long">
         SELECT MAX(id)
         FROM evento.usuario;
     </select>
-
 </sqlMap>

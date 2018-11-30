@@ -1,13 +1,11 @@
 package br.ufc.pet.daos;
 
 import br.ufc.pet.config.PostgresMapConfig;
-import br.ufc.pet.evento.PrecoAtividade;
+import br.ufc.pet.entity.PrecoAtividade;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * @author Caio
- */
 public class PrecoAtividadeDAO {
 
     public void insert(PrecoAtividade precoAtividade) throws SQLException{
@@ -25,14 +23,13 @@ public class PrecoAtividadeDAO {
 
     public ArrayList<PrecoAtividade> getAllPrecosByModalidadeId(Long id) throws SQLException {
         return (ArrayList<PrecoAtividade>) PostgresMapConfig.getSqlMapClient().queryForList("getAllPrecoByModalidadeId", id);
-        
     }
 
     private Long proxId() throws SQLException{
         Long id= (Long) PostgresMapConfig.getSqlMapClient().queryForObject("getMaxIdPrecoAtividade");
-        if(id==null){
-        id=0L;
+        if(id == null){
+        	id = 0L;
         }
-        return id+1L;
+        return id + 1L;
     }
 }

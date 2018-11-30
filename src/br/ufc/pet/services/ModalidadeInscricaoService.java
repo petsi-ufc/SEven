@@ -1,13 +1,11 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.ModalidadeInscricaoDAO;
-import br.ufc.pet.evento.ModalidadeInscricao;
+import br.ufc.pet.entity.ModalidadeInscricao;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * @author Caio
- */
 public class ModalidadeInscricaoService {
 
     private final ModalidadeInscricaoDAO modalidadeInscricaoDAO;
@@ -34,7 +32,6 @@ public class ModalidadeInscricaoService {
             ex.printStackTrace();
             return false;
         }
-
     }
 
     public boolean excluir(ModalidadeInscricao modalidadeInscricao){
@@ -45,15 +42,11 @@ public class ModalidadeInscricaoService {
             ex.printStackTrace();
             return false;
         }
-
     }
 
     public ModalidadeInscricao getModalidadeInscricaoById(long id) {
         try {
-            ModalidadeInscricao en = modalidadeInscricaoDAO.getById(id);
-            PrecoAtividadeService PS = new PrecoAtividadeService();
-            en.setPrecoAtividades(PS.getPrecosByModalidadeId(en.getId()));
-            return en;
+            return modalidadeInscricaoDAO.getById(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -62,15 +55,17 @@ public class ModalidadeInscricaoService {
 
     public ArrayList<ModalidadeInscricao> getModalidadesInscricaoByEventoId(Long id) {
         try {
-            ArrayList<ModalidadeInscricao> modalidades = modalidadeInscricaoDAO.getModalidadesByEventoId(id);
-            PrecoAtividadeService PS = new PrecoAtividadeService();
-            for(ModalidadeInscricao en : modalidades) {
-                en.setPrecoAtividades(PS.getPrecosByModalidadeId(en.getId()));
-            }
-            return modalidades;
+            return modalidadeInscricaoDAO.getModalidadesByEventoId(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
         }
+    }
+    
+    //Metodo statico
+    
+    public static ArrayList<ModalidadeInscricao> getModalidadeByEvento(Long idEvento) {
+        br.ufc.pet.services.ModalidadeInscricaoService mis = new br.ufc.pet.services.ModalidadeInscricaoService();
+        return mis.getModalidadesInscricaoByEventoId(idEvento);
     }
 }

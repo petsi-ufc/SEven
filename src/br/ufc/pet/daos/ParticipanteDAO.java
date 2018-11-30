@@ -1,35 +1,35 @@
 package br.ufc.pet.daos;
 
 import br.ufc.pet.config.PostgresMapConfig;
-import br.ufc.pet.evento.Participante;
+import br.ufc.pet.entity.Participante;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * @author Escritorio projetos
- */
 public class ParticipanteDAO {
 
     public void insertParticipante(Participante participante) throws SQLException{
         participante.setId(proxId());
         PostgresMapConfig.getSqlMapClient().insert("addParticipante", participante);
     }
-        public void deleteParticipante(Participante participante) throws SQLException{
+    
+    public void deleteParticipante(Participante participante) throws SQLException{
         PostgresMapConfig.getSqlMapClient().delete("deleteParticipante", participante);
     }
 
     public Participante getByUsuarioId(Long id) throws SQLException {
-        Participante p = (Participante) PostgresMapConfig.getSqlMapClient().queryForObject("getParticipanteByUsuarioId", id);
-        return p;
+        return (Participante) PostgresMapConfig.getSqlMapClient().queryForObject("getParticipanteByUsuarioId", id);
     }
+    
     public Participante getById(Long id) throws SQLException {
-        Participante p = (Participante) PostgresMapConfig.getSqlMapClient().queryForObject("getParticipanteById", id);
-        return p;
+        return (Participante) PostgresMapConfig.getSqlMapClient().queryForObject("getParticipanteById", id);
     }
+    
     private Long proxId() throws SQLException{
         Long l = (Long) PostgresMapConfig.getSqlMapClient().queryForObject("getMaxIdPerfil");
-        if(l == null)
+        if(l == null) {
             l = 0L;
+        }
         return l + 1;
     }
 
@@ -48,6 +48,4 @@ public class ParticipanteDAO {
     public ArrayList<Participante> getParticipantesByEventoID(Long id) throws SQLException {
         return (ArrayList<Participante>) PostgresMapConfig.getSqlMapClient().queryForList("getParticipantesByEventoId", id);
     }
-    
-    
 }

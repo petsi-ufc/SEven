@@ -1,8 +1,8 @@
 package br.ufc.pet.comandos.organizador;
 
-import br.ufc.pet.evento.Atividade;
-import br.ufc.pet.evento.Inscricao;
-import br.ufc.pet.evento.InscricaoAtividade;
+import br.ufc.pet.entity.Atividade;
+import br.ufc.pet.entity.Inscricao;
+import br.ufc.pet.entity.InscricaoAtividade;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.AtividadeService;
 import br.ufc.pet.services.InscricaoService;
@@ -126,7 +126,7 @@ public class CmdGerarCertificado implements Comando {
                 
                 AtividadeService as = new AtividadeService();
                 ArrayList<InscricaoAtividade> ia = as.getIncricaoAtividadeByInscricao(inscricao.getId());
-                ArrayList<Long> idsAtiv = Atividade.getIdsAtividadeCeriticadoLiberado(ia);
+                ArrayList<Long> idsAtiv = Atividade.getIdsAtividadeCertificadoLiberado(ia);
 
                 for (Atividade a : inscricao.getAtividades()) {
                     

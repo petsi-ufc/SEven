@@ -1,7 +1,7 @@
 package br.ufc.pet.comandos.administrador;
 
-import br.ufc.pet.evento.Administrador;
-import br.ufc.pet.evento.Evento;
+import br.ufc.pet.entity.Administrador;
+import br.ufc.pet.entity.Evento;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.EventoService;
 import br.ufc.pet.util.UtilSeven;
@@ -60,11 +60,11 @@ public class CmdAlterarEvento implements Comando {
             session.setAttribute("erro", "Preencha todos os campos");
             session.setAttribute("evento", E);
             return "/admin/edit_events.jsp";
-        } else if (UtilSeven.validaData(inicioInscricao) != true || UtilSeven.validaData(fimInscricao) != true
+        } /*else if (UtilSeven.validaData(inicioInscricao) != true || UtilSeven.validaData(fimInscricao) != true
                 || !UtilSeven.validaData(inicioEvento) || !UtilSeven.validaData(fimEvento)) {
             session.setAttribute("erro", "Data Inválida, digite no formato dd/mm/aaaa");
             return "/admin/edit_events.jsp";
-        } else {
+        }*/ else {
 
             try{
                 limiteDeAtividades = Integer.parseInt(limiteDeAtividadesPorParticipante);

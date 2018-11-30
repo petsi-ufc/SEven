@@ -3,7 +3,7 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <%
     br.ufc.pet.services.EventoService es = new br.ufc.pet.services.EventoService();
-    java.util.ArrayList<br.ufc.pet.evento.Evento> eventos = es.buscarEventosAbertos();
+    java.util.ArrayList<br.ufc.pet.entity.Evento> eventos = es.buscarEventosAbertos();
 %>
 
 <html>
@@ -43,7 +43,7 @@
                         </thead>
                         <tbody>
                             <%if (eventos != null) {%>
-                            <% for (br.ufc.pet.evento.Evento e : eventos) {%>
+                            <% for (br.ufc.pet.entity.Evento e : eventos) {%>
                             <tr>
                                 <td> <%= e.getNome()%>  </td>
                                 <td> <%= e.getSigla()%> </td>

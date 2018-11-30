@@ -1,15 +1,13 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.TipoAtividadeDAO;
-import br.ufc.pet.evento.TipoAtividade;
+import br.ufc.pet.entity.TipoAtividade;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * @author Escritorio projetos
- */
 public class TipoAtividadeService {
 
     private final TipoAtividadeDAO tipoAtividadeDAO;
@@ -82,4 +80,13 @@ public class TipoAtividadeService {
             return false;
         }
     }
+    
+    public static TipoAtividade getTiposDeAtividadeById(Long id) {
+        TipoAtividadeService ts = new TipoAtividadeService();
+        return ts.getTipoDeAtividadeById(id);
+    }
+    public static ArrayList<TipoAtividade> getTiposDeAtividadeByEventoId(Long id) {
+        TipoAtividadeService ts = new TipoAtividadeService();
+        return ts.getTiposDeAtividadesByEventoId(id);
+    } 
 }

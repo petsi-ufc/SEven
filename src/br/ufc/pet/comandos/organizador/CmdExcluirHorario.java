@@ -1,6 +1,6 @@
 package br.ufc.pet.comandos.organizador;
 
-import br.ufc.pet.evento.Horario;
+import br.ufc.pet.entity.Horario;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.HorarioService;
 import java.util.ArrayList;

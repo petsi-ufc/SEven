@@ -1,26 +1,19 @@
 package br.ufc.pet.services;
 
 import br.ufc.pet.daos.AtividadeDAO;
-import br.ufc.pet.evento.Atividade;
-import br.ufc.pet.evento.Horario;
-import br.ufc.pet.evento.InscricaoAtividade;
+import br.ufc.pet.entity.Atividade;
+import br.ufc.pet.entity.Horario;
+import br.ufc.pet.entity.InscricaoAtividade;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * @author caio
- */
 public class AtividadeService {
-
-    private final HorarioService hs = new HorarioService();
+	
     private final AtividadeDAO atividadeDAO;
-    private final EventoService es;
-    private final ResponsavelAtividadeService responsavelService;
 
     public AtividadeService() {
         atividadeDAO = new AtividadeDAO();
-        es = new EventoService();
-        responsavelService = new ResponsavelAtividadeService();
     }
 
     public boolean adicionar(Atividade atividade) {
@@ -55,25 +48,16 @@ public class AtividadeService {
 
     public Atividade getAtividadeById(Long id) {
         try {
-            Atividade at = atividadeDAO.getById(id);
-            at.setHorarios(hs.getHorariosByAtivideId(id));
-            at.setEvento(es.getEventoById(at.getEvento().getId()));
-            at.setResponsaveis(responsavelService.getResponsavelAtividade(at.getId()));
-            return at;
+            return atividadeDAO.getById(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
         }
     }
 
-    public ArrayList<Atividade> getAtividadeByEventoId(Long id) {
+    public ArrayList<Atividade> getAtividadesByEventoId(Long id) {
         try {
-            ArrayList<Atividade> aa = atividadeDAO.getByEventoId(id);
-            for (Atividade a : aa) {
-                a.setHorarios(hs.getHorariosByAtivideId(a.getId()));
-                a.setResponsaveis(responsavelService.getResponsavelAtividade(a.getId()));
-            }
-            return aa;
+            return atividadeDAO.getByEventoId(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -82,12 +66,7 @@ public class AtividadeService {
 
     public ArrayList<Atividade> getAtividadeByInscricaoId(Long id) {
         try {
-            ArrayList<Atividade> aa = atividadeDAO.getByInscricaoId(id);
-            for (Atividade a : aa) {
-                a.setHorarios(hs.getHorariosByAtivideId(a.getId()));
-                a.setResponsaveis(responsavelService.getResponsavelAtividade(a.getId()));
-            }
-            return aa;
+            return atividadeDAO.getByInscricaoId(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -96,12 +75,7 @@ public class AtividadeService {
 
     public ArrayList<Atividade> getAtividadeByOrganizadorId(Long id) {
         try {
-            ArrayList<Atividade> aa = atividadeDAO.getByOrganizadorId(id);
-            for (Atividade a : aa) {
-                a.setHorarios(hs.getHorariosByAtivideId(a.getId()));
-                a.setResponsaveis(responsavelService.getResponsavelAtividade(a.getId()));
-            }
-            return aa;
+            return atividadeDAO.getByOrganizadorId(id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -133,11 +107,8 @@ public class AtividadeService {
     
     
     public boolean confirmaLiberacaoCertificadoAtividade(InscricaoAtividade utility ){
-    
-        
         if (utility==null || utility.getAtividadeId()==null)
             return false;
-        
         try {
             atividadeDAO.confirmaLiberacaoCertificadoAtividade(utility);
             return true;
@@ -150,8 +121,7 @@ public class AtividadeService {
     
     public ArrayList<InscricaoAtividade> getIncricaoAtividadeByInscricao(Long idInscricao){
         try {
-            ArrayList<InscricaoAtividade> ia = atividadeDAO.getIncricaoAtividadeByInscricao(idInscricao);
-            return ia;
+            return atividadeDAO.getIncricaoAtividadeByInscricao(idInscricao);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;

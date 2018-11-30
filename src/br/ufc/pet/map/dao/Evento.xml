@@ -14,11 +14,13 @@
         <result property="fimPeriodoInscricao" column="fim_inscricao"/>
         <result property="descricao" column="descricao"/>
         <result property="ativo" column="ativo"/>
-        <result property="administrador.id" column="admin_id"/>
+        <result property="administrador" column="admin_id" select="getAdministradorById" />
         <result property="inicioPeriodoEvento" column="inicio"/>
         <result property="fimPeriodoEvento" column="fim"/>
         <result property="limiteAtividadePorParticipante" column="limite_atividade_por_participante"/> 
         <result property="gratuito" column="gratuito"/>
+        <result property="organizadores" column="id" select="getAllOrganizadorByEvento" />
+        <result property="atividades" column="id" select="getAtividadesByEventoId" />
     </resultMap>
 
     <insert id="addEvento" parameterClass="evento" >
@@ -57,27 +59,21 @@
         DELETE FROM evento.evento WHERE id = #var#;
     </delete>
 
-    <select id="getEventoById" resultClass="evento"
-    	parameterClass="java.lang.Long"
-    	resultMap="eventoResult">
+    <select id="getEventoById" resultClass="evento" parameterClass="java.lang.Long" resultMap="eventoResult">
         SELECT id, nome, sigla, tema, inicio_inscricao, fim_inscricao, ativo,
             admin_id,descricao,inicio,fim, limite_atividade_por_participante, gratuito
         FROM evento.evento
         WHERE id=#var#;
     </select>
 
-    <select id="getEventoBySigla" resultClass="evento"
-    	parameterClass="java.lang.String"
-    	resultMap="eventoResult">
+    <select id="getEventoBySigla" resultClass="evento" parameterClass="java.lang.String" resultMap="eventoResult">
         SELECT id, nome, sigla, tema, inicio_inscricao, fim_inscricao, ativo,
             admin_id,descricao,inicio,fim, limite_atividade_por_participante, gratuito
         FROM evento.evento
         WHERE sigla=#var#;
     </select>
     
-    <select id="getEventoByNome" resultClass="evento"
-    	parameterClass="java.lang.String"
-    	resultMap="eventoResult">
+    <select id="getEventoByNome" resultClass="evento" parameterClass="java.lang.String" resultMap="eventoResult">
         SELECT id, nome, sigla, tema, inicio_inscricao, fim_inscricao, ativo,
             admin_id,descricao,inicio,fim, limite_atividade_por_participante
         FROM evento.evento
@@ -112,8 +108,4 @@
         SELECT MAX(id)
         FROM evento.evento;
     </select>
-
-   
-
-
 </sqlMap>

@@ -1,9 +1,9 @@
 package br.ufc.pet.comandos.organizador;
 
-import br.ufc.pet.evento.Evento;
-import br.ufc.pet.evento.MovimentacaoFinanceira;
-import br.ufc.pet.evento.Organizacao;
-import br.ufc.pet.evento.Organizador;
+import br.ufc.pet.entity.Evento;
+import br.ufc.pet.entity.MovimentacaoFinanceira;
+import br.ufc.pet.entity.Organizacao;
+import br.ufc.pet.entity.Organizador;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.MovimentacaoFinanceiraService;
 import br.ufc.pet.services.OrganizacaoService;
@@ -35,7 +35,7 @@ public class CmdListarMovimentacaoFinanceira implements Comando {
         ArrayList<MovimentacaoFinanceira> movfs = movimentacaofinanceiraservice.getMovimentacaoFinanceirasByEventoId(ev.getId());
         ev.setMovimentacoesFinanceiras(movfs);
 
-        session.setAttribute("permissao", organizacao.getManterModuloFinanceiro());
+        session.setAttribute("permissao", organizacao.isManterModuloFinanceiro());
         session.removeAttribute("atualizarmovimentacaofinanceira");
 
         return "/org/organ_listar_movimentacao.jsp";

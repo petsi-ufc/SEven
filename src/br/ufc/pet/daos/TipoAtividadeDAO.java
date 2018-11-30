@@ -1,13 +1,11 @@
 package br.ufc.pet.daos;
 
 import br.ufc.pet.config.PostgresMapConfig;
-import br.ufc.pet.evento.TipoAtividade;
+import br.ufc.pet.entity.TipoAtividade;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * @author Escritorio projetos
- */
 public class TipoAtividadeDAO {
 
     public ArrayList<TipoAtividade> getAll() throws SQLException {
@@ -16,7 +14,6 @@ public class TipoAtividadeDAO {
 
     public TipoAtividade getById(long id) throws SQLException {
         return (TipoAtividade) PostgresMapConfig.getSqlMapClient().queryForObject("getTipoAtividadeById", id);
-
     }
 
     public ArrayList<TipoAtividade> getByEventoId(long id) throws SQLException {

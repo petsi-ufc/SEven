@@ -1,13 +1,11 @@
 package br.ufc.pet.daos;
 
 import br.ufc.pet.config.PostgresMapConfig;
-import br.ufc.pet.evento.Evento;
+import br.ufc.pet.entity.Evento;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * @author Escritorio projetos
- */
 public class EventoDAO {
 
     public void insert(Evento evento) throws SQLException{
@@ -35,7 +33,7 @@ public class EventoDAO {
         return (Evento) PostgresMapConfig.getSqlMapClient().queryForObject("getEventoById", id);
     }
 
-    public Evento getBySilga(String sigla) throws SQLException{
+    public Evento getBySigla(String sigla) throws SQLException{
         return (Evento)PostgresMapConfig.getSqlMapClient().queryForObject("getEventoBySigla", sigla);
     }
     
@@ -57,10 +55,9 @@ public class EventoDAO {
 
     private Long proxId() throws SQLException{
         Long id= (Long) PostgresMapConfig.getSqlMapClient().queryForObject("getMaxIdEvento");
-        if(id==null){
-        id=0L;
+        if(id == null){
+        	id = 0L;
         }
-        return id+1L;
+        return id + 1L;
     }
-
 }

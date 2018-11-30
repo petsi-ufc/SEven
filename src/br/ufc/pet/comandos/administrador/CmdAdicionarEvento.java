@@ -1,9 +1,8 @@
 package br.ufc.pet.comandos.administrador;
 
-import br.ufc.pet.evento.Administrador;
-import br.ufc.pet.evento.Evento;
-
-import br.ufc.pet.evento.Organizador;
+import br.ufc.pet.entity.Administrador;
+import br.ufc.pet.entity.Evento;
+import br.ufc.pet.entity.Organizador;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.EventoService;
 import br.ufc.pet.util.SendMail;
@@ -11,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import br.ufc.pet.util.UtilSeven;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import javax.mail.MessagingException;
 
 /*
@@ -81,11 +84,11 @@ public class CmdAdicionarEvento implements Comando {
             session.setAttribute("erro", "Preencha todos os campos");
             session.setAttribute("evento", E);
             return "/admin/add_events.jsp";
-        } else if (UtilSeven.validaData(inicioInscricao) != true || UtilSeven.validaData(fimInscricao) != true
+        }else if (UtilSeven.validaData(inicioInscricao) != true || UtilSeven.validaData(fimInscricao) != true
                 || !UtilSeven.validaData(inicioEvento) || !UtilSeven.validaData(fimEvento)) {
-            session.setAttribute("erro", "Data Inválida, digite no formato dd/mm/aaaa");
+            session.setAttribute("erro", "Data Inválida, digite no formato dia/mês/ano");
             return "/admin/add_events.jsp";
-        } else {
+        }else {
             
 //            try{
                 limiteDeAtividades = Integer.parseInt(limiteDeAtividadesPorParticipante);
@@ -163,7 +166,7 @@ public class CmdAdicionarEvento implements Comando {
                 } else {
                     session.setAttribute("erro", "Erro ao adicionar evento");
                 }
-             } else {
+             } else { //Alterar
                 admin.removerEventoById(E.getId());
                 E.setNome(nomeEvento);
                 E.setSigla(siglaEvento);
@@ -186,13 +189,19 @@ public class CmdAdicionarEvento implements Comando {
                 es.atualizar(E);
                 admin.addEvento(E);
                 
-                for(Organizador org : E.getOrganizadores()){
+                for(Organizador org : E.getOrganizadores() ){
                     try {
                         String msg = "O administrador alterou os dados do evento, por favor verifique os horários das atividades!";
                         SendMail.sendMail(org.getUsuario().getEmail(), "(SEVEN) Alteração no evento "+E.getNome(), msg);
                     } catch (MessagingException ex) {
                         System.out.println("Erro ao enviar o email para os organizadores: "+ex);
-                    }
+                    } catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                 }
                 session.setAttribute("sucesso", "Evento alterado com sucesso");
 

@@ -1,5 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList,java.util.List, br.ufc.pet.evento.TipoAtividade,br.ufc.pet.evento.ResponsavelAtividade,br.ufc.pet.evento.Horario,br.ufc.pet.evento.Atividade,br.ufc.pet.evento.Evento" %>
+<%@page import="java.util.ArrayList,java.util.List, br.ufc.pet.entity.TipoAtividade,br.ufc.pet.entity.ResponsavelAtividade,br.ufc.pet.entity.Horario,br.ufc.pet.entity.Atividade,br.ufc.pet.entity.Evento" %>
+<%@page import="br.ufc.pet.services.TipoAtividadeService"%>
+<%@page import="br.ufc.pet.services.HorarioService"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
     <%@include file="../ErroAutenticacaoUser.jsp" %>
@@ -27,7 +30,7 @@
     </head>
     <body>
         <%            Evento evento = (Evento) session.getAttribute("evento");
-            ArrayList<TipoAtividade> tas = br.ufc.pet.util.UtilSeven.getTiposDeAtividadeByEventoId(evento.getId());
+            ArrayList<TipoAtividade> tas = TipoAtividadeService.getTiposDeAtividadeByEventoId(evento.getId());
             ArrayList<ResponsavelAtividade> resps = (ArrayList<ResponsavelAtividade>) session.getAttribute("responsaveisEscolhidos");
             Atividade a = (Atividade) session.getAttribute("atividade");
             Atividade ativTemp = (Atividade) session.getAttribute("atividadeTemp");
@@ -104,7 +107,7 @@
                              <div class="col-lg-2 space-top">    
                                 <div class="form-group">
                                     <label>N° de Vagas:</label><br />
-                                    <input data-toggle="tooltip" title="Quantidade de Vagas Disponibilizadas" type="number" min="0" max="999" onkeypress="return validaNumerosSilencioso(event)" name="vagas" value="<%=vagas%>" class="form-control"/>
+                                    <input data-toggle="tooltip" title="Quantidade de Vagas Disponibilizadas" type="number" min="1" max="1000" onkeypress="return validaNumerosSilencioso(event)" name="vagas" value="<%=vagas%>" class="form-control"/>
                                 </div>
                              </div>
                              <div class="col-lg-3">       
@@ -173,7 +176,7 @@
                                     </thead>
                                     <tbody>
                                         <%
-                                            ArrayList<Horario> horarios = br.ufc.pet.util.UtilSeven.getHorariosByEvento(evento.getId());
+                                            ArrayList<Horario> horarios = HorarioService.getHorariosByEvento(evento.getId());
                                             java.util.Collections.sort(horarios);
                                             for (Horario h1 : horarios) {%>
 

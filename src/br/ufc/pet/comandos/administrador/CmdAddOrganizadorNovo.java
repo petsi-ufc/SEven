@@ -1,9 +1,9 @@
 package br.ufc.pet.comandos.administrador;
 
-import br.ufc.pet.evento.Evento;
-import br.ufc.pet.evento.Organizacao;
-import br.ufc.pet.evento.Organizador;
-import br.ufc.pet.evento.Usuario;
+import br.ufc.pet.entity.Evento;
+import br.ufc.pet.entity.Organizacao;
+import br.ufc.pet.entity.Organizador;
+import br.ufc.pet.entity.Usuario;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.OrganizacaoService;
 import br.ufc.pet.services.OrganizadorService;
@@ -69,7 +69,7 @@ public class CmdAddOrganizadorNovo implements Comando {
 
             session.setAttribute("erro", "Preencha todos os campos!");
             return "/admin/admin_add_organ_novo.jsp";
-        } else if (UtilSeven.validaData(data) != true) {
+        } else if (UtilSeven.validaData(data)) {
             session.setAttribute("erro", "Data inválida, digite no formato dd/mm/aaaa!");
             return "/admin/admin_add_organ_novo.jsp";
         } else if (!senha.equals(ConfSenha)) {
@@ -92,7 +92,7 @@ public class CmdAddOrganizadorNovo implements Comando {
                     OrganizacaoService orgaS = new OrganizacaoService();
                     if (orgaS.adicionar(orga)) {
                         en.addOrganizador(o);
-                        o.setOrganizacoes(orga);
+                        o.setOrganizacaoAdd(orga);
                         session.setAttribute("sucesso", "Cadastrado com sucesso!");
                         session.removeAttribute("nome");
                         session.removeAttribute("rua");

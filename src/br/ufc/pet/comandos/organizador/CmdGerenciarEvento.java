@@ -1,6 +1,6 @@
 package br.ufc.pet.comandos.organizador;
 
-import br.ufc.pet.evento.Evento;
+import br.ufc.pet.entity.Evento;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.EventoService;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +18,7 @@ public class CmdGerenciarEvento implements Comando {
         String cod = request.getParameter("cod_evento");
 
         Long codigo = Long.parseLong(cod);
-
+        
         EventoService es = new EventoService();
         Evento e = es.getEventoById(codigo);
 

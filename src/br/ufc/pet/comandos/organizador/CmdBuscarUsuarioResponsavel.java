@@ -1,6 +1,6 @@
 package br.ufc.pet.comandos.organizador;
 
-import br.ufc.pet.evento.Usuario;
+import br.ufc.pet.entity.Usuario;
 import br.ufc.pet.interfaces.Comando;
 import br.ufc.pet.services.UsuarioService;
 import java.util.ArrayList;

@@ -163,7 +163,7 @@
                         <input data-toggle="tooltip" title="Número/Complemento" placeholder="* Número/Complemento" type="text" maxlength="12" value="<%=numero%>" name="numero" class="form-control" required/>
                     </div>
                                                                      
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <select id="estados" data-toggle="tooltip" title="Estado" name="uf" value="<%=uf%>" class="form-control" required>
                             <option value=""></option>
                         </select>
@@ -171,17 +171,17 @@
                                     
                     <div class="form-group">
                         <select id="cidades" data-toggle="tooltip" title="Cidade" name="cidade" value="<%=cidade%>" class="form-control" required>
-                                      
-                        </select>
-                    </div>
+                            <option value=""></option>       
+                        </select>                        
+                    </div> -->
                     
-<!--                        <div class="form-group">
+                        <div class="form-group">
                             <input data-toggle="tooltip" title="Cidade" class="form-control" value="<%=cidade%>" type="text"  placeholder="* Cidade" maxlength="50" name="cidade" />
                         </div>                       
                   
                         <div class="form-group">
                             <input data-toggle="tooltip" title="UF" class="form-control" value="<%=uf%>" type="text"  placeholder="* UF" maxlength="50" name="uf" />
-                        </div>  -->
+                        </div> 
                      
                         <div class="form-group">
                             <input data-toggle="tooltip" title="Senha" class="form-control" type="password"  placeholder="* Senha" maxlength="18" minlength="6" name="senha" />

@@ -27,7 +27,6 @@
                         <label><a href="../ServletCentral?comando=CmdListarAtividadeFrequencia" title="">Gerar Lista de Presença em Atividades</a></label><br/>
                         <label><a href="../ServletCentral?comando=CmdRelatorioParticipantesQuites" title="">Relatório de Participante Quites</a></label><br/>
                         <label><a href="../ServletCentral?comando=CmdListarParticipantes" title="">Listar Participantes</a></label><br/>
-                        <label><a href="" title="">Relatório de Movimento do Caixa</a></label><br/>
                     </div>
                 </div>
                 <div id="list">

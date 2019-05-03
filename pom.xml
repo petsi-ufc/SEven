@@ -102,5 +102,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>SEVEN</finalName>
 	</build>
 </project>

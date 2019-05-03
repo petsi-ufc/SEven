@@ -1,5 +1,7 @@
 package br.ufc.pet.util;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
@@ -12,7 +14,6 @@ import br.ufc.pet.entity.ModalidadeInscricao;
 import br.ufc.pet.entity.PrecoAtividade;
 import br.ufc.pet.entity.TipoAtividade;
 import br.ufc.pet.services.ModalidadeInscricaoService;
-import sun.misc.BASE64Encoder;
 
 /*
  * @author Caio
@@ -40,7 +41,7 @@ public class UtilSeven {
         }
         return "";
     }
-    
+
     public static String treatToLongString(Date param) {
         if (param != null) {
             SimpleDateFormat formatter = new SimpleDateFormat("EEEE, dd 'de' MMMM 'de' yyyy");
@@ -49,32 +50,32 @@ public class UtilSeven {
         }
         return "";
     }
-     
+
     public static String formtStringDate(Date param) {
         if (param != null) {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             String data = formatter.format(param);
             return data;
         }
-           return "";
+        return "";
     }
 
     public static boolean validaData(String data) {
-    	
-    	@SuppressWarnings("unused")
-		Date dataConvertida = null;
-    	SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-    	try {
-    		format.setLenient(false);
-    		dataConvertida = format.parse(data);
-    		return true;
-    	
-    	} catch (ParseException e) {
-			e.printStackTrace();
-			return false;
-		}	
-    }    
-    
+
+        @SuppressWarnings("unused")
+        Date dataConvertida = null;
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            format.setLenient(false);
+            dataConvertida = format.parse(data);
+            return true;
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public static String precoFormater(double preco) {
         java.text.DecimalFormat df = new java.text.DecimalFormat("R$ ###,###,##0.00");
         return df.format(preco);
@@ -98,29 +99,27 @@ public class UtilSeven {
         }
         return preco;
     }
-    
+
     public static double getPrecoTipo(TipoAtividade t, ModalidadeInscricao m) {
-        if (m == null || t==null) {
+        if (m == null || t == null) {
             return 0;
         }
 
         double preco = 0;
         for (PrecoAtividade p : m.getPrecoAtividades()) {
-                if (t.getId().equals(p.getTipoAtividadeId())) {
-                    preco += p.getValor();
-                    break;
-                }
+            if (t.getId().equals(p.getTipoAtividadeId())) {
+                preco += p.getValor();
+                break;
+            }
         }
         return preco;
     }
- 
-    
+
     public static String criptografar(String senha) {
         try {
             MessageDigest digest = MessageDigest.getInstance("MD5");
             digest.update(senha.getBytes());
-            BASE64Encoder encoder = new BASE64Encoder();
-            return encoder.encode(digest.digest());
+            return new String(java.util.Base64.getMimeEncoder().encode(digest.digest()), UTF_8);
         } catch (NoSuchAlgorithmException ns) {
             ns.printStackTrace();
             return senha;
